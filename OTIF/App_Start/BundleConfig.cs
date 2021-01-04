@@ -27,6 +27,9 @@ namespace OTIF
             bundles.Add(new ScriptBundle("~/Home/js").Include(
                           "~/Scripts/Home/js_Index.js"));
 
+            bundles.Add(new ScriptBundle("~/CheckByMachines/js").Include(
+                          "~/Scripts/Home/js_CheckByMachines.js"));
+
             bundles.Add(new ScriptBundle("~/HomeOview/js").Include(
                           "~/Scripts/Home/js_Overview.js"));
 
