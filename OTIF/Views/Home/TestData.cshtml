@@ -1,0 +1,136 @@
+﻿@model IEnumerable<OTIF.Models.Master_Data>
+
+@{
+    ViewBag.Title = "TestData";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>TestData</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.B_SO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_PO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_Customer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_Material)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_Material_Des)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date_Create)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date_PFD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date_Delivery)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_Cutting_Length)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_Order_QTY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_Order_Unit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PL_Machine)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PL_Process)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PL_Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PL_Qty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PL_Tag)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PL_Qty_T)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PL_Color)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_SO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_PO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_Customer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_Material)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_Material_Des)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date_Create)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date_PFD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date_Delivery)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_Cutting_Length)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_Order_QTY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_Order_Unit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PL_Machine)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PL_Process)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PL_Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PL_Qty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PL_Tag)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PL_Qty_T)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PL_Color)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

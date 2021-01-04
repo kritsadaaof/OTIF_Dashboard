@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "Requests";
+}
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@Scripts.Render("~/Return/js")
+
+
+
+<div class="row text-center">
+    <h3>ส่งการผลิต</h3>
+    <i style="color:red">(บันทึกข้อมูล เพื่อส่งการผลิต)</i>
+</div>
+<div class="" style="">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="form-element-list">
+            <input type="time" id="Time_Actual" class="form-control hidden">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-3 col-xs-2">
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-8">
+                    <div class="form-group nk-datapk-ctm form-elet-mg">
+                        <i>บาร์โค้ด Kanban</i><i style="color:red"> **</i><i id="Data_Location" style="color:red"></i>
+                        <div class="input-group nk-int-st">
+                            <input id="Bar_Kam" type="text" class="form-control" placeholder="ยิงบาร์โค้ดKanban" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-3 col-xs-2">
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-3 col-xs-2">
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-8">
+                    <div class="form-group nk-datapk-ctm form-elet-mg">
+                        <i>จำนวนผลผลิต</i><i style="color:red"> ** </i>  <i id="QTY_DE" style="color:red"></i>
+                        <div class="input-group nk-int-st">
+                            <input id="Qty" type="text" class="form-control" placeholder="กรอกจำนวน" onkeyup="this.value=this.value.replace(/[^0-9.]/g,'')" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-3 col-xs-2">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-3 col-xs-2">
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-8">
+                    <div class="form-group nk-datapk-ctm form-elet-mg">
+                        <i>ผู้บันทึก</i><i style="color:red"> **</i>
+                        <div class="input-group nk-int-st">
+                            <input id="User" type="text" class="form-control" placeholder="กรอกรหัสผู้บันทึก" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-3 col-xs-2">
+                </div>
+            </div> 
+
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mg-t-10 text-center">
+        <a id="Save" class="btn btn-success notika-btn-success btn-default">บันทึก</a>
+        <a href="@Url.Action("PDReturn", new {})" id="Clear" class="btn btn-success notika-btn-success btn-default">Clear</a>
+    </div>
+</div>
+

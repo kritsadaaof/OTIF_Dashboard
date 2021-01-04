@@ -1,0 +1,265 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>OTIF | Phelps Dodge</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="~/Content/Site.css?v=610" />
+    <link rel="stylesheet" type="text/css" href="~/Content/style.css?v=610" />
+    <!-- favicon
+       ============================================ -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/img/Icon.png">
+    <!-- Google Fonts
+        ============================================ -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
+    <!-- Bootstrap CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <!-- Bootstrap CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/css/font-awesome.min.css">
+    <!-- notification CSS
+       ============================================ -->
+    <link rel="stylesheet" href="~/Content/css/notification/notification.css">
+    <!-- owl.carousel CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/css/owl.carousel.css">
+    <link rel="stylesheet" href="~/Content/css/owl.theme.css">
+    <link rel="stylesheet" href="~/Content/css/owl.transitions.css">
+    <!-- meanmenu CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/css/meanmenu/meanmenu.min.css">
+    <!-- datapicker CSS
+      ============================================ -->
+    <link rel="stylesheet" href="~/Content/css/datapicker/datepicker3.css">
+    <!-- Color Picker CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/css/color-picker/farbtastic.css">
+
+    <!-- animate CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/css/animate.css">
+    <!-- normalize CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/css/normalize.css">
+    <!-- mCustomScrollbar CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/css/scrollbar/jquery.mCustomScrollbar.min.css">
+    <!-- jvectormap CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/css/jvectormap/jquery-jvectormap-2.0.3.css">
+    <!-- notika icon CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/css/notika-custom-icon.css">
+    <!-- wave CSS
+        ============================================
+    <link rel="stylesheet" href="~/Content/css/wave/waves.min.css">
+        -->
+    <!-- main CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/css/main.css">
+    <!-- style CSS
+        ============================================
+    <link rel="stylesheet" href="~/Content/style.css">
+     responsive CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/css/responsive.css">
+    <!-- modernizr JS
+        ============================================ -->
+    <script src="~/Content/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="~/Scripts/moment.js" temp_src="moment.js"></script>
+
+
+    @Styles.Render("~/Content/css")         <!--เรียกใช้งาน style.css-->
+    @Scripts.Render("~/bundles/jquery")     <!--เรียกใช้งาน "~/Scripts/jquery-{version}.js" เพื่อให้ JS ของแต่ละ Page ทำงาน-->
+    @Scripts.Render("~/MonitorTV2/js")
+</head>
+<body>
+    @{int i = 0;}
+    @foreach (var Mach in ViewBag.MS_Machine)
+    {
+    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 mg-t-15 " style="font-style:oblique;color:white">
+        <div id="BG_@i" class="statistic-right-area notika-shadow sm-res-mg-t-0 mg-bt-ant-inner Mach Font_Z C" title="@Mach.MC_Machine" style="background-color:#516735">
+            <div class="past-statistic-an Font_10">
+                <div class="Font_Z" style="font-size: 10px">
+                    <h5 class="" style="font-style:oblique">Customer: <br /> <i style="color:yellow;font-size: 10px" id="CusM_@i">-</i></h5>
+                    <h5 class="" style="font-style:oblique">Product: <br /><i style="color:yellow;font-size:10px" id="ItemM_@i">-</i></h5>
+                </div>
+
+                <div class="past-statistic-graph text-right">
+                    <i id="" style="color:white">เวลาปัจจุบัน:</i> <i id="TimeM_@i" style="color:white"></i>
+                    <h4 class="Font_10 text-left" style="font-style:oblique;font-size: 12px">
+                        ชื่อเครื่อง:  <br />
+                        <i style="" id="Machine_@i">@Mach.MC_Machine</i><br /><br />
+                        ผลผลิตสะสมวันนี้: <i style="color:lime" id="Total_FinsM_@i">0</i><i style="" id=""> M</i>
+                    </h4>
+
+                </div>
+            </div>
+
+            <div class="past-statistic-an">
+                <div class="past-statistic-ctn Font_10">
+                    <h5 class="" style="font-size:12px; font-style:oblique">
+                        SO:<br /> <i style="color: lime" id="SOM_@i">-</i> <br />
+                        จำนวนผลิตตาม SO: <br />
+                        <i style="color: lime" id="P_Order_M_@i">0</i> <i style="" id="P_Unit_M_@i"></i><br /><br />
+                        ผลผลิตสะสม SO: <br />
+                        <i style="font-size: 12px;color:lime" id="Finish_Order_M_@i">0</i><i style="" id=""> M</i>
+
+                        <br /> <br />
+                        คงเหลือ SO: <br />
+                        <i style="font-size: 12px;color:yellow" id="Balance_Order_M_@i">0</i><i style="" id="Convers_Unit_M_@i"> </i>
+                    </h5>
+                </div>&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="past-statistic-ctn Font_10">
+                    <h4 class="" style="font-size:12px; font-style:oblique">
+                        <i>หมายเลขล้อรับ:</i><br />
+                        <span style="color:lime" id="TagM_@i">-</span>
+                    </h4><br />
+                    <h4 class="" style="font-size:12px; font-style:oblique">จำนวนผลิตตามล้อ: <span style="color:lime" id="PlanM_@i">0</span></h4>
+                    <h4 class="" style="font-size:11px; font-style:oblique">
+                        ผลผลิตที่ต้องได้ตามแผน: <br />
+                        <span style="font-size: 12px; color: yellow" id="Target_QTY_Plan_By_Mach_@i">0</span><i style="" id=""> M</i>
+                    </h4>
+                    <h4 class="" style="font-size:12px; font-style:oblique">
+                        ผลผลิตสะสม Reel: <br />
+                        <span style="font-size: 12px; color: lime" id="ActualM_@i">0</span><i style="" id=""> M</i>
+                    </h4>
+                    <h4 class="" style="font-size: 12px">
+                        คงเหลือ Reel: <span style="color:yellow" id="DiffM_@i">0</span><i style="" id=""> M</i>
+                    </h4>
+                </div>
+
+                <div class="past-statistic-graph">
+                    <h4 class="Font_10 text-left" style="font-style:oblique;font-size: 12px">
+                        เวลาผลิตสะสมวันนี้: <br /><i style="color:lime" id="Sum_TimeD_@i">00.00</i><i style="" id=""> hr</i><br />
+                        เวลาเปลี่ยนงานสะสมวันนี้: <br /><i style="color:lime" id="Sum_TimeC_@i">00.00</i><i style="" id=""> hr</i>
+                    </h4><br />
+                    <h4 class="Font_10 text-left" style="font-style:oblique;color:yellow;font-size: 12px">
+                        เวลาเปลี่ยนงาน <br />
+                        <i style="font-size: 12px;color:yellow" id="CheckTime_@i">00:00</i><i style="" id=""> hr</i>
+                    </h4>
+                    <h4 class="Font_10 text-left" style="font-style:oblique;font-size: 12px">
+                        ควบคุมเครื่องโดย: <br /><i style="font-size: 12px; color: lime" id="User_@i">-</i><br /><br />
+                        สถานะเครื่อง: <br /><i style="font-size: 18px" id="Mach_Status_@i">-</i>
+                    </h4>
+                    <!-- <i style="color:darkorange">M/C STATUS</i> <br>
+                <input id="StartM_@i" type="checkbox" /> <i id="MST_@i" style="color:forestgreen"> เครื่องเดิน  </i> <br>
+                <input id="StopM_@i" type="checkbox" /> <i style="color:yellow"> เครื่องจอด</i><br>
+                <input id="PBM_@i" type="checkbox" /> <i style="color:red"> มีปัญหา</i>
+
+                   -->
+                </div>
+            </div>
+        </div>
+    </div>
+        i++;
+    }
+    <div class="footer-copyright-area1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="footer-copy-right">
+                        <p>Copyright &copy; Designed & Developed by <a href="https://www.pdcable.com/en/home-2/">Dev. Phelps Dodge</a> 2020</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Breadcomb area End-->
+    <!-- Inbox area Start-->
+    <!-- jquery
+     ============================================ -->
+    <script src="~/Content/js/vendor/jquery-1.12.4.min.js"></script>
+    <!-- bootstrap JS
+        ============================================ -->
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <!-- wow JS
+        ============================================ -->
+    <script src="~/Content/js/wow.min.js"></script>
+    <!-- price-slider JS
+        ============================================ -->
+    <script src="~/Content/js/jquery-price-slider.js"></script>
+    <!-- owl.carousel JS
+        ============================================ -->
+    <script src="~/Content/js/owl.carousel.min.js"></script>
+    <!-- scrollUp JS
+        ============================================ -->
+    <script src="~/Content/js/jquery.scrollUp.min.js"></script>
+    <!-- meanmenu JS
+        ============================================ -->
+    <script src="~/Content/js/meanmenu/jquery.meanmenu.js"></script>
+    <!-- counterup JS
+        ============================================ -->
+    <script src="~/Content/js/counterup/jquery.counterup.min.js"></script>
+    <script src="~/Content/js/counterup/waypoints.min.js"></script>
+    <script src="~/Content/js/counterup/counterup-active.js"></script>
+
+    <!-- mCustomScrollbar JS
+        ============================================ -->
+    <script src="~/Content/js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <!-- sparkline JS
+        ============================================ -->
+    <script src="~/Content/js/sparkline/jquery.sparkline.min.js"></script>
+    <script src="~/Content/js/sparkline/sparkline-active.js"></script>
+    <!-- flot JS
+        ============================================ -->
+    <script src="~/Content/js/flot/jquery.flot.js"></script>
+    <script src="~/Content/js/flot/jquery.flot.resize.js"></script>
+    <script src="~/Content/js/flot/flot-active.js"></script>
+    <!-- knob JS
+        ============================================ -->
+    <script src="~/Content/js/knob/jquery.knob.js"></script>
+    <script src="~/Content/js/knob/jquery.appear.js"></script>
+    <script src="~/Content/js/knob/knob-active.js"></script>
+
+    <!--  wave JS
+        ============================================
+    <script src="~/Content/js/wave/waves.min.js"></script>
+    <script src="~/Content/js/wave/wave-active.js"></script> -->
+    <!-- icheck JS
+        ============================================ -->
+    <script src="~/Content/js/icheck/icheck.min.js"></script>
+    <script src="~/Content/js/icheck/icheck-active.js"></script>
+    <!--  Chat JS
+        ============================================ -->
+    <script src="~/Content/js/chat/jquery.chat.js"></script>
+    <!--  todo JS
+        ============================================ -->
+    <script src="~/Content/js/todo/jquery.todo.js"></script>
+    <!-- plugins JS
+        ============================================ -->
+    <script src="~/Content/js/plugins.js"></script>
+    <!-- main JS
+        ============================================ -->
+    <script src="~/Content/js/main.js"></script>
+
+    <!-- Data Table JS
+        ============================================ -->
+    <script src="~/Content/js/data-table/jquery.dataTables.min.js"></script>
+    <script src="~/Content/js/data-table/data-table-act.js"></script>
+
+    <!--  notification JS
+        ============================================ -->
+    <script src="~/Content/js/notification/bootstrap-growl.min.js"></script>
+
+    <!-- datapicker JS
+        ============================================ -->
+    <script src="~/Content/js/datapicker/bootstrap-datepicker.js"></script>
+    <!-- img_Lightbox JS
+    ============================================
+    <script src="~/Content/js/Img-lightbox/prototype.js"></script>
+    <script src="~/Content/js/Img-lightbox/scriptaculous.js?load=effects"></script>
+    <script src="~/Content/js/Img-lightbox/lightbox.js"></script>  -->
+
+    <script type="text/javascript">
+        var baseUrl = "@Url.Content("~")";
+    </script>
+</body>
+</html>

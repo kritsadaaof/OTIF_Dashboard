@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Print";
+}
+
+@Scripts.Render("~/CreateBar/js")
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="~/Content/datatables.min.css" rel="stylesheet" />
+<script src="~/Scripts/datatables.min.js"></script>
+<body id="Body">
+    <div class="row text-center">
+        <h3>รายการสำหรับปริ้นบาร์โค้ด</h3>
+        <i style="color:red">เลือกรายการเพื่อปริ้นบาร์โค้ดติดล้อ</i>
+    </div> 
+    <div class="table-responsive">
+        <table id="All" class="table table-striped">
+            <thead>
+                <tr>
+                    <th width="12%">SO</th>
+                    <th>เครื่องจักร</th>
+                    <th>Process</th>
+                    <th>TAG</th>
+                    <th>จำนวน</th>
+                    <th>ชนิดสาย</th>
+                    <th>ขนาดล้อ</th>
+                    <th>วันที่ Upload</th> 
+                    <th class="text-center">#</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>SO</th>
+                    <th>เครื่องจักร</th>
+                    <th>Process</th>
+                    <th>TAG</th>
+                    <th>จำนวน</th>
+                    <th>ชนิดสาย</th>
+                    <th>ขนาดล้อ</th>
+                    <th>วันที่ Upload</th> 
+                    <th class="text-center">#</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</body>

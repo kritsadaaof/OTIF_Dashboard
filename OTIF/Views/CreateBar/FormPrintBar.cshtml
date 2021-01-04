@@ -1,0 +1,36 @@
+﻿
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>FormPrinBar</title>
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/img/Icon.png">
+</head>
+<body class="">
+    <table style="width:100%;" class="Form1">
+        @foreach (var TAGs in ViewBag.TAG)
+        {
+            <tr>
+                <td style="width:50%;text-align:center;">
+                    <br />
+                    <img src="@Url.Action("RenderBarcode",new {id = TAGs.PL_Tag})" width="600" height="80" />
+                    <a style="font-size:36px"> TAG : @TAGs.PL_Tag </a><br />
+
+                </td>
+            </tr>
+
+        }
+
+
+    </table>
+    <script type="text/javascript">
+        var baseUrl = "@Url.Content("~")";
+    </script>
+</body>
+</html>

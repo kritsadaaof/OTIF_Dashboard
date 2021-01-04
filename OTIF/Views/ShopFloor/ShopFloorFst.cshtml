@@ -1,0 +1,137 @@
+﻿
+@{
+    ViewBag.Title = "Requests";
+}
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@Scripts.Render("~/ShopFloorFst/js")
+
+<link rel="stylesheet" href="~/Content/css/bootstrap-select/bootstrap-select.css">
+<script src="~/Content/js/bootstrap-select/bootstrap-select.js"></script>
+<!-- bootstrap select CSS JS ============================================ -->
+
+
+<div class="row text-center">
+    <h3>รายงานผลผลิต เมตรแรก</h3>
+    <i style="color:red">(บันทึกข้อมูล เพื่อรายงานผลผลิต เมตรแรก)</i>
+</div>
+<div class="" style="">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="form-element-list">
+            <input type="time" id="Time_Actual" class="form-control hidden"> 
+            <div class="row">
+                <div class="col-lg-3 col-md-2 col-sm-2 col-xs-1">
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-5">
+                    <div class="form-group nk-datapk-ctm form-elet-mg">
+                        <i>บาร์โค้ด เครื่องจักร</i><i style="color:red">**</i>
+                        <div class="input-group  nk-int-st">
+                            <input id="Machin" type="text" class="form-control" placeholder="ยิงบาร์โค้ด เครื่องจักร" autofocus>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-5 notification-demo">
+                    <div class="form-group nk-datapk-ctm form-elet-mg">
+                        <i>TAG ล้อรับ</i><i style="color:red"> **</i><i id="Data_Location" style="color:red"></i>
+                        <div class="input-group nk-int-st">
+                            <input id="Bar_Kam" type="text" class="form-control" placeholder="TAG ล้อรับ" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-1 col-md-2 col-sm-2 col-xs-1">
+                </div>
+            </div> 
+            <div class="row">
+                <div class="col-lg-3 col-md-2 col-sm-2 col-xs-1">
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-5 notification-demo">
+                    <div class="form-group nk-datapk-ctm form-elet-mg">
+                        <i>เวลาที่รายงาน</i><i style="color:red ; font-size:10px"> * (AM : ก่อนเที่ยงวัน PM : หลังเที่ยงวัน)</i>
+                        <div class="input-group nk-int-st">
+                            <input type="time" id="Time_SP_Fst" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                
+
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-5 notification-demo">
+                    <div class="form-group nk-datapk-ctm form-elet-mg">
+                        <i>ความเร็วเครื่อง</i><i style="color:red"> **</i>
+                        <div class="input-group nk-int-st">
+                            <input id="Actual_Speed" type="text" class="form-control" placeholder="กรอกข้อมูล Actual Speed" value="0" onkeyup="this.value=this.value.replace(/[^0-9.]/g,'')" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-1 col-md-2 col-sm-2 col-xs-1">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-2 col-sm-2 col-xs-1">
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-5 notification-demo">
+                    <div class="form-group nk-datapk-ctm form-elet-mg">
+                        <i>ผู้บันทึก</i><i style="color:red"> **</i>
+                        <div class="input-group nk-int-st">
+                            <input id="User" type="text" class="form-control" placeholder="กรอกรหัสผู้บันทึก" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-5 notification-demo">
+                    <div class="form-group nk-datapk-ctm form-elet-mg">
+                        <i>สาเหตุความผิดปกติ</i>&nbsp; &nbsp;
+                        <input id="Check_Reason" type="checkbox" class=""><br />
+                        <div id="Reason" style="display:none">
+                            <!-- <select class="selectpicker" data-live-search="true" id="Reason_Code" title='Reason Code....'>
+                                @foreach (var ReasonCode in ViewBag.ReasonCode)
+                                {
+                                    <option value="@ReasonCode.Reason_Code">@ReasonCode.Reason_Code</option>
+
+                                }
+                            </select>
+                               --> 
+                            <div class="input-group nk-int-st">
+                                <input id="Reason_Code" type="text" class="form-control" placeholder="กรอกสาเหตุ" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-1 col-md-2 col-sm-2 col-xs-1">
+                </div>
+            </div> 
+            <br />
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-3 col-xs-2">
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-8">
+
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-3 col-xs-2">
+                </div>
+            </div> 
+            <div class="row" id="Show_QTY" style="display:none">
+                <br />
+                <div class="col-lg-4 col-md-4 col-sm-3 col-xs-2">
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-8">
+                    <div class="form-group nk-datapk-ctm form-elet-mg">
+                        <i>Target : </i><i style="color:red"></i><i id="Pro_Traget" style="color:red"></i><br />
+                        <i>Remain : </i><i style="color:red"></i><i id="Pro_Remain" style="color:red"></i>
+                    </div>
+                </div> 
+                <div class="col-lg-4 col-md-4 col-sm-3 col-xs-2">
+                </div>
+            </div> 
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mg-t-10 text-center">
+        <a id="Save" class="btn btn-success notika-btn-success btn-default">บันทึก</a>
+        <a href="@Url.Action("ShopFloor", new {})" id="Clear" class="btn btn-success notika-btn-success btn-default">Clear</a>
+    </div>
+</div>
+

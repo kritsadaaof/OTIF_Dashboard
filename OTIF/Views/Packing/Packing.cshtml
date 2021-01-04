@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "Packing";
+}
+
+@Scripts.Render("~/Packing/js")
+
+<link href="~/Content/datatables.min.css" rel="stylesheet" />
+<script src="~/Scripts/datatables.min.js"></script>
+<script src="~/Scripts/moment.js" temp_src="moment.js"></script>
+<script>
+
+</script>
+
+ 
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+    <div class="row text-center"> 
+        <i style="color:red" >(รายการเพื่อ เตรียมประกอบล้อ)</i>
+    </div> 
+
+    <div class="table-responsive">
+        <table id="data-table-basic" class="table table-striped">
+            <thead>
+                <tr>
+
+                    <th>เวลาเหลือ</th>
+                    <th>SO</th>
+                    <th>Tag</th>
+                    <!--    <th width="12%">SO/PO</th> -->
+                    <th>ความยาวแผน</th>
+                    <th>ความยาวจริง</th>
+                    <th>น้ำหนัก สาย</th>
+                    <th>น้ำหนัก Gross</th>
+                    <th>ล้อที่</th>
+                    <th>ขนาดล้อ</th>
+                    <th width="10%">Drun Dimension</th>
+                    <th width="10%">ขนาดไม้</th>
+                    <th width="10%">ไม้/หนา</th>
+                    <!--  <th>รายงานล่าสุด</th> 
+                    <th>แผนผลิตเสร็จ</th>-->
+                    <th width="10%">เตรียมประกอบ</th>
+
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" hidden>
+
+    <div class="row text-center">
+        <h3>รายการกำลังจะออกจากผลิต</h3>
+        <i style="color:red" hidden>(เลือกรายการเพื่อ ตรวจสอบ)</i>
+    </div>
+
+</div>

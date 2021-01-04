@@ -1,0 +1,135 @@
+﻿
+@{
+    ViewBag.Title = "Requests";
+}
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@Scripts.Render("~/Request/js")
+
+
+
+<div class="row text-center">
+    <h3>เริ่มต้นการผลิต</h3>
+    <i style="color:red">(ยิงบาร์โค้ดบันทึกข้อมูล สำหรับแผนผลิต)</i>
+</div>
+<div class="" style="">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="form-element-list">
+            <div class="row">
+                <div class="col-lg-3 col-md-2 col-sm-2 col-xs-1">
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-5">
+                    <div class="form-group nk-datapk-ctm form-elet-mg">
+                        <i>บาร์โค้ด เครื่องจักร</i><i style="color:red">**</i>
+                        <div class="input-group  nk-int-st">
+                            <input id="Machin" type="text" class="form-control" placeholder="ยิงบาร์โค้ด เครื่องจักร" autofocus>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-5 notification-demo ">
+
+                    <i>TAG ล้อป้อน</i><i style="color:red"> **</i><i id="Data_Location" style="color:red"></i>
+                    <div class="form-group nk-datapk-ctm form-elet-mg">
+
+                        <div class="col-lg-5 col-md-7 col-sm-12 col-xs-12">
+                            <div class="input-group nk-int-st row">
+                                <input id="Bar_Kam" type="text" class="form-control" placeholder="TAG ล้อป้อน" />
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-5 col-sm-12 col-xs-12">
+                            <div class="input-group nk-int-st row">
+                                <select class="form-control" id="TagLis">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-1 col-md-2 col-sm-2 col-xs-1">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-3 col-md-2 col-sm-2 col-xs-1">
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-5 notification-demo">
+                    <div class="form-group nk-datapk-ctm form-elet-mg">
+                        <i>ความยาวสายในล้อ</i><i style="color:red"> **</i>
+                        <div class="input-group nk-int-st">
+                            <input id="Qty_T" type="text" class="form-control" placeholder="กรอกจำนวน" onkeyup="this.value=this.value.replace(/[^0-9.]/g,'')"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-5 notification-demo">
+                    <div class="form-group nk-datapk-ctm form-elet-mg">
+                        <i>จำนวนแผนการผลิต</i><i style="color:red"> **</i>
+                        <div class="input-group nk-int-st">
+                            <input id="Qty" type="text" class="form-control" placeholder="กรอกจำนวน" onkeyup="this.value=this.value.replace(/[^0-9.]/g,'')"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-1 col-md-2 col-sm-2 col-xs-1">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-3 col-md-2 col-sm-2 col-xs-1">
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-5 notification-demo">
+                    <div class="form-group nk-datapk-ctm form-elet-mg">
+                        <i>ความเร็วเครื่อง ตั้งต้น</i><i style="color:red"> **</i>
+                        <div class="input-group nk-int-st">
+                            <input id="Process_Speed" type="text" class="form-control" placeholder="ข้อมูล Process Speed" onkeyup="this.value=this.value.replace(/[^0-9.]/g,'')" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-5 notification-demo">
+                    <div class="form-group nk-datapk-ctm form-elet-mg">
+                        <i>ผู้บันทึก</i><i style="color:red"> **</i>
+                        <div class="input-group nk-int-st">
+                            <input id="User" type="text" class="form-control" placeholder="กรอกรหัสผู้บันทึก" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-1 col-md-2 col-sm-2 col-xs-1">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-2 col-sm-2 col-xs-1">
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-5" hidden>
+                    <div class="form-group nk-datapk-ctm form-elet-mg" id="date_Plan">
+                        <i>วันที่</i><i style="color:red">*</i>
+                        <div class="input-group date nk-int-st">
+                            <span class="input-group-addon"></span>
+                            <input id="Date_Plan" type="datetime" class="form-control" placeholder="..../..../...." readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-5 notification-demo" hidden>
+                    <div class="form-group nk-datapk-ctm form-elet-mg">
+                        <i>เวลา</i><i style="color:red ; font-size:10px"> * (AM : ก่อนเที่ยงวัน PM : หลังเที่ยงวัน)</i>
+                        <div class="input-group nk-int-st">
+                            <input type="time" id="Time_Plan" class="form-control">
+                            <input type="time" id="Time_Actual" class="form-control hidden">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-1 col-md-2 col-sm-2 col-xs-1">
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mg-t-10 text-center">
+        <a id="Save" class="btn btn-success notika-btn-success btn-default">บันทึก</a>
+        <a href="@Url.Action("Requests", new {})" id="Clear" class="btn btn-success notika-btn-success btn-default">Clear</a>
+    </div>
+</div>
+

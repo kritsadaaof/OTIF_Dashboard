@@ -1,0 +1,357 @@
+﻿
+@{
+    ViewBag.Title = "Requests";
+}
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@Scripts.Render("~/Planner/js")
+
+<!-- bootstrap select CSS JS ============================================ -->
+<link rel="stylesheet" href="~/Content/css/bootstrap-select/bootstrap-select.css">
+<script src="~/Content/js/bootstrap-select/bootstrap-select.js"></script>
+<!-- bootstrap select CSS JS ============================================ -->
+
+<div class="row text-center">
+    <h3>วางแผนการผลิต</h3>
+    <i style="color:red">(ยืนยันข้อมูล สำหรับผลิต)</i>
+</div>
+<div class="" style="">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="form-element-list">
+            <div class="row">
+                <div class="col-lg-3 col-md-2 col-sm-2 col-xs-1">
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-5">
+                    <div class="form-group nk-datapk-ctm form-elet-mg">
+                        <i>เลือกรายการ SO.</i><i style="color:red">**</i>
+                        <div class="input-group  nk-int-st">
+                            <input id="SO" type="text" class="form-control" placeholder="กรอกข้อมูล SO เพื่อค้นหา...." autofocus>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-5 notification-demo">
+                    <div class="form-group nk-datapk-ctm form-elet-mg">
+                        <i>ลูกค้า</i><i style="color:red"> **</i>
+                        <div class="input-group nk-int-st">
+                            <input id="Cus" type="text" class="form-control" placeholder="ข้อมูลลูกค้า" disabled />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-1 col-md-2 col-sm-2 col-xs-1">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-3 col-md-2 col-sm-2 col-xs-1">
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-5">
+                    <div class="form-group nk-datapk-ctm form-elet-mg">
+                        <i>Material</i><i style="color:red">**</i>
+                        <div class="input-group  nk-int-st">
+                            <input id="Mat" type="text" class="form-control" placeholder="ข้อมูล Material" disabled />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-5 notification-demo">
+                    <div class="form-group nk-datapk-ctm form-elet-mg">
+                        <i>Des.</i><i style="color:red"> **</i>
+                        <div class="input-group nk-int-st">
+                            <input id="Mat_Des" type="text" class="form-control" placeholder="รายละเอียด Material" disabled />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-1 col-md-2 col-sm-2 col-xs-1">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-3 col-md-2 col-sm-2 col-xs-1">
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-5">
+                    <div class="form-group nk-datapk-ctm form-elet-mg">
+                        <i>Create Date.</i><i style="color:red">**</i>
+                        <div class="input-group  nk-int-st">
+                            <input id="Create_Date" type="text" class="form-control" placeholder="ข้อมูลวันที่สร้าง" disabled />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-5 notification-demo">
+                    <div class="form-group nk-datapk-ctm form-elet-mg">
+                        <i>Prod Fin. Date</i><i style="color:red"> **</i>
+                        <div class="input-group nk-int-st">
+                            <input id="PFD" type="text" class="form-control" placeholder="ข้อมูล PFD." disabled />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-1 col-md-2 col-sm-2 col-xs-1">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-2 col-sm-2 col-xs-1">
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-5">
+                    <div class="form-group nk-datapk-ctm form-elet-mg" id="Delivery_Date">
+                        <i>Delivery Date.</i><i style="color:red">**</i>
+                        <div class="input-group date  nk-int-st">
+                            <span class="input-group-addon"></span>
+                            <input id="Delivery_DateT" type="text" class="form-control" placeholder="ข้อมูลวันที่ส่ง" />
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-5 notification-demo">
+                    <div class="form-group nk-datapk-ctm form-elet-mg">
+                        <i>จำนวน</i><i style="color:red"> **</i> <i id="QTY_Unit" style="color:darkcyan"></i>
+                        <div class="input-group nk-int-st">
+                            <input id="Qty" type="text" class="form-control" placeholder="กรอกจำนวน" onkeyup="this.value=this.value.replace(/[^0-9.]/g,'')" />
+                        </div>
+                    </div>
+                </div>
+
+              
+
+                <div class="col-lg-1 col-md-2 col-sm-2 col-xs-1">
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-lg-3 col-md-2 col-sm-2 col-xs-1">
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-5 notification-demo">
+                    <div class="form-group nk-datapk-ctm form-elet-mg">
+                        <i>ผู้บันทึก</i><i style="color:red"> **</i>
+                        <div class="input-group nk-int-st">
+                            <input id="User" type="text" class="form-control" placeholder="กรอกรหัสผู้บันทึก" />
+                        </div>
+                    </div>
+                </div><div class="col-lg-4 col-md-4 col-sm-4 col-xs-5 notification-demo">
+                    
+                </div>
+                <div class="col-lg-1 col-md-2 col-sm-2 col-xs-1">
+                </div>
+            </div>
+            <div class="row" hidden>
+                <div class="col-lg-3 col-md-2 col-sm-2 col-xs-1">
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-5">
+                    <div class="form-group nk-datapk-ctm form-elet-mg" id="date_Plan">
+                        <i>Plan Date</i><i style="color:red">*</i>
+                        <div class="input-group date nk-int-st">
+                            <span class="input-group-addon"></span>
+                            <input id="Date_PlanT" type="datetime" class="form-control" placeholder="..../..../...." readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-5 notification-demo">
+                    <div class="form-group nk-datapk-ctm form-elet-mg">
+                        <i>Plan Time</i><i style="color:red ; font-size:10px"> * (AM : ก่อนเที่ยงวัน PM : หลังเที่ยงวัน)</i>
+                        <div class="input-group nk-int-st">
+                            <input type="time" id="Time_Plan" class="form-control">
+                            <input type="time" id="Time_Actual" class="form-control hidden">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-1 col-md-2 col-sm-2 col-xs-1">
+                </div>
+            </div>
+
+
+
+
+
+            <div class="row text-center">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-left">
+                        <div class="fm-checkbox">
+
+                            <div class="col-lg-3 col-md-2 col-sm-2 col-xs-1">
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-5">
+                                <label><input id="Check_CutL" type="checkbox" checked="" class=""> <i></i> Cutting Lenght</label> <i id="CutL_De_Label" style="color:darkcyan"></i> <br />
+                                <label><input id="Check_Matal" type="checkbox" checked="" class=""> <i></i> Metal</label><br />
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6 text-left">
+                                <label><input id="Check_Mg" type="checkbox" checked="" class=""> <i></i> Manufacturing Guide</label><br />
+                                <label><input id="Check_Oh_RM" type="checkbox" checked="" class=""> <i></i> Other RM</label>
+                            </div>
+                            <div class="col-xs-1">
+                            </div>
+                            <div class="col-lg-3 col-md-2 col-sm-2 col-xs-11">
+                                <label><input id="Check_Compound" type="checkbox" checked="" class=""> Compound</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!----------------------------------------------------------------------------------------------------------------------------------------->
+
+
+            <div class=" " id="De_Metal" style="display:none">
+                <div class="text-center">
+                    <i class="text-danger">วันที่/เวลา แผน Metal</i>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-md-2 col-sm-2 col-xs-12">
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="form-group nk-datapk-ctm form-elet-mg" id="data_1">
+                            <i>วันที่</i><i style="color:red">*</i>
+                            <div class="input-group date nk-int-st">
+                                <span class="input-group-addon"></span>
+                                <input id="Date_Metal" type="datetime" class="form-control" placeholder="..../..../...." readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 notification-demo">
+                        <div class="form-group nk-datapk-ctm form-elet-mg">
+                            <i>เวลา</i><i style="color:red ; font-size:10px"> * (AM : ก่อนเที่ยงวัน PM : หลังเที่ยงวัน)</i>
+                            <div class="input-group nk-int-st">
+                                <input type="time" id="Time_Metal" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-1 col-md-2 col-sm-2 col-xs-12">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="De_Compound" style="display:none">
+                <div class="text-center">
+                    <i class="text-danger">วันที่/เวลา แผน Compound</i>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-md-2 col-sm-2 col-xs-12">
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="form-group nk-datapk-ctm form-elet-mg" id="data_2">
+                            <i>วันที่</i><i style="color:red">*</i>
+                            <div class="input-group date nk-int-st">
+                                <span class="input-group-addon"></span>
+                                <input id="Date_Compound" type="datetime" class="form-control" placeholder="..../..../...." readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="form-group nk-datapk-ctm form-elet-mg">
+                            <i>เวลา</i><i style="color:red ; font-size:10px"> * (AM : ก่อนเที่ยงวัน PM : หลังเที่ยงวัน)</i>
+                            <div class="input-group nk-int-st">
+                                <input type="time" id="Time_Compound" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-2 col-sm-2 col-xs-12">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="De_Oh_RM" style="display:none">
+                <div class="text-center">
+                    <i class="text-danger">วันที่/เวลา แผน Other RM</i>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-md-2 col-sm-2 col-xs-12">
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="form-group nk-datapk-ctm form-elet-mg" id="data_3">
+                            <i>วันที่</i><i style="color:red">*</i>
+                            <div class="input-group date nk-int-st">
+                                <span class="input-group-addon"></span>
+                                <input id="Date_Oh_RM" type="datetime" class="form-control" placeholder="..../..../...." readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 notification-demo">
+                        <div class="form-group nk-datapk-ctm form-elet-mg">
+                            <i>เวลา</i><i style="color:red ; font-size:10px"> * (AM : ก่อนเที่ยงวัน PM : หลังเที่ยงวัน)</i>
+                            <div class="input-group nk-int-st">
+                                <input type="time" id="Time_Oh_RM" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-1 col-md-2 col-sm-2 col-xs-12">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="De_CutL" style="display:none">
+                <div class="text-center">
+                    <i class="text-danger">วันที่/เวลา แผน Cutting Lenght</i>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-md-2 col-sm-2 col-xs-12">
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <div class="form-group nk-datapk-ctm form-elet-mg" id="data_4">
+                            <i>วันที่</i><i style="color:red">*</i>
+                            <div class="input-group date nk-int-st">
+                                <span class="input-group-addon"></span>
+                                <input id="Date_CutL" type="datetime" class="form-control" placeholder="..../..../...." readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 notification-demo">
+                        <div class="form-group nk-datapk-ctm form-elet-mg">
+                            <i>เวลา</i><i style="color:red ; font-size:10px"> * (AM : ก่อนเที่ยงวัน PM : หลังเที่ยงวัน)</i>
+                            <div class="input-group nk-int-st">
+                                <input type="time" id="Time_CutL" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                        <div class="form-group nk-datapk-ctm form-elet-mg">
+                            <i>Cutting Lenght</i><i style="color:red ; font-size:10px"> *</i>
+                            <div class="input-group nk-int-st">
+                                <input type="text" id="CutL" class="form-control" placeholder="กรอกข้อมูล Cutting Lenght">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="De_Mg" style="display:none">
+                <div class="text-center">
+                    <i class="text-danger">วันที่/เวลา แผน Mg</i>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-md-2 col-sm-2 col-xs-12">
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="form-group nk-datapk-ctm form-elet-mg" id="data_5">
+                            <i>วันที่</i><i style="color:red">*</i>
+                            <div class="input-group date nk-int-st">
+                                <span class="input-group-addon"></span>
+                                <input id="Date_Mg" type="datetime" class="form-control" placeholder="..../..../...." readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 notification-demo">
+                        <div class="form-group nk-datapk-ctm form-elet-mg">
+                            <i>เวลา</i><i style="color:red ; font-size:10px"> * (AM : ก่อนเที่ยงวัน PM : หลังเที่ยงวัน)</i>
+                            <div class="input-group nk-int-st">
+                                <input type="time" id="Time_Mg" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-1 col-md-2 col-sm-2 col-xs-12">
+                    </div>
+                </div>
+            </div>
+            <!----------------------------------------------------------------------------------------------------------------------------------------->
+
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+        <a id="Save" class="btn btn-success notika-btn-success btn-default">บันทึก</a>
+        <a href="@Url.Action("Planner", new {})" id="Clear" class="btn btn-success notika-btn-success btn-default">Clear</a>
+    </div>
+</div>
+

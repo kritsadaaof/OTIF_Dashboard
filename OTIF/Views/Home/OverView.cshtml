@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "OverView";
+}
+@Scripts.Render("~/HomeOview/js")
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="~/Content/datatables.min.css" rel="stylesheet" />
+<script src="~/Scripts/datatables.min.js"></script>
+<body id="Body">
+
+    <div class="data-table-area">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="data-table-list">
+                    <div class="basic-tb-hd" style="text-align:center">
+                        <h2>รายการแสดงสินค้าทั้งหมด</h2>
+                        <p>ข้อมูลแสดงรายการผลิต </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table id="All" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Barcode</th>
+                    <th>QTY.</th>
+                    <th>Location</th>
+                    <th>Machine</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>Barcode</th>
+                    <th>QTY.</th>
+                    <th>Location</th>
+                    <th>Machine</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</body>
+
+

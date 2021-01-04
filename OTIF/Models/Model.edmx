@@ -1,0 +1,1334 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="OTIF_PDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Master_Backlog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="B_SO" Type="nvarchar" MaxLength="50" />
+          <Property Name="B_PO" Type="nvarchar" MaxLength="150" />
+          <Property Name="B_Customer" Type="nvarchar" MaxLength="100" />
+          <Property Name="B_Material" Type="nvarchar" MaxLength="50" />
+          <Property Name="B_Material_Des" Type="nvarchar" MaxLength="100" />
+          <Property Name="Date_Create" Type="datetime" />
+          <Property Name="Date_PFD" Type="datetime" />
+          <Property Name="Date_Delivery" Type="datetime" />
+          <Property Name="B_Cutting_Length" Type="nvarchar(max)" />
+          <Property Name="B_Order_QTY" Type="float" />
+          <Property Name="B_Order_Unit" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Master_Backlog_Temp">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="B_SO" Type="nvarchar" MaxLength="50" />
+          <Property Name="B_PO" Type="nvarchar" MaxLength="150" />
+          <Property Name="B_Customer" Type="nvarchar" MaxLength="100" />
+          <Property Name="B_Material" Type="nvarchar" MaxLength="50" />
+          <Property Name="B_Material_Des" Type="nvarchar" MaxLength="100" />
+          <Property Name="Date_Create" Type="nvarchar" MaxLength="10" />
+          <Property Name="Date_PFD" Type="nvarchar" MaxLength="10" />
+          <Property Name="Date_Delivery" Type="nvarchar" MaxLength="10" />
+          <Property Name="B_Cutting_Length" Type="nvarchar(max)" />
+          <Property Name="B_Order_QTY" Type="float" />
+          <Property Name="B_Order_Unit" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Master_Data">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="B_SO" Type="nvarchar" MaxLength="50" />
+          <Property Name="B_PO" Type="nvarchar" MaxLength="150" />
+          <Property Name="B_Customer" Type="nvarchar" MaxLength="100" />
+          <Property Name="B_Material" Type="nvarchar" MaxLength="50" />
+          <Property Name="B_Material_Des" Type="nvarchar" MaxLength="100" />
+          <Property Name="Date_Create" Type="nvarchar" MaxLength="10" />
+          <Property Name="Date_PFD" Type="nvarchar" MaxLength="10" />
+          <Property Name="Date_Delivery" Type="nvarchar" MaxLength="10" />
+          <Property Name="B_Cutting_Length" Type="nvarchar(max)" />
+          <Property Name="B_Order_QTY" Type="float" />
+          <Property Name="B_Order_Unit" Type="nvarchar" MaxLength="10" />
+          <Property Name="PL_Machine" Type="nvarchar" MaxLength="50" />
+          <Property Name="PL_Process" Type="nvarchar" MaxLength="50" />
+          <Property Name="PL_Type" Type="nvarchar" MaxLength="100" />
+          <Property Name="PL_Qty" Type="float" />
+          <Property Name="PL_Tag" Type="nvarchar" MaxLength="50" />
+          <Property Name="PL_Qty_T" Type="float" />
+          <Property Name="PL_Color" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Master_Location">
+          <Key>
+            <PropertyRef Name="Lo_ID" />
+          </Key>
+          <Property Name="Lo_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Lo_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Lo_Des" Type="nvarchar" MaxLength="50" />
+          <Property Name="Lo_Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="Lo_Status" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Master_Machine">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MC_Machine" Type="nvarchar" MaxLength="50" />
+          <Property Name="MC_Process" Type="nvarchar" MaxLength="20" />
+          <Property Name="MC_Status" Type="nvarchar" MaxLength="10" />
+          <Property Name="MC_Code" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Master_Member">
+          <Key>
+            <PropertyRef Name="Mem_ID" />
+          </Key>
+          <Property Name="Mem_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Mem_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mem_User" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mem_Pass" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mem_Des" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mem_Status" Type="nvarchar" MaxLength="10" />
+          <Property Name="Create_By" Type="nvarchar" MaxLength="10" />
+          <Property Name="Create_Date" Type="nvarchar" MaxLength="50" />
+          <Property Name="Update_Date" Type="nvarchar" MaxLength="50" />
+          <Property Name="Code_Mem" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mem_authorization1" Type="nvarchar" MaxLength="10" />
+          <Property Name="Mem_authorization2" Type="nvarchar" MaxLength="10" />
+          <Property Name="Mem_authorization3" Type="nvarchar" MaxLength="10" />
+          <Property Name="Mem_Function" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Master_Metal">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Metal_Material" Type="nvarchar" MaxLength="50" />
+          <Property Name="Metal_Material_Des" Type="nvarchar" MaxLength="100" />
+          <Property Name="Metal_Type" Type="nvarchar" MaxLength="20" />
+          <Property Name="Metal_UOM" Type="nvarchar" MaxLength="10" />
+          <Property Name="Metal_AI_W_U" Type="float" />
+          <Property Name="Metal_CU_W_U" Type="float" />
+          <Property Name="Metal_Netweight_W_U" Type="float" />
+          <Property Name="Metal_Netweight_W_0_U" Type="float" />
+        </EntityType>
+        <EntityType Name="Master_Planner">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PL_SO" Type="nvarchar" MaxLength="50" />
+          <Property Name="PL_Machine" Type="nvarchar" MaxLength="50" />
+          <Property Name="PL_Process" Type="nvarchar" MaxLength="50" />
+          <Property Name="PL_Type" Type="nvarchar" MaxLength="500" />
+          <Property Name="PL_Qty" Type="float" />
+          <Property Name="PL_Tag" Type="nvarchar" MaxLength="50" />
+          <Property Name="PL_Qty_T" Type="float" />
+          <Property Name="PL_Color" Type="nvarchar" MaxLength="50" />
+          <Property Name="PL_Level" Type="int" />
+          <Property Name="PL_Date" Type="date" />
+          <Property Name="PL_Reel_Size" Type="nvarchar(max)" />
+          <Property Name="PL_Creation_Date" Type="date" />
+          <Property Name="PL_Modification_Date" Type="date" />
+          <Property Name="PL_Status" Type="nvarchar" MaxLength="10" />
+          <Property Name="PL_Process_Status" Type="nvarchar" MaxLength="10" />
+          <Property Name="PL_Time" Type="datetime" />
+          <Property Name="PL_QTY_Cus" Type="nvarchar" MaxLength="50" />
+          <Property Name="PL_Shop_Packing" Type="nvarchar" MaxLength="20" />
+          <Property Name="PL_User_Change" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Master_Production">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PD_SO" Type="nvarchar" MaxLength="50" />
+          <Property Name="PD_Machine" Type="nvarchar" MaxLength="50" />
+          <Property Name="PD_Type" Type="nvarchar" MaxLength="100" />
+          <Property Name="PD_Qty" Type="float" />
+          <Property Name="PD_Process" Type="nvarchar" MaxLength="100" />
+          <Property Name="PD_CuttingLength" Type="nvarchar(max)" />
+          <Property Name="PD_Qty_T" Type="float" />
+          <Property Name="PD_Speed" Type="float" />
+          <Property Name="PD_Import_Date" Type="datetime2" Precision="6" />
+        </EntityType>
+        <EntityType Name="Master_Reason_Code">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Reason_Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Master_Reel_Bom">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Reel_Size" Type="nvarchar" MaxLength="50" />
+          <Property Name="Drum_High" Type="float" />
+          <Property Name="Drum_Length" Type="float" />
+          <Property Name="Size" Type="nvarchar" MaxLength="50" />
+          <Property Name="Q_Unit" Type="nvarchar" MaxLength="50" />
+          <Property Name="Thickness" Type="float" />
+          <Property Name="Reel_Weight" Type="float" />
+          <Property Name="Lag_Reel" Type="float" />
+        </EntityType>
+        <EntityType Name="OTIF_TR_Cal">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cal_SO" Type="nvarchar" MaxLength="50" />
+          <Property Name="Cal_Machine" Type="nvarchar" MaxLength="50" />
+          <Property Name="Cal_Tag" Type="nvarchar" MaxLength="50" />
+          <Property Name="Cal_Status" Type="nvarchar" MaxLength="10" />
+          <Property Name="Cal_QTY" Type="float" />
+          <Property Name="Cal_QTY_Balance" Type="float" />
+          <Property Name="Cal_LVL" Type="int" />
+          <Property Name="Cal_Create" Type="date" />
+          <Property Name="Cal_Create_time" Type="time" Precision="7" />
+          <Property Name="Cal_Update" Type="date" />
+          <Property Name="Cal_Update_time" Type="time" Precision="7" />
+          <Property Name="Cal_Speed" Type="float" />
+        </EntityType>
+        <EntityType Name="OTIF_TR_Machine_Monitor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Monitor_Machine" Type="varchar" MaxLength="50" />
+          <Property Name="Monitor_DateTime" Type="datetime" />
+          <Property Name="Monitor_Time" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="OTIF_TR_MoveLocation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Move_TAG" Type="nvarchar" MaxLength="50" />
+          <Property Name="Move_User" Type="nvarchar" MaxLength="50" />
+          <Property Name="Move_Date" Type="date" />
+          <Property Name="Move_time" Type="time" Precision="7" />
+          <Property Name="Move_Status" Type="nvarchar" MaxLength="10" />
+          <Property Name="Move_Loca" Type="nvarchar" MaxLength="20" />
+          <Property Name="Move_Alert" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="OTIF_TR_Packing">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Pack_SO" Type="nvarchar" MaxLength="50" />
+          <Property Name="Pack_Machine" Type="nvarchar" MaxLength="50" />
+          <Property Name="Pack_Tag" Type="nvarchar" MaxLength="50" />
+          <Property Name="Pack_Status" Type="nvarchar" MaxLength="10" />
+          <Property Name="Pack_QTY" Type="float" />
+          <Property Name="Pack_QTY_Balance" Type="float" />
+          <Property Name="Pack_LVL" Type="int" />
+          <Property Name="Pack_Create" Type="date" />
+          <Property Name="Pack_Create_time" Type="time" Precision="7" />
+          <Property Name="Pack_Update" Type="datetime" />
+          <Property Name="Pack_QC_Update" Type="datetime" />
+          <Property Name="Pack_Speed" Type="float" />
+          <Property Name="Pack_DateTime" Type="datetime" />
+          <Property Name="Pack_Reel_Size" Type="nvarchar" MaxLength="50" />
+          <Property Name="Pack_Status_Shop" Type="nvarchar" MaxLength="20" />
+          <Property Name="Pack_Status_QC" Type="nvarchar" MaxLength="20" />
+          <Property Name="Pack_QC_User" Type="nvarchar" MaxLength="20" />
+          <Property Name="Pack_Base" Type="nvarchar" MaxLength="20" />
+          <Property Name="Pack_Weight" Type="float" />
+          <Property Name="Pack_ReelNo" Type="float" />
+          <Property Name="Pack_Gross" Type="float" />
+        </EntityType>
+        <EntityType Name="OTIF_TR_Packing_Log">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Pack_SO" Type="nvarchar" MaxLength="50" />
+          <Property Name="Pack_Machine" Type="nvarchar" MaxLength="50" />
+          <Property Name="Pack_Tag" Type="nvarchar" MaxLength="50" />
+          <Property Name="Pack_Status" Type="nvarchar" MaxLength="10" />
+          <Property Name="Pack_QTY" Type="float" />
+          <Property Name="Pack_QTY_Balance" Type="float" />
+          <Property Name="Pack_LVL" Type="int" />
+          <Property Name="Pack_Create" Type="date" />
+          <Property Name="Pack_Create_time" Type="time" Precision="7" />
+          <Property Name="Pack_Update" Type="datetime" />
+          <Property Name="Pack_QC_Update" Type="datetime" />
+          <Property Name="Pack_Speed" Type="float" />
+          <Property Name="Pack_DateTime" Type="datetime" />
+          <Property Name="Pack_Reel_Size" Type="nvarchar" MaxLength="50" />
+          <Property Name="Pack_Status_Shop" Type="nvarchar" MaxLength="20" />
+          <Property Name="Pack_Status_QC" Type="nvarchar" MaxLength="20" />
+          <Property Name="Pack_QC_User" Type="nvarchar" MaxLength="20" />
+          <Property Name="Pack_Base" Type="nvarchar" MaxLength="20" />
+          <Property Name="Log_DateTime" Type="datetime2" Precision="7" />
+          <Property Name="Pack_Weight" Type="float" />
+          <Property Name="Pack_ReelNo" Type="float" />
+          <Property Name="Pack_Gross" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'OTIF_PD.dbo.OTIF_TR_Planner' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="OTIF_TR_Planner">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="B_SO" Type="nvarchar" MaxLength="50" />
+          <Property Name="B_PO" Type="nvarchar" MaxLength="150" />
+          <Property Name="B_Customer" Type="nvarchar" MaxLength="100" />
+          <Property Name="B_Material" Type="nvarchar" MaxLength="50" />
+          <Property Name="B_Material_Des" Type="nvarchar" MaxLength="100" />
+          <Property Name="Date_Create" Type="nvarchar" MaxLength="10" />
+          <Property Name="Date_PFD" Type="nvarchar" MaxLength="10" />
+          <Property Name="Date_Delivery" Type="nvarchar" MaxLength="10" />
+          <Property Name="B_Cutting_Length" Type="nvarchar(max)" />
+          <Property Name="B_Order_QTY" Type="float" />
+          <Property Name="B_Order_Unit" Type="nvarchar" MaxLength="10" />
+          <Property Name="Date_Metal" Type="date" />
+          <Property Name="Time_Metal" Type="time" Precision="6" />
+          <Property Name="Date_Compound" Type="date" />
+          <Property Name="Time_Compound" Type="time" Precision="6" />
+          <Property Name="Date_Oh_RM" Type="date" />
+          <Property Name="Time_Oh_RM" Type="time" Precision="6" />
+          <Property Name="Date_CutL" Type="date" />
+          <Property Name="Time_CutL" Type="time" Precision="6" />
+          <Property Name="Date_Mg" Type="date" />
+          <Property Name="Time_Mg" Type="time" Precision="6" />
+          <Property Name="Date_Plan" Type="date" />
+          <Property Name="Time_Plan" Type="time" Precision="6" />
+          <Property Name="Date_Actual" Type="date" />
+          <Property Name="Time_Actual" Type="time" Precision="6" />
+          <Property Name="Move_Status" Type="nvarchar" MaxLength="10" />
+          <Property Name="Location" Type="nvarchar" MaxLength="1" />
+          <Property Name="User" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="OTIF_TR_Process">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Bar_Kan" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Bar_Kan" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Machine" Type="nvarchar" MaxLength="50" />
+          <Property Name="User" Type="nvarchar" MaxLength="50" />
+          <Property Name="QTY" Type="int" />
+          <Property Name="Date_Metal" Type="date" />
+          <Property Name="Time_Metal" Type="time" Precision="6" />
+          <Property Name="Date_Compound" Type="date" />
+          <Property Name="Time_Compound" Type="time" Precision="6" />
+          <Property Name="Date_Oh_RM" Type="date" />
+          <Property Name="Time_Oh_RM" Type="time" Precision="6" />
+          <Property Name="Date_CutL" Type="date" />
+          <Property Name="Time_CutL" Type="time" Precision="6" />
+          <Property Name="Date_Mg" Type="date" />
+          <Property Name="Time_Mg" Type="time" Precision="6" />
+          <Property Name="Status" Type="nvarchar" MaxLength="10" />
+          <Property Name="Date_Actual" Type="date" />
+          <Property Name="Time_Actual" Type="time" Precision="6" />
+          <Property Name="Date_Plan" Type="date" />
+          <Property Name="Time_Plan" Type="time" Precision="6" />
+          <Property Name="SF_Remain_Qty" Type="int" />
+          <Property Name="RT_QTY" Type="int" />
+          <Property Name="Move_Status" Type="nvarchar" MaxLength="10" />
+          <Property Name="Location" Type="nvarchar" MaxLength="20" />
+          <Property Name="Process_Speed" Type="float" />
+          <Property Name="Date_Return" Type="date" />
+          <Property Name="Time_Return" Type="time" Precision="6" />
+          <Property Name="Pro_SO" Type="nvarchar" MaxLength="50" />
+          <Property Name="Stop_Process" Type="nvarchar" MaxLength="10" />
+          <Property Name="TR_DateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="OTIF_TR_Process_Log">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Bar_Kan" Type="nvarchar" MaxLength="50" />
+          <Property Name="Machine" Type="nvarchar" MaxLength="50" />
+          <Property Name="User" Type="nvarchar" MaxLength="50" />
+          <Property Name="QTY" Type="int" />
+          <Property Name="Date_Metal" Type="date" />
+          <Property Name="Time_Metal" Type="time" Precision="6" />
+          <Property Name="Date_Compound" Type="date" />
+          <Property Name="Time_Compound" Type="time" Precision="6" />
+          <Property Name="Date_Oh_RM" Type="date" />
+          <Property Name="Time_Oh_RM" Type="time" Precision="6" />
+          <Property Name="Date_CutL" Type="date" />
+          <Property Name="Time_CutL" Type="time" Precision="6" />
+          <Property Name="Date_Mg" Type="date" />
+          <Property Name="Time_Mg" Type="time" Precision="6" />
+          <Property Name="Status" Type="nvarchar" MaxLength="10" />
+          <Property Name="Date_Actual" Type="date" />
+          <Property Name="Time_Actual" Type="time" Precision="6" />
+          <Property Name="Date_Plan" Type="date" />
+          <Property Name="Time_Plan" Type="time" Precision="6" />
+          <Property Name="SF_Remain_Qty" Type="int" />
+          <Property Name="RT_QTY" Type="int" />
+          <Property Name="Move_Status" Type="nvarchar" MaxLength="10" />
+          <Property Name="Location" Type="nvarchar" MaxLength="20" />
+          <Property Name="Process_Speed" Type="float" />
+          <Property Name="Date_Return" Type="date" />
+          <Property Name="Time_Return" Type="time" Precision="6" />
+          <Property Name="Log_Time" Type="datetime" />
+        </EntityType>
+        <EntityType Name="OTIF_TR_ShopFloor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SF_Kanban" Type="nvarchar" MaxLength="50" />
+          <Property Name="SF_Machine" Type="nvarchar" MaxLength="50" />
+          <Property Name="SF_User" Type="nvarchar" MaxLength="50" />
+          <Property Name="SF_QTY" Type="int" />
+          <Property Name="SF_Date" Type="date" />
+          <Property Name="SF_Time" Type="time" Precision="6" />
+          <Property Name="SF_Actual_Speed" Type="float" />
+          <Property Name="SF_Stop_Process" Type="nvarchar" MaxLength="10" />
+          <Property Name="SF_Stop_Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="SF_Time_Fst" Type="time" Precision="6" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'OTIF_PD.dbo.TEST' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TEST">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="B_SO" Type="varchar" MaxLength="50" />
+          <Property Name="B_PO" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="OTIF_PDModelStoreContainer">
+          <EntitySet Name="Master_Backlog" EntityType="Self.Master_Backlog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Master_Backlog_Temp" EntityType="Self.Master_Backlog_Temp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Master_Data" EntityType="Self.Master_Data" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Master_Location" EntityType="Self.Master_Location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Master_Machine" EntityType="Self.Master_Machine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Master_Member" EntityType="Self.Master_Member" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Master_Metal" EntityType="Self.Master_Metal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Master_Planner" EntityType="Self.Master_Planner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Master_Production" EntityType="Self.Master_Production" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Master_Reason_Code" EntityType="Self.Master_Reason_Code" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Master_Reel_Bom" EntityType="Self.Master_Reel_Bom" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OTIF_TR_Cal" EntityType="Self.OTIF_TR_Cal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OTIF_TR_Machine_Monitor" EntityType="Self.OTIF_TR_Machine_Monitor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OTIF_TR_MoveLocation" EntityType="Self.OTIF_TR_MoveLocation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OTIF_TR_Packing" EntityType="Self.OTIF_TR_Packing" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OTIF_TR_Packing_Log" EntityType="Self.OTIF_TR_Packing_Log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OTIF_TR_Process" EntityType="Self.OTIF_TR_Process" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OTIF_TR_Process_Log" EntityType="Self.OTIF_TR_Process_Log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OTIF_TR_ShopFloor" EntityType="Self.OTIF_TR_ShopFloor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OTIF_TR_Planner" EntityType="Self.OTIF_TR_Planner" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [OTIF_TR_Planner].[ID] AS [ID], 
+    [OTIF_TR_Planner].[B_SO] AS [B_SO], 
+    [OTIF_TR_Planner].[B_PO] AS [B_PO], 
+    [OTIF_TR_Planner].[B_Customer] AS [B_Customer], 
+    [OTIF_TR_Planner].[B_Material] AS [B_Material], 
+    [OTIF_TR_Planner].[B_Material_Des] AS [B_Material_Des], 
+    [OTIF_TR_Planner].[Date_Create] AS [Date_Create], 
+    [OTIF_TR_Planner].[Date_PFD] AS [Date_PFD], 
+    [OTIF_TR_Planner].[Date_Delivery] AS [Date_Delivery], 
+    [OTIF_TR_Planner].[B_Cutting_Length] AS [B_Cutting_Length], 
+    [OTIF_TR_Planner].[B_Order_QTY] AS [B_Order_QTY], 
+    [OTIF_TR_Planner].[B_Order_Unit] AS [B_Order_Unit], 
+    [OTIF_TR_Planner].[Date_Metal] AS [Date_Metal], 
+    [OTIF_TR_Planner].[Time_Metal] AS [Time_Metal], 
+    [OTIF_TR_Planner].[Date_Compound] AS [Date_Compound], 
+    [OTIF_TR_Planner].[Time_Compound] AS [Time_Compound], 
+    [OTIF_TR_Planner].[Date_Oh_RM] AS [Date_Oh_RM], 
+    [OTIF_TR_Planner].[Time_Oh_RM] AS [Time_Oh_RM], 
+    [OTIF_TR_Planner].[Date_CutL] AS [Date_CutL], 
+    [OTIF_TR_Planner].[Time_CutL] AS [Time_CutL], 
+    [OTIF_TR_Planner].[Date_Mg] AS [Date_Mg], 
+    [OTIF_TR_Planner].[Time_Mg] AS [Time_Mg], 
+    [OTIF_TR_Planner].[Date_Plan] AS [Date_Plan], 
+    [OTIF_TR_Planner].[Time_Plan] AS [Time_Plan], 
+    [OTIF_TR_Planner].[Date_Actual] AS [Date_Actual], 
+    [OTIF_TR_Planner].[Time_Actual] AS [Time_Actual], 
+    [OTIF_TR_Planner].[Move_Status] AS [Move_Status], 
+    [OTIF_TR_Planner].[Location] AS [Location], 
+    [OTIF_TR_Planner].[User] AS [User]
+    FROM [dbo].[OTIF_TR_Planner] AS [OTIF_TR_Planner]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TEST" EntityType="Self.TEST" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TEST].[ID] AS [ID], 
+    [TEST].[B_SO] AS [B_SO], 
+    [TEST].[B_PO] AS [B_PO]
+    FROM [dbo].[TEST] AS [TEST]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OTIF_PDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Master_Backlog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="B_SO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="B_PO" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="B_Customer" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="B_Material" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="B_Material_Des" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Create" Type="DateTime" Precision="3" />
+          <Property Name="Date_PFD" Type="DateTime" Precision="3" />
+          <Property Name="Date_Delivery" Type="DateTime" Precision="3" />
+          <Property Name="B_Cutting_Length" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="B_Order_QTY" Type="Double" />
+          <Property Name="B_Order_Unit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Master_Backlog_Temp">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="B_SO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="B_PO" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="B_Customer" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="B_Material" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="B_Material_Des" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Create" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Date_PFD" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Delivery" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="B_Cutting_Length" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="B_Order_QTY" Type="Double" />
+          <Property Name="B_Order_Unit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Master_Data">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="B_SO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="B_PO" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="B_Customer" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="B_Material" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="B_Material_Des" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Create" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Date_PFD" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Delivery" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="B_Cutting_Length" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="B_Order_QTY" Type="Double" />
+          <Property Name="B_Order_Unit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="PL_Machine" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PL_Process" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PL_Type" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PL_Qty" Type="Double" />
+          <Property Name="PL_Tag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PL_Qty_T" Type="Double" />
+          <Property Name="PL_Color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Master_Location">
+          <Key>
+            <PropertyRef Name="Lo_ID" />
+          </Key>
+          <Property Name="Lo_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Lo_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Lo_Des" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Lo_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Lo_Status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Master_Machine">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MC_Machine" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MC_Process" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MC_Status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="MC_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Master_Member">
+          <Key>
+            <PropertyRef Name="Mem_ID" />
+          </Key>
+          <Property Name="Mem_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Mem_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mem_User" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mem_Pass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mem_Des" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mem_Status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Create_By" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Create_Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Update_Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Code_Mem" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Mem_authorization1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Mem_authorization2" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Mem_authorization3" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Mem_Function" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Master_Metal">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Metal_Material" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Metal_Material_Des" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Metal_Type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Metal_UOM" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Metal_AI_W_U" Type="Double" />
+          <Property Name="Metal_CU_W_U" Type="Double" />
+          <Property Name="Metal_Netweight_W_U" Type="Double" />
+          <Property Name="Metal_Netweight_W_0_U" Type="Double" />
+        </EntityType>
+        <EntityType Name="Master_Planner">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PL_SO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PL_Machine" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PL_Process" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PL_Type" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PL_Qty" Type="Double" />
+          <Property Name="PL_Tag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PL_Qty_T" Type="Double" />
+          <Property Name="PL_Color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PL_Level" Type="Int32" />
+          <Property Name="PL_Date" Type="DateTime" Precision="0" />
+          <Property Name="PL_Reel_Size" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PL_Creation_Date" Type="DateTime" Precision="0" />
+          <Property Name="PL_Modification_Date" Type="DateTime" Precision="0" />
+          <Property Name="PL_Status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="PL_Process_Status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="PL_Time" Type="DateTime" Precision="3" />
+          <Property Name="PL_QTY_Cus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PL_Shop_Packing" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PL_User_Change" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Master_Production">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PD_SO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PD_Machine" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PD_Type" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PD_Qty" Type="Double" />
+          <Property Name="PD_Process" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PD_CuttingLength" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PD_Qty_T" Type="Double" />
+          <Property Name="PD_Speed" Type="Double" />
+          <Property Name="PD_Import_Date" Type="DateTime" Precision="6" />
+        </EntityType>
+        <EntityType Name="Master_Reason_Code">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Reason_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Master_Reel_Bom">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Reel_Size" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Drum_High" Type="Double" />
+          <Property Name="Drum_Length" Type="Double" />
+          <Property Name="Size" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Q_Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Thickness" Type="Double" />
+          <Property Name="Reel_Weight" Type="Double" />
+          <Property Name="Lag_Reel" Type="Double" />
+        </EntityType>
+        <EntityType Name="OTIF_TR_Cal">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cal_SO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Cal_Machine" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Cal_Tag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Cal_Status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Cal_QTY" Type="Double" />
+          <Property Name="Cal_QTY_Balance" Type="Double" />
+          <Property Name="Cal_LVL" Type="Int32" />
+          <Property Name="Cal_Create" Type="DateTime" Precision="0" />
+          <Property Name="Cal_Create_time" Type="Time" Precision="7" />
+          <Property Name="Cal_Update" Type="DateTime" Precision="0" />
+          <Property Name="Cal_Update_time" Type="Time" Precision="7" />
+          <Property Name="Cal_Speed" Type="Double" />
+        </EntityType>
+        <EntityType Name="OTIF_TR_Machine_Monitor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Monitor_Machine" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Monitor_DateTime" Type="DateTime" Precision="3" />
+          <Property Name="Monitor_Time" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="OTIF_TR_MoveLocation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Move_TAG" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Move_User" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Move_Date" Type="DateTime" Precision="0" />
+          <Property Name="Move_time" Type="Time" Precision="7" />
+          <Property Name="Move_Status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Move_Loca" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Move_Alert" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="OTIF_TR_Packing">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Pack_SO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pack_Machine" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pack_Tag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pack_Status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Pack_QTY" Type="Double" />
+          <Property Name="Pack_QTY_Balance" Type="Double" />
+          <Property Name="Pack_LVL" Type="Int32" />
+          <Property Name="Pack_Create" Type="DateTime" Precision="0" />
+          <Property Name="Pack_Create_time" Type="Time" Precision="7" />
+          <Property Name="Pack_Update" Type="DateTime" Precision="3" />
+          <Property Name="Pack_QC_Update" Type="DateTime" Precision="3" />
+          <Property Name="Pack_Speed" Type="Double" />
+          <Property Name="Pack_DateTime" Type="DateTime" Precision="3" />
+          <Property Name="Pack_Reel_Size" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pack_Status_Shop" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Pack_Status_QC" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Pack_QC_User" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Pack_Base" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Pack_Weight" Type="Double" />
+          <Property Name="Pack_ReelNo" Type="Double" />
+          <Property Name="Pack_Gross" Type="Double" />
+        </EntityType>
+        <EntityType Name="OTIF_TR_Packing_Log">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Pack_SO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pack_Machine" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pack_Tag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pack_Status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Pack_QTY" Type="Double" />
+          <Property Name="Pack_QTY_Balance" Type="Double" />
+          <Property Name="Pack_LVL" Type="Int32" />
+          <Property Name="Pack_Create" Type="DateTime" Precision="0" />
+          <Property Name="Pack_Create_time" Type="Time" Precision="7" />
+          <Property Name="Pack_Update" Type="DateTime" Precision="3" />
+          <Property Name="Pack_QC_Update" Type="DateTime" Precision="3" />
+          <Property Name="Pack_Speed" Type="Double" />
+          <Property Name="Pack_DateTime" Type="DateTime" Precision="3" />
+          <Property Name="Pack_Reel_Size" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pack_Status_Shop" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Pack_Status_QC" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Pack_QC_User" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Pack_Base" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Log_DateTime" Type="DateTime" Precision="7" />
+          <Property Name="Pack_Weight" Type="Double" />
+          <Property Name="Pack_ReelNo" Type="Double" />
+          <Property Name="Pack_Gross" Type="Double" />
+        </EntityType>
+        <EntityType Name="OTIF_TR_Process">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Bar_Kan" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Bar_Kan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Machine" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="User" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="QTY" Type="Int32" />
+          <Property Name="Date_Metal" Type="DateTime" Precision="0" />
+          <Property Name="Time_Metal" Type="Time" Precision="6" />
+          <Property Name="Date_Compound" Type="DateTime" Precision="0" />
+          <Property Name="Time_Compound" Type="Time" Precision="6" />
+          <Property Name="Date_Oh_RM" Type="DateTime" Precision="0" />
+          <Property Name="Time_Oh_RM" Type="Time" Precision="6" />
+          <Property Name="Date_CutL" Type="DateTime" Precision="0" />
+          <Property Name="Time_CutL" Type="Time" Precision="6" />
+          <Property Name="Date_Mg" Type="DateTime" Precision="0" />
+          <Property Name="Time_Mg" Type="Time" Precision="6" />
+          <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Actual" Type="DateTime" Precision="0" />
+          <Property Name="Time_Actual" Type="Time" Precision="6" />
+          <Property Name="Date_Plan" Type="DateTime" Precision="0" />
+          <Property Name="Time_Plan" Type="Time" Precision="6" />
+          <Property Name="SF_Remain_Qty" Type="Int32" />
+          <Property Name="RT_QTY" Type="Int32" />
+          <Property Name="Move_Status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Process_Speed" Type="Double" />
+          <Property Name="Date_Return" Type="DateTime" Precision="0" />
+          <Property Name="Time_Return" Type="Time" Precision="6" />
+          <Property Name="Pro_SO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Stop_Process" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TR_DateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="OTIF_TR_Process_Log">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Bar_Kan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Machine" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="User" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="QTY" Type="Int32" />
+          <Property Name="Date_Metal" Type="DateTime" Precision="0" />
+          <Property Name="Time_Metal" Type="Time" Precision="6" />
+          <Property Name="Date_Compound" Type="DateTime" Precision="0" />
+          <Property Name="Time_Compound" Type="Time" Precision="6" />
+          <Property Name="Date_Oh_RM" Type="DateTime" Precision="0" />
+          <Property Name="Time_Oh_RM" Type="Time" Precision="6" />
+          <Property Name="Date_CutL" Type="DateTime" Precision="0" />
+          <Property Name="Time_CutL" Type="Time" Precision="6" />
+          <Property Name="Date_Mg" Type="DateTime" Precision="0" />
+          <Property Name="Time_Mg" Type="Time" Precision="6" />
+          <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Actual" Type="DateTime" Precision="0" />
+          <Property Name="Time_Actual" Type="Time" Precision="6" />
+          <Property Name="Date_Plan" Type="DateTime" Precision="0" />
+          <Property Name="Time_Plan" Type="Time" Precision="6" />
+          <Property Name="SF_Remain_Qty" Type="Int32" />
+          <Property Name="RT_QTY" Type="Int32" />
+          <Property Name="Move_Status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Process_Speed" Type="Double" />
+          <Property Name="Date_Return" Type="DateTime" Precision="0" />
+          <Property Name="Time_Return" Type="Time" Precision="6" />
+          <Property Name="Log_Time" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="OTIF_TR_ShopFloor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SF_Kanban" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SF_Machine" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SF_User" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SF_QTY" Type="Int32" />
+          <Property Name="SF_Date" Type="DateTime" Precision="0" />
+          <Property Name="SF_Time" Type="Time" Precision="6" />
+          <Property Name="SF_Actual_Speed" Type="Double" />
+          <Property Name="SF_Stop_Process" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="SF_Stop_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SF_Time_Fst" Type="Time" Precision="6" />
+        </EntityType>
+        <EntityType Name="OTIF_TR_Planner">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="B_SO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="B_PO" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="B_Customer" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="B_Material" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="B_Material_Des" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Create" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Date_PFD" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Delivery" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="B_Cutting_Length" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="B_Order_QTY" Type="Double" />
+          <Property Name="B_Order_Unit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Metal" Type="DateTime" Precision="0" />
+          <Property Name="Time_Metal" Type="Time" Precision="6" />
+          <Property Name="Date_Compound" Type="DateTime" Precision="0" />
+          <Property Name="Time_Compound" Type="Time" Precision="6" />
+          <Property Name="Date_Oh_RM" Type="DateTime" Precision="0" />
+          <Property Name="Time_Oh_RM" Type="Time" Precision="6" />
+          <Property Name="Date_CutL" Type="DateTime" Precision="0" />
+          <Property Name="Time_CutL" Type="Time" Precision="6" />
+          <Property Name="Date_Mg" Type="DateTime" Precision="0" />
+          <Property Name="Time_Mg" Type="Time" Precision="6" />
+          <Property Name="Date_Plan" Type="DateTime" Precision="0" />
+          <Property Name="Time_Plan" Type="Time" Precision="6" />
+          <Property Name="Date_Actual" Type="DateTime" Precision="0" />
+          <Property Name="Time_Actual" Type="Time" Precision="6" />
+          <Property Name="Move_Status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="User" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TEST">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="B_SO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="B_PO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Master_Backlog" EntityType="Self.Master_Backlog" />
+          <EntitySet Name="Master_Backlog_Temp" EntityType="Self.Master_Backlog_Temp" />
+          <EntitySet Name="Master_Data" EntityType="Self.Master_Data" />
+          <EntitySet Name="Master_Location" EntityType="Self.Master_Location" />
+          <EntitySet Name="Master_Machine" EntityType="Self.Master_Machine" />
+          <EntitySet Name="Master_Member" EntityType="Self.Master_Member" />
+          <EntitySet Name="Master_Metal" EntityType="Self.Master_Metal" />
+          <EntitySet Name="Master_Planner" EntityType="Self.Master_Planner" />
+          <EntitySet Name="Master_Production" EntityType="Self.Master_Production" />
+          <EntitySet Name="Master_Reason_Code" EntityType="Self.Master_Reason_Code" />
+          <EntitySet Name="Master_Reel_Bom" EntityType="Self.Master_Reel_Bom" />
+          <EntitySet Name="OTIF_TR_Cal" EntityType="Self.OTIF_TR_Cal" />
+          <EntitySet Name="OTIF_TR_Machine_Monitor" EntityType="Self.OTIF_TR_Machine_Monitor" />
+          <EntitySet Name="OTIF_TR_MoveLocation" EntityType="Self.OTIF_TR_MoveLocation" />
+          <EntitySet Name="OTIF_TR_Packing" EntityType="Self.OTIF_TR_Packing" />
+          <EntitySet Name="OTIF_TR_Packing_Log" EntityType="Self.OTIF_TR_Packing_Log" />
+          <EntitySet Name="OTIF_TR_Process" EntityType="Self.OTIF_TR_Process" />
+          <EntitySet Name="OTIF_TR_Process_Log" EntityType="Self.OTIF_TR_Process_Log" />
+          <EntitySet Name="OTIF_TR_ShopFloor" EntityType="Self.OTIF_TR_ShopFloor" />
+          <EntitySet Name="OTIF_TR_Planner" EntityType="Self.OTIF_TR_Planner" />
+          <EntitySet Name="TEST" EntityType="Self.TEST" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OTIF_PDModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Master_Backlog">
+            <EntityTypeMapping TypeName="OTIF_PDModel.Master_Backlog">
+              <MappingFragment StoreEntitySet="Master_Backlog">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="B_SO" ColumnName="B_SO" />
+                <ScalarProperty Name="B_PO" ColumnName="B_PO" />
+                <ScalarProperty Name="B_Customer" ColumnName="B_Customer" />
+                <ScalarProperty Name="B_Material" ColumnName="B_Material" />
+                <ScalarProperty Name="B_Material_Des" ColumnName="B_Material_Des" />
+                <ScalarProperty Name="Date_Create" ColumnName="Date_Create" />
+                <ScalarProperty Name="Date_PFD" ColumnName="Date_PFD" />
+                <ScalarProperty Name="Date_Delivery" ColumnName="Date_Delivery" />
+                <ScalarProperty Name="B_Cutting_Length" ColumnName="B_Cutting_Length" />
+                <ScalarProperty Name="B_Order_QTY" ColumnName="B_Order_QTY" />
+                <ScalarProperty Name="B_Order_Unit" ColumnName="B_Order_Unit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Master_Backlog_Temp">
+            <EntityTypeMapping TypeName="OTIF_PDModel.Master_Backlog_Temp">
+              <MappingFragment StoreEntitySet="Master_Backlog_Temp">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="B_SO" ColumnName="B_SO" />
+                <ScalarProperty Name="B_PO" ColumnName="B_PO" />
+                <ScalarProperty Name="B_Customer" ColumnName="B_Customer" />
+                <ScalarProperty Name="B_Material" ColumnName="B_Material" />
+                <ScalarProperty Name="B_Material_Des" ColumnName="B_Material_Des" />
+                <ScalarProperty Name="Date_Create" ColumnName="Date_Create" />
+                <ScalarProperty Name="Date_PFD" ColumnName="Date_PFD" />
+                <ScalarProperty Name="Date_Delivery" ColumnName="Date_Delivery" />
+                <ScalarProperty Name="B_Cutting_Length" ColumnName="B_Cutting_Length" />
+                <ScalarProperty Name="B_Order_QTY" ColumnName="B_Order_QTY" />
+                <ScalarProperty Name="B_Order_Unit" ColumnName="B_Order_Unit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Master_Data">
+            <EntityTypeMapping TypeName="OTIF_PDModel.Master_Data">
+              <MappingFragment StoreEntitySet="Master_Data">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="B_SO" ColumnName="B_SO" />
+                <ScalarProperty Name="B_PO" ColumnName="B_PO" />
+                <ScalarProperty Name="B_Customer" ColumnName="B_Customer" />
+                <ScalarProperty Name="B_Material" ColumnName="B_Material" />
+                <ScalarProperty Name="B_Material_Des" ColumnName="B_Material_Des" />
+                <ScalarProperty Name="Date_Create" ColumnName="Date_Create" />
+                <ScalarProperty Name="Date_PFD" ColumnName="Date_PFD" />
+                <ScalarProperty Name="Date_Delivery" ColumnName="Date_Delivery" />
+                <ScalarProperty Name="B_Cutting_Length" ColumnName="B_Cutting_Length" />
+                <ScalarProperty Name="B_Order_QTY" ColumnName="B_Order_QTY" />
+                <ScalarProperty Name="B_Order_Unit" ColumnName="B_Order_Unit" />
+                <ScalarProperty Name="PL_Machine" ColumnName="PL_Machine" />
+                <ScalarProperty Name="PL_Process" ColumnName="PL_Process" />
+                <ScalarProperty Name="PL_Type" ColumnName="PL_Type" />
+                <ScalarProperty Name="PL_Qty" ColumnName="PL_Qty" />
+                <ScalarProperty Name="PL_Tag" ColumnName="PL_Tag" />
+                <ScalarProperty Name="PL_Qty_T" ColumnName="PL_Qty_T" />
+                <ScalarProperty Name="PL_Color" ColumnName="PL_Color" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Master_Location">
+            <EntityTypeMapping TypeName="OTIF_PDModel.Master_Location">
+              <MappingFragment StoreEntitySet="Master_Location">
+                <ScalarProperty Name="Lo_ID" ColumnName="Lo_ID" />
+                <ScalarProperty Name="Lo_Name" ColumnName="Lo_Name" />
+                <ScalarProperty Name="Lo_Des" ColumnName="Lo_Des" />
+                <ScalarProperty Name="Lo_Code" ColumnName="Lo_Code" />
+                <ScalarProperty Name="Lo_Status" ColumnName="Lo_Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Master_Machine">
+            <EntityTypeMapping TypeName="OTIF_PDModel.Master_Machine">
+              <MappingFragment StoreEntitySet="Master_Machine">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MC_Machine" ColumnName="MC_Machine" />
+                <ScalarProperty Name="MC_Process" ColumnName="MC_Process" />
+                <ScalarProperty Name="MC_Status" ColumnName="MC_Status" />
+                <ScalarProperty Name="MC_Code" ColumnName="MC_Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Master_Member">
+            <EntityTypeMapping TypeName="OTIF_PDModel.Master_Member">
+              <MappingFragment StoreEntitySet="Master_Member">
+                <ScalarProperty Name="Mem_ID" ColumnName="Mem_ID" />
+                <ScalarProperty Name="Mem_Name" ColumnName="Mem_Name" />
+                <ScalarProperty Name="Mem_User" ColumnName="Mem_User" />
+                <ScalarProperty Name="Mem_Pass" ColumnName="Mem_Pass" />
+                <ScalarProperty Name="Mem_Des" ColumnName="Mem_Des" />
+                <ScalarProperty Name="Mem_Status" ColumnName="Mem_Status" />
+                <ScalarProperty Name="Create_By" ColumnName="Create_By" />
+                <ScalarProperty Name="Create_Date" ColumnName="Create_Date" />
+                <ScalarProperty Name="Update_Date" ColumnName="Update_Date" />
+                <ScalarProperty Name="Code_Mem" ColumnName="Code_Mem" />
+                <ScalarProperty Name="Mem_authorization1" ColumnName="Mem_authorization1" />
+                <ScalarProperty Name="Mem_authorization2" ColumnName="Mem_authorization2" />
+                <ScalarProperty Name="Mem_authorization3" ColumnName="Mem_authorization3" />
+                <ScalarProperty Name="Mem_Function" ColumnName="Mem_Function" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Master_Metal">
+            <EntityTypeMapping TypeName="OTIF_PDModel.Master_Metal">
+              <MappingFragment StoreEntitySet="Master_Metal">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Metal_Material" ColumnName="Metal_Material" />
+                <ScalarProperty Name="Metal_Material_Des" ColumnName="Metal_Material_Des" />
+                <ScalarProperty Name="Metal_Type" ColumnName="Metal_Type" />
+                <ScalarProperty Name="Metal_UOM" ColumnName="Metal_UOM" />
+                <ScalarProperty Name="Metal_AI_W_U" ColumnName="Metal_AI_W_U" />
+                <ScalarProperty Name="Metal_CU_W_U" ColumnName="Metal_CU_W_U" />
+                <ScalarProperty Name="Metal_Netweight_W_U" ColumnName="Metal_Netweight_W_U" />
+                <ScalarProperty Name="Metal_Netweight_W_0_U" ColumnName="Metal_Netweight_W_0_U" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Master_Planner">
+            <EntityTypeMapping TypeName="OTIF_PDModel.Master_Planner">
+              <MappingFragment StoreEntitySet="Master_Planner">
+                <ScalarProperty Name="PL_User_Change" ColumnName="PL_User_Change" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PL_SO" ColumnName="PL_SO" />
+                <ScalarProperty Name="PL_Machine" ColumnName="PL_Machine" />
+                <ScalarProperty Name="PL_Process" ColumnName="PL_Process" />
+                <ScalarProperty Name="PL_Type" ColumnName="PL_Type" />
+                <ScalarProperty Name="PL_Qty" ColumnName="PL_Qty" />
+                <ScalarProperty Name="PL_Tag" ColumnName="PL_Tag" />
+                <ScalarProperty Name="PL_Qty_T" ColumnName="PL_Qty_T" />
+                <ScalarProperty Name="PL_Color" ColumnName="PL_Color" />
+                <ScalarProperty Name="PL_Level" ColumnName="PL_Level" />
+                <ScalarProperty Name="PL_Date" ColumnName="PL_Date" />
+                <ScalarProperty Name="PL_Reel_Size" ColumnName="PL_Reel_Size" />
+                <ScalarProperty Name="PL_Creation_Date" ColumnName="PL_Creation_Date" />
+                <ScalarProperty Name="PL_Modification_Date" ColumnName="PL_Modification_Date" />
+                <ScalarProperty Name="PL_Status" ColumnName="PL_Status" />
+                <ScalarProperty Name="PL_Process_Status" ColumnName="PL_Process_Status" />
+                <ScalarProperty Name="PL_Time" ColumnName="PL_Time" />
+                <ScalarProperty Name="PL_QTY_Cus" ColumnName="PL_QTY_Cus" />
+                <ScalarProperty Name="PL_Shop_Packing" ColumnName="PL_Shop_Packing" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Master_Production">
+            <EntityTypeMapping TypeName="OTIF_PDModel.Master_Production">
+              <MappingFragment StoreEntitySet="Master_Production">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PD_SO" ColumnName="PD_SO" />
+                <ScalarProperty Name="PD_Machine" ColumnName="PD_Machine" />
+                <ScalarProperty Name="PD_Type" ColumnName="PD_Type" />
+                <ScalarProperty Name="PD_Qty" ColumnName="PD_Qty" />
+                <ScalarProperty Name="PD_Process" ColumnName="PD_Process" />
+                <ScalarProperty Name="PD_CuttingLength" ColumnName="PD_CuttingLength" />
+                <ScalarProperty Name="PD_Qty_T" ColumnName="PD_Qty_T" />
+                <ScalarProperty Name="PD_Speed" ColumnName="PD_Speed" />
+                <ScalarProperty Name="PD_Import_Date" ColumnName="PD_Import_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Master_Reason_Code">
+            <EntityTypeMapping TypeName="OTIF_PDModel.Master_Reason_Code">
+              <MappingFragment StoreEntitySet="Master_Reason_Code">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Reason_Code" ColumnName="Reason_Code" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Master_Reel_Bom">
+            <EntityTypeMapping TypeName="OTIF_PDModel.Master_Reel_Bom">
+              <MappingFragment StoreEntitySet="Master_Reel_Bom">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Reel_Size" ColumnName="Reel_Size" />
+                <ScalarProperty Name="Drum_High" ColumnName="Drum_High" />
+                <ScalarProperty Name="Drum_Length" ColumnName="Drum_Length" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="Q_Unit" ColumnName="Q_Unit" />
+                <ScalarProperty Name="Thickness" ColumnName="Thickness" />
+                <ScalarProperty Name="Reel_Weight" ColumnName="Reel_Weight" />
+                <ScalarProperty Name="Lag_Reel" ColumnName="Lag_Reel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OTIF_TR_Cal">
+            <EntityTypeMapping TypeName="OTIF_PDModel.OTIF_TR_Cal">
+              <MappingFragment StoreEntitySet="OTIF_TR_Cal">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Cal_SO" ColumnName="Cal_SO" />
+                <ScalarProperty Name="Cal_Machine" ColumnName="Cal_Machine" />
+                <ScalarProperty Name="Cal_Tag" ColumnName="Cal_Tag" />
+                <ScalarProperty Name="Cal_Status" ColumnName="Cal_Status" />
+                <ScalarProperty Name="Cal_QTY" ColumnName="Cal_QTY" />
+                <ScalarProperty Name="Cal_QTY_Balance" ColumnName="Cal_QTY_Balance" />
+                <ScalarProperty Name="Cal_LVL" ColumnName="Cal_LVL" />
+                <ScalarProperty Name="Cal_Create" ColumnName="Cal_Create" />
+                <ScalarProperty Name="Cal_Create_time" ColumnName="Cal_Create_time" />
+                <ScalarProperty Name="Cal_Update" ColumnName="Cal_Update" />
+                <ScalarProperty Name="Cal_Update_time" ColumnName="Cal_Update_time" />
+                <ScalarProperty Name="Cal_Speed" ColumnName="Cal_Speed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OTIF_TR_Machine_Monitor">
+            <EntityTypeMapping TypeName="OTIF_PDModel.OTIF_TR_Machine_Monitor">
+              <MappingFragment StoreEntitySet="OTIF_TR_Machine_Monitor">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Monitor_Machine" ColumnName="Monitor_Machine" />
+                <ScalarProperty Name="Monitor_DateTime" ColumnName="Monitor_DateTime" />
+                <ScalarProperty Name="Monitor_Time" ColumnName="Monitor_Time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OTIF_TR_MoveLocation">
+            <EntityTypeMapping TypeName="OTIF_PDModel.OTIF_TR_MoveLocation">
+              <MappingFragment StoreEntitySet="OTIF_TR_MoveLocation">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Move_TAG" ColumnName="Move_TAG" />
+                <ScalarProperty Name="Move_User" ColumnName="Move_User" />
+                <ScalarProperty Name="Move_Date" ColumnName="Move_Date" />
+                <ScalarProperty Name="Move_time" ColumnName="Move_time" />
+                <ScalarProperty Name="Move_Status" ColumnName="Move_Status" />
+                <ScalarProperty Name="Move_Loca" ColumnName="Move_Loca" />
+                <ScalarProperty Name="Move_Alert" ColumnName="Move_Alert" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OTIF_TR_Packing">
+            <EntityTypeMapping TypeName="OTIF_PDModel.OTIF_TR_Packing">
+              <MappingFragment StoreEntitySet="OTIF_TR_Packing">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Pack_SO" ColumnName="Pack_SO" />
+                <ScalarProperty Name="Pack_Machine" ColumnName="Pack_Machine" />
+                <ScalarProperty Name="Pack_Tag" ColumnName="Pack_Tag" />
+                <ScalarProperty Name="Pack_Status" ColumnName="Pack_Status" />
+                <ScalarProperty Name="Pack_QTY" ColumnName="Pack_QTY" />
+                <ScalarProperty Name="Pack_QTY_Balance" ColumnName="Pack_QTY_Balance" />
+                <ScalarProperty Name="Pack_LVL" ColumnName="Pack_LVL" />
+                <ScalarProperty Name="Pack_Create" ColumnName="Pack_Create" />
+                <ScalarProperty Name="Pack_Create_time" ColumnName="Pack_Create_time" />
+                <ScalarProperty Name="Pack_Update" ColumnName="Pack_Update" />
+                <ScalarProperty Name="Pack_QC_Update" ColumnName="Pack_QC_Update" />
+                <ScalarProperty Name="Pack_Speed" ColumnName="Pack_Speed" />
+                <ScalarProperty Name="Pack_DateTime" ColumnName="Pack_DateTime" />
+                <ScalarProperty Name="Pack_Reel_Size" ColumnName="Pack_Reel_Size" />
+                <ScalarProperty Name="Pack_Status_Shop" ColumnName="Pack_Status_Shop" />
+                <ScalarProperty Name="Pack_Status_QC" ColumnName="Pack_Status_QC" />
+                <ScalarProperty Name="Pack_QC_User" ColumnName="Pack_QC_User" />
+                <ScalarProperty Name="Pack_Base" ColumnName="Pack_Base" />
+                <ScalarProperty Name="Pack_Weight" ColumnName="Pack_Weight" />
+                <ScalarProperty Name="Pack_ReelNo" ColumnName="Pack_ReelNo" />
+                <ScalarProperty Name="Pack_Gross" ColumnName="Pack_Gross" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OTIF_TR_Packing_Log">
+            <EntityTypeMapping TypeName="OTIF_PDModel.OTIF_TR_Packing_Log">
+              <MappingFragment StoreEntitySet="OTIF_TR_Packing_Log">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Pack_SO" ColumnName="Pack_SO" />
+                <ScalarProperty Name="Pack_Machine" ColumnName="Pack_Machine" />
+                <ScalarProperty Name="Pack_Tag" ColumnName="Pack_Tag" />
+                <ScalarProperty Name="Pack_Status" ColumnName="Pack_Status" />
+                <ScalarProperty Name="Pack_QTY" ColumnName="Pack_QTY" />
+                <ScalarProperty Name="Pack_QTY_Balance" ColumnName="Pack_QTY_Balance" />
+                <ScalarProperty Name="Pack_LVL" ColumnName="Pack_LVL" />
+                <ScalarProperty Name="Pack_Create" ColumnName="Pack_Create" />
+                <ScalarProperty Name="Pack_Create_time" ColumnName="Pack_Create_time" />
+                <ScalarProperty Name="Pack_Update" ColumnName="Pack_Update" />
+                <ScalarProperty Name="Pack_QC_Update" ColumnName="Pack_QC_Update" />
+                <ScalarProperty Name="Pack_Speed" ColumnName="Pack_Speed" />
+                <ScalarProperty Name="Pack_DateTime" ColumnName="Pack_DateTime" />
+                <ScalarProperty Name="Pack_Reel_Size" ColumnName="Pack_Reel_Size" />
+                <ScalarProperty Name="Pack_Status_Shop" ColumnName="Pack_Status_Shop" />
+                <ScalarProperty Name="Pack_Status_QC" ColumnName="Pack_Status_QC" />
+                <ScalarProperty Name="Pack_QC_User" ColumnName="Pack_QC_User" />
+                <ScalarProperty Name="Pack_Base" ColumnName="Pack_Base" />
+                <ScalarProperty Name="Log_DateTime" ColumnName="Log_DateTime" />
+                <ScalarProperty Name="Pack_Weight" ColumnName="Pack_Weight" />
+                <ScalarProperty Name="Pack_ReelNo" ColumnName="Pack_ReelNo" />
+                <ScalarProperty Name="Pack_Gross" ColumnName="Pack_Gross" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OTIF_TR_Process">
+            <EntityTypeMapping TypeName="OTIF_PDModel.OTIF_TR_Process">
+              <MappingFragment StoreEntitySet="OTIF_TR_Process">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Bar_Kan" ColumnName="Bar_Kan" />
+                <ScalarProperty Name="Machine" ColumnName="Machine" />
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="QTY" ColumnName="QTY" />
+                <ScalarProperty Name="Date_Metal" ColumnName="Date_Metal" />
+                <ScalarProperty Name="Time_Metal" ColumnName="Time_Metal" />
+                <ScalarProperty Name="Date_Compound" ColumnName="Date_Compound" />
+                <ScalarProperty Name="Time_Compound" ColumnName="Time_Compound" />
+                <ScalarProperty Name="Date_Oh_RM" ColumnName="Date_Oh_RM" />
+                <ScalarProperty Name="Time_Oh_RM" ColumnName="Time_Oh_RM" />
+                <ScalarProperty Name="Date_CutL" ColumnName="Date_CutL" />
+                <ScalarProperty Name="Time_CutL" ColumnName="Time_CutL" />
+                <ScalarProperty Name="Date_Mg" ColumnName="Date_Mg" />
+                <ScalarProperty Name="Time_Mg" ColumnName="Time_Mg" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Date_Actual" ColumnName="Date_Actual" />
+                <ScalarProperty Name="Time_Actual" ColumnName="Time_Actual" />
+                <ScalarProperty Name="Date_Plan" ColumnName="Date_Plan" />
+                <ScalarProperty Name="Time_Plan" ColumnName="Time_Plan" />
+                <ScalarProperty Name="SF_Remain_Qty" ColumnName="SF_Remain_Qty" />
+                <ScalarProperty Name="RT_QTY" ColumnName="RT_QTY" />
+                <ScalarProperty Name="Move_Status" ColumnName="Move_Status" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Process_Speed" ColumnName="Process_Speed" />
+                <ScalarProperty Name="Date_Return" ColumnName="Date_Return" />
+                <ScalarProperty Name="Time_Return" ColumnName="Time_Return" />
+                <ScalarProperty Name="Pro_SO" ColumnName="Pro_SO" />
+                <ScalarProperty Name="Stop_Process" ColumnName="Stop_Process" />
+                <ScalarProperty Name="TR_DateTime" ColumnName="TR_DateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OTIF_TR_Process_Log">
+            <EntityTypeMapping TypeName="OTIF_PDModel.OTIF_TR_Process_Log">
+              <MappingFragment StoreEntitySet="OTIF_TR_Process_Log">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Bar_Kan" ColumnName="Bar_Kan" />
+                <ScalarProperty Name="Machine" ColumnName="Machine" />
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="QTY" ColumnName="QTY" />
+                <ScalarProperty Name="Date_Metal" ColumnName="Date_Metal" />
+                <ScalarProperty Name="Time_Metal" ColumnName="Time_Metal" />
+                <ScalarProperty Name="Date_Compound" ColumnName="Date_Compound" />
+                <ScalarProperty Name="Time_Compound" ColumnName="Time_Compound" />
+                <ScalarProperty Name="Date_Oh_RM" ColumnName="Date_Oh_RM" />
+                <ScalarProperty Name="Time_Oh_RM" ColumnName="Time_Oh_RM" />
+                <ScalarProperty Name="Date_CutL" ColumnName="Date_CutL" />
+                <ScalarProperty Name="Time_CutL" ColumnName="Time_CutL" />
+                <ScalarProperty Name="Date_Mg" ColumnName="Date_Mg" />
+                <ScalarProperty Name="Time_Mg" ColumnName="Time_Mg" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Date_Actual" ColumnName="Date_Actual" />
+                <ScalarProperty Name="Time_Actual" ColumnName="Time_Actual" />
+                <ScalarProperty Name="Date_Plan" ColumnName="Date_Plan" />
+                <ScalarProperty Name="Time_Plan" ColumnName="Time_Plan" />
+                <ScalarProperty Name="SF_Remain_Qty" ColumnName="SF_Remain_Qty" />
+                <ScalarProperty Name="RT_QTY" ColumnName="RT_QTY" />
+                <ScalarProperty Name="Move_Status" ColumnName="Move_Status" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Process_Speed" ColumnName="Process_Speed" />
+                <ScalarProperty Name="Date_Return" ColumnName="Date_Return" />
+                <ScalarProperty Name="Time_Return" ColumnName="Time_Return" />
+                <ScalarProperty Name="Log_Time" ColumnName="Log_Time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OTIF_TR_ShopFloor">
+            <EntityTypeMapping TypeName="OTIF_PDModel.OTIF_TR_ShopFloor">
+              <MappingFragment StoreEntitySet="OTIF_TR_ShopFloor">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SF_Kanban" ColumnName="SF_Kanban" />
+                <ScalarProperty Name="SF_Machine" ColumnName="SF_Machine" />
+                <ScalarProperty Name="SF_User" ColumnName="SF_User" />
+                <ScalarProperty Name="SF_QTY" ColumnName="SF_QTY" />
+                <ScalarProperty Name="SF_Date" ColumnName="SF_Date" />
+                <ScalarProperty Name="SF_Time" ColumnName="SF_Time" />
+                <ScalarProperty Name="SF_Actual_Speed" ColumnName="SF_Actual_Speed" />
+                <ScalarProperty Name="SF_Stop_Process" ColumnName="SF_Stop_Process" />
+                <ScalarProperty Name="SF_Stop_Code" ColumnName="SF_Stop_Code" />
+                <ScalarProperty Name="SF_Time_Fst" ColumnName="SF_Time_Fst" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OTIF_TR_Planner">
+            <EntityTypeMapping TypeName="OTIF_PDModel.OTIF_TR_Planner">
+              <MappingFragment StoreEntitySet="OTIF_TR_Planner">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="B_SO" ColumnName="B_SO" />
+                <ScalarProperty Name="B_PO" ColumnName="B_PO" />
+                <ScalarProperty Name="B_Customer" ColumnName="B_Customer" />
+                <ScalarProperty Name="B_Material" ColumnName="B_Material" />
+                <ScalarProperty Name="B_Material_Des" ColumnName="B_Material_Des" />
+                <ScalarProperty Name="Date_Create" ColumnName="Date_Create" />
+                <ScalarProperty Name="Date_PFD" ColumnName="Date_PFD" />
+                <ScalarProperty Name="Date_Delivery" ColumnName="Date_Delivery" />
+                <ScalarProperty Name="B_Cutting_Length" ColumnName="B_Cutting_Length" />
+                <ScalarProperty Name="B_Order_QTY" ColumnName="B_Order_QTY" />
+                <ScalarProperty Name="B_Order_Unit" ColumnName="B_Order_Unit" />
+                <ScalarProperty Name="Date_Metal" ColumnName="Date_Metal" />
+                <ScalarProperty Name="Time_Metal" ColumnName="Time_Metal" />
+                <ScalarProperty Name="Date_Compound" ColumnName="Date_Compound" />
+                <ScalarProperty Name="Time_Compound" ColumnName="Time_Compound" />
+                <ScalarProperty Name="Date_Oh_RM" ColumnName="Date_Oh_RM" />
+                <ScalarProperty Name="Time_Oh_RM" ColumnName="Time_Oh_RM" />
+                <ScalarProperty Name="Date_CutL" ColumnName="Date_CutL" />
+                <ScalarProperty Name="Time_CutL" ColumnName="Time_CutL" />
+                <ScalarProperty Name="Date_Mg" ColumnName="Date_Mg" />
+                <ScalarProperty Name="Time_Mg" ColumnName="Time_Mg" />
+                <ScalarProperty Name="Date_Plan" ColumnName="Date_Plan" />
+                <ScalarProperty Name="Time_Plan" ColumnName="Time_Plan" />
+                <ScalarProperty Name="Date_Actual" ColumnName="Date_Actual" />
+                <ScalarProperty Name="Time_Actual" ColumnName="Time_Actual" />
+                <ScalarProperty Name="Move_Status" ColumnName="Move_Status" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="User" ColumnName="User" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TEST">
+            <EntityTypeMapping TypeName="OTIF_PDModel.TEST">
+              <MappingFragment StoreEntitySet="TEST">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="B_SO" ColumnName="B_SO" />
+                <ScalarProperty Name="B_PO" ColumnName="B_PO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
