@@ -1,26 +1,50 @@
 ﻿$(document).ready(function () {
     $("#StartDate").focus();
-    $.post(baseUrl + "Home/SelectMachines", {
-        MAC: $("#SelectMac").val(),
-        STARTDATE: $("#StartDate").val(),
-        ENDDATE: $("#EndDate").val()
-    }).done(function (data) {
-        var pr = $.parseJSON(data);
-        $.each(JSON.parse(data), function (i, obj) {
 
-            $('#data-table-basic').dataTable().fnAddData([
-                (i + 1),
-                pr[i]["Date_Actual"],
-                pr[i]["Pro_SO"],
-                pr[i]["PL_Type"],
-                pr[i]["Bar_Kan"] == "-" ? "-" : pr[i]["SF_Remain_Qty"] == null ? "ยังไม่รายงานล้อรับ" : pr[i]["Bar_Kan"],
-                pr[i]["SF_Remain_Qty"] == null ? "-" : pr[i]["QTY"],
-                pr[i]["SF_Remain_Qty"] == null ? "-" : pr[i]["RT_QTY"],
-                pr[i]["User"],
-                pr[i]["Stop_Process"]
-            ]);
-        });
+    $("#Search").click(function (e) {
+        $('#data-table-basic').dataTable().fnClearTable();
+        if ($("#SelectMac").val() != "" && $("#StartDate").val() != "" && $("#EndDate").val() != "") {
 
+            $.post(baseUrl + "Home/SelectMachines", {
+                SELECTMAC: $("#SelectMac").val(),
+                STARTDATE: $("#StartDate").val(),
+                ENDDATE: $("#EndDate").val()
+            }).done(function (data) {
+                if (data != "[]") {
+                    //document.getElementById('data-table-basic').style.display = '';
+                    var pr = $.parseJSON(data);
+                    $.each(JSON.parse(data), function (i, obj) {
+
+                        $('#data-table-basic').dataTable().fnAddData([
+                            (i + 1),
+                            //       '<a class="SalesEdit" id="' + pr[i]["ID"] + '" href="#">' + pr[i]["Prefix"] + '</a>',
+                            pr[i]["Date_Actual"],
+                            pr[i]["Pro_SO"],
+                            // pr[i]["Date_Actual"],
+
+                            pr[i]["PL_Type"],
+                            pr[i]["Bar_Kan"] == "-" ? "-" : pr[i]["SF_Remain_Qty"] == null ? "ยังไม่รายงานล้อรับ" : pr[i]["Bar_Kan"],
+                            pr[i]["SF_Remain_Qty"] == null ? "-" : pr[i]["QTY"],
+                            pr[i]["SF_Remain_Qty"] == null ? "-" : pr[i]["RT_QTY"],
+                            pr[i]["User"],
+                            pr[i]["Stop_Process"]
+                            
+                            //   pr[i]["Use"],
+                            //   '<img src="../Content/img/Item/' + pr[i]["Item_Img"] + '" title="' + pr[i]["Item_Img"] + '" border="0" alt="" class="IMGS"/>'
+
+                        ]);
+                    });
+                   
+                }
+                else if (data == "N") {
+                    CheckNull("กรุณากรอกข้อมูลให้ครบ");
+                }
+            });
+
+        }
+        else {
+            CheckNull("กรุณากรอกข้อมูลให้ครบ");
+        }
     });
 });
 

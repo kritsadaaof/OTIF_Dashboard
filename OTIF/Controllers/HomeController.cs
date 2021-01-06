@@ -61,12 +61,15 @@ namespace OTIF.Controllers
             //  catch { return null; }
         }//CheckLocation  //CheckUser
 
-        public string SelectMachines(String MAC, DateTime STARTDATE, DateTime ENDDATE)
+        public string SelectMachines(String SELECTMAC, DateTime STARTDATE, DateTime ENDDATE)
         {
-            // try
-            //  {
+             try
+              {
+            var startDate = STARTDATE;
+            var endDate = ENDDATE;
+            var selectMac = SELECTMAC;
             var data = (from TR_P in DbFile.OTIF_TR_Process
-                        where TR_P.Date_Actual == STARTDATE   // && Ms_Pl.PL_Machine.Equals(MACHINE)
+                        where TR_P.Date_Actual >= startDate && TR_P.Date_Actual <= endDate && TR_P.Machine == selectMac// && Ms_Pl.PL_Machine.Equals(MACHINE)
                         select new
                         {
                             TR_P.Machine,
@@ -77,11 +80,13 @@ namespace OTIF.Controllers
                             TR_P.SF_Remain_Qty,
                             TR_P.RT_QTY,
                             TR_P.QTY,
+                            TR_P.User,
                             TR_P.Stop_Process
 
                         }).AsEnumerable().OrderByDescending(k => k.Time_Actual).GroupBy(k => new { k.Machine }).Select(k => k.First()).OrderByDescending(k => k.Time_Actual).Select(x => new
                         {
                             Machine = x.Machine,
+                            Date_Actual = x.Date_Actual.ToString(),
                             Pro_SO = x.Pro_SO,
                             PL_Type = MAT(x.Bar_Kan).ToString(),
                             Bar_Kan = x.Bar_Kan,
@@ -89,14 +94,13 @@ namespace OTIF.Controllers
                             RT_QTY = x.RT_QTY,
                             QTY = x.QTY,
                             // CalTotalQTYs = CalTotalQTY(x.Machine),
+                            User =x.User,
                             Stop_Process = x.Stop_Process == "T" ? "<i style='font-size:16px; color: red'>เครื่องมีปัญหา</i>" : x.SF_Remain_Qty.Equals(0) ? "<i style='font-size:16px; color: #ff6a00'>เครื่องจอด</i>" : "<i style='font-size:16px; color: green'>เครื่องเดิน</i>"
-
-
                         }).ToList();
             string jsonlog = new JavaScriptSerializer().Serialize(data);
             return jsonlog;
-            //   }
-            //  catch { return null; }
+            }
+              catch { return "N"; }
         }//CheckLocation  //CheckUser
         public string CheckUser(string USER)
         {

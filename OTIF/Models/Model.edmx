@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="OTIF_PDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="OTIF_PDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Master_Backlog">
           <Key>
             <PropertyRef Name="ID" />
@@ -348,9 +348,10 @@ warning 6002: The table/view 'OTIF_PD.dbo.OTIF_TR_Planner' does not have a prima
         <EntityType Name="OTIF_TR_Process_Log">
           <Key>
             <PropertyRef Name="ID" />
+            <PropertyRef Name="Bar_Kan" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Bar_Kan" Type="nvarchar" MaxLength="50" />
+          <Property Name="Bar_Kan" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Machine" Type="nvarchar" MaxLength="50" />
           <Property Name="User" Type="nvarchar" MaxLength="50" />
           <Property Name="QTY" Type="int" />
@@ -376,7 +377,10 @@ warning 6002: The table/view 'OTIF_PD.dbo.OTIF_TR_Planner' does not have a prima
           <Property Name="Process_Speed" Type="float" />
           <Property Name="Date_Return" Type="date" />
           <Property Name="Time_Return" Type="time" Precision="6" />
-          <Property Name="Log_Time" Type="datetime" />
+          <Property Name="Pro_SO" Type="nvarchar" MaxLength="50" />
+          <Property Name="Stop_Process" Type="nvarchar" MaxLength="10" />
+          <Property Name="TR_DateTime" Type="datetime" />
+          <Property Name="Log_Date" Type="datetime" />
         </EntityType>
         <EntityType Name="OTIF_TR_ShopFloor">
           <Key>
@@ -465,7 +469,8 @@ warning 6002: The table/view 'OTIF_PD.dbo.TEST' does not have a primary key defi
     FROM [dbo].[TEST] AS [TEST]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="OTIF_PDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -776,9 +781,10 @@ warning 6002: The table/view 'OTIF_PD.dbo.TEST' does not have a primary key defi
         <EntityType Name="OTIF_TR_Process_Log">
           <Key>
             <PropertyRef Name="ID" />
+            <PropertyRef Name="Bar_Kan" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Bar_Kan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Bar_Kan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Machine" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="User" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="QTY" Type="Int32" />
@@ -804,7 +810,10 @@ warning 6002: The table/view 'OTIF_PD.dbo.TEST' does not have a primary key defi
           <Property Name="Process_Speed" Type="Double" />
           <Property Name="Date_Return" Type="DateTime" Precision="0" />
           <Property Name="Time_Return" Type="Time" Precision="6" />
-          <Property Name="Log_Time" Type="DateTime" Precision="3" />
+          <Property Name="Pro_SO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Stop_Process" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TR_DateTime" Type="DateTime" Precision="3" />
+          <Property Name="Log_Date" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="OTIF_TR_ShopFloor">
           <Key>
@@ -1014,7 +1023,6 @@ warning 6002: The table/view 'OTIF_PD.dbo.TEST' does not have a primary key defi
           <EntitySetMapping Name="Master_Planner">
             <EntityTypeMapping TypeName="OTIF_PDModel.Master_Planner">
               <MappingFragment StoreEntitySet="Master_Planner">
-                <ScalarProperty Name="PL_User_Change" ColumnName="PL_User_Change" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="PL_SO" ColumnName="PL_SO" />
                 <ScalarProperty Name="PL_Machine" ColumnName="PL_Machine" />
@@ -1034,6 +1042,7 @@ warning 6002: The table/view 'OTIF_PD.dbo.TEST' does not have a primary key defi
                 <ScalarProperty Name="PL_Time" ColumnName="PL_Time" />
                 <ScalarProperty Name="PL_QTY_Cus" ColumnName="PL_QTY_Cus" />
                 <ScalarProperty Name="PL_Shop_Packing" ColumnName="PL_Shop_Packing" />
+                <ScalarProperty Name="PL_User_Change" ColumnName="PL_User_Change" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1243,7 +1252,10 @@ warning 6002: The table/view 'OTIF_PD.dbo.TEST' does not have a primary key defi
                 <ScalarProperty Name="Process_Speed" ColumnName="Process_Speed" />
                 <ScalarProperty Name="Date_Return" ColumnName="Date_Return" />
                 <ScalarProperty Name="Time_Return" ColumnName="Time_Return" />
-                <ScalarProperty Name="Log_Time" ColumnName="Log_Time" />
+                <ScalarProperty Name="Pro_SO" ColumnName="Pro_SO" />
+                <ScalarProperty Name="Stop_Process" ColumnName="Stop_Process" />
+                <ScalarProperty Name="TR_DateTime" ColumnName="TR_DateTime" />
+                <ScalarProperty Name="Log_Date" ColumnName="Log_Date" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

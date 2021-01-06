@@ -1,82 +1,107 @@
-﻿
-@Scripts.Render("~/CheckByMachines/js")
+﻿@Scripts.Render("~/CheckByMachines/js")
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="~/Content/datatables.min.css" rel="stylesheet" />
 <script src="~/Scripts/datatables.min.js"></script>
 
 <body>
     <div class="row">
+       
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="normal-table-list mg-t-10">
                 <div class="basic-tb-hd">
                     <h2 class="text-center"><code>รายการการผลิตตามเครื่องจักรที่เลือก</code></h2>
                 </div>
-                <div class="col-lg-4 col-md4 col-sm-4 col-xs-12 notification-demo">
-                    <div class="form-group nk-datapk-ctm form-elet-mg">
-                        <i>เครื่องจักร</i>
-                        <div class="input-group nk-int-st">
-                            <select class="form-control" id="SelectMac">
-                                <!--<option style="display:none"> -- เลือกเครื่องจักร -- </option>-->
-                                @foreach (var Machine in ViewBag.Machines)
-                                {
-                                    <option value="@Machine.MC_Machine">@Machine.MC_Machine</option>
-                                }
-                            </select>
+                <div class="row">
+                    <div class="col-lg-4 col-md4 col-sm-4 col-xs-12">
+
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 notification-demo ">
+                        <div class="form-group nk-datapk-ctm form-elet-mg ">
+                            <i>เครื่องจักร</i>
+                            <div class="input-group nk-int-st">
+                                <select class="form-control" id="SelectMac">
+                                    <!--<option style="display:none"> -- เลือกเครื่องจักร -- </option>-->
+                                    @foreach (var Machine in ViewBag.Machines)
+                                    {
+                                        <option value="@Machine.MC_Machine">@Machine.MC_Machine</option>
+                                    }
+                                </select>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 notification-demo">
-                    <div class="form-group nk-datapk-ctm form-elet-mg">
-                        <i>เลือกวันที่เริ่มต้นที่ต้องการค้นหา</i>
-                        <div class="input-group nk-int-st">
-                            <input id="StartDate" type="text" class="form-control" placeholder="กรอกวันที่ที่ต้องการค้นหา ตัวอย่าง 2021-01-01" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 notification-demo">
-                    <div class="form-group nk-datapk-ctm form-elet-mg">
-                        <i>เลือกวันที่สุดท้ายที่ต้องการค้นหา</i>
-                        <div class="input-group nk-int-st">
-                            <input id="EndDate" type="text" class="form-control" placeholder="กรอกวันที่ที่ต้องการค้นหา ตัวอย่าง 2021-01-01" />
-                        </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mg-t-10 text-center">
-                        <a id="Search" class="btn btn-success notika-btn-success btn-default">ค้นหา</a>
+                    <div class="col-lg-4 col-md4 col-sm-4 col-xs-12">
+
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 notification-demo">
+                        <div class="form-group nk-datapk-ctm form-elet-mg">
+                            <i>เลือกวันที่เริ่มต้นที่ต้องการค้นหา</i>
+                            <div class="input-group nk-int-st">
+                                <input id="StartDate" type="text" class="form-control" placeholder="กรอกปี เดือน วัน เพื่อค้นหา ตัวอย่าง 2021-01-01"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
                     </div>
                 </div>
-                <div class="bsc-tbl-st"option style="display:none">
-                    <table class="table table-striped" id="data-table-basic" >
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>วันที่</th>
-                                <th>SO ที่ผลิต</th>
-                                <th>งาน ที่ผลิต</th>
-                                <th>Tag ที่ผลิต</th>
-                                <th>แผนผลิต</th>
-                                <th>ผลิตได้</th>
-                                <th>ผู้บันทึก</th>
-                                <th>สถานะเครื่องจักร</th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                            <tr>
-                                <th>#</th>
-                                <th>วันที่</th>
-                                <th>SO ที่ผลิต</th>
-                                <th>งาน ที่ผลิต</th>
-                                <th>Tag ที่ผลิต</th>
-                                <th>แผนผลิต</th>
-                                <th>ผลิตได้</th>
-                                <th>ผู้บันทึก</th>
-                                <th>สถานะเครื่องจักร</th>
-                            </tr>
-                        </tfoot>
-                    </table>
+
+                <div class="row">
+                    <div class="col-lg-4 col-md4 col-sm-4 col-xs-12">
+
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 notification-demo">
+                        <div class="form-group nk-datapk-ctm form-elet-mg">
+                            <i>เลือกวันที่สุดท้ายที่ต้องการค้นหา</i>
+                            <div class="input-group nk-int-st">
+                                <input id="EndDate" type="text" class="form-control" placeholder="กรอกปี เดือน วัน เพื่อค้นหา ตัวอย่าง 2021-01-01"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+                    </div>
+                </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mg-t-10 text-center">
+                            <a id="Search" class="btn btn-success notika-btn-success btn-default">ค้นหา</a>
+                        </div>
+                    </div>
+                    <div class="bsc-tbl-st">
+                        <table class="table table-striped" id="data-table-basic">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>วันที่</th>
+                                    <th>SO ที่ผลิต</th>
+                                    <th>งาน ที่ผลิต</th>
+                                    <th>Tag ที่ผลิต</th>
+                                    <th>แผนผลิต</th>
+                                    <th>ผลิตได้</th>
+                                    <th>ผู้บันทึก</th>
+                                    <th>สถานะเครื่องจักร</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>#</th>
+                                    <th>วันที่</th>
+                                    <th>SO ที่ผลิต</th>
+                                    <th>งาน ที่ผลิต</th>
+                                    <th>Tag ที่ผลิต</th>
+                                    <th>แผนผลิต</th>
+                                    <th>ผลิตได้</th>
+                                    <th>ผู้บันทึก</th>
+                                    <th>สถานะเครื่องจักร</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
                 </div>
             </div>
-        </div>
     </div>
 </body>

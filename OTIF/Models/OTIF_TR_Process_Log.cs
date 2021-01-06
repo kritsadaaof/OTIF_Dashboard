@@ -41,6 +41,9 @@ namespace OTIF.Models
         public Nullable<double> Process_Speed { get; set; }
         public Nullable<System.DateTime> Date_Return { get; set; }
         public Nullable<System.TimeSpan> Time_Return { get; set; }
-        public Nullable<System.DateTime> Log_Time { get; set; }
+        public string Pro_SO { get; set; }
+        public string Stop_Process { get; set; }
+        public Nullable<System.DateTime> TR_DateTime { get; set; }
+        public Nullable<System.DateTime> Log_Date { get; set; }
     }
 }
