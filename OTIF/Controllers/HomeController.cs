@@ -63,7 +63,7 @@ namespace OTIF.Controllers
 
         public string SelectMachines(String SELECTMAC, DateTime STARTDATE, DateTime ENDDATE)
         {
-             try
+             //try
               {
             var startDate = STARTDATE;
             var endDate = ENDDATE;
@@ -83,24 +83,26 @@ namespace OTIF.Controllers
                             TR_P.User,
                             TR_P.Stop_Process
 
-                        }).AsEnumerable().OrderByDescending(k => k.Time_Actual).GroupBy(k => new { k.Machine }).Select(k => k.First()).OrderByDescending(k => k.Time_Actual).Select(x => new
+                        }).AsEnumerable().OrderByDescending(k => k.Time_Actual).Select(x => new
                         {
-                            Machine = x.Machine,
                             Date_Actual = x.Date_Actual.ToString(),
+                            Machine = x.Machine,
                             Pro_SO = x.Pro_SO,
                             PL_Type = MAT(x.Bar_Kan).ToString(),
                             Bar_Kan = x.Bar_Kan,
                             SF_Remain_Qty = x.SF_Remain_Qty,
                             RT_QTY = x.RT_QTY,
                             QTY = x.QTY,
+                            User = x.User,
                             // CalTotalQTYs = CalTotalQTY(x.Machine),
-                            User =x.User,
                             Stop_Process = x.Stop_Process == "T" ? "<i style='font-size:16px; color: red'>เครื่องมีปัญหา</i>" : x.SF_Remain_Qty.Equals(0) ? "<i style='font-size:16px; color: #ff6a00'>เครื่องจอด</i>" : "<i style='font-size:16px; color: green'>เครื่องเดิน</i>"
+
+
                         }).ToList();
-            string jsonlog = new JavaScriptSerializer().Serialize(data);
+                string jsonlog = new JavaScriptSerializer().Serialize(data);
             return jsonlog;
             }
-              catch { return "N"; }
+          //    catch { return "N"; }
         }//CheckLocation  //CheckUser
         public string CheckUser(string USER)
         {

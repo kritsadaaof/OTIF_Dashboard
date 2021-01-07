@@ -18,7 +18,7 @@
                         $('#data-table-basic').dataTable().fnAddData([
                             (i + 1),
                             //       '<a class="SalesEdit" id="' + pr[i]["ID"] + '" href="#">' + pr[i]["Prefix"] + '</a>',
-                            pr[i]["Date_Actual"],
+                            pr[i]["Date_Actual"].substring(0, 10),
                             pr[i]["Pro_SO"],
                             // pr[i]["Date_Actual"],
 
@@ -36,8 +36,16 @@
                     });
                    
                 }
-                else if (data == "N") {
-                    CheckNull("กรุณากรอกข้อมูลให้ครบ");
+                else if (data == "[]") {
+                    e.preventDefault();
+                    var nFrom = $(this).attr('data-from');
+                    var nAlign = $(this).attr('data-align');
+                    var nIcons = $(this).attr('data-icon');
+                    var nType = "warning";
+                    var nAnimIn = $(this).attr('data-animation-in');
+                    var nAnimOut = $(this).attr('data-animation-out');
+                    var mEss = "ไม่พบข้อมูล";
+                    notify(nFrom, nAlign, nIcons, nType, nAnimIn, nAnimOut, mEss);
                 }
             });
 
