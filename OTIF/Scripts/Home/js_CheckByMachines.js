@@ -18,7 +18,7 @@
                         $('#data-table-basic').dataTable().fnAddData([
                             (i + 1),
                             //       '<a class="SalesEdit" id="' + pr[i]["ID"] + '" href="#">' + pr[i]["Prefix"] + '</a>',
-                            pr[i]["Date_Actual"].substring(0, 10),
+                            pr[i]["Date_Actual"].substring(0, 11) + pr[i]["Time_Actual"].substring(0, 5),
                             pr[i]["Pro_SO"],
                             // pr[i]["Date_Actual"],
 

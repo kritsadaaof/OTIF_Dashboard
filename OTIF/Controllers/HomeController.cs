@@ -39,7 +39,8 @@ namespace OTIF.Controllers
                             TR_P.SF_Remain_Qty,
                             TR_P.RT_QTY,
                             TR_P.QTY,
-                            TR_P.Stop_Process
+                            TR_P.Stop_Process,
+                            TR_P.User
 
                         }).AsEnumerable().OrderByDescending(k => k.Time_Actual).GroupBy(k => new { k.Machine }).Select(k => k.First()).OrderByDescending(k => k.Time_Actual).Select(x => new
                         {
@@ -50,6 +51,7 @@ namespace OTIF.Controllers
                             SF_Remain_Qty = x.SF_Remain_Qty,
                             RT_QTY = x.RT_QTY,
                             QTY = x.QTY,
+                            User = x.User,
                             // CalTotalQTYs = CalTotalQTY(x.Machine),
                             Stop_Process = x.Stop_Process == "T" ? "<i style='font-size:16px; color: red'>เครื่องมีปัญหา</i>" : x.SF_Remain_Qty.Equals(0) ? "<i style='font-size:16px; color: #ff6a00'>เครื่องจอด</i>" : "<i style='font-size:16px; color: green'>เครื่องเดิน</i>"
 
@@ -86,6 +88,7 @@ namespace OTIF.Controllers
                         }).AsEnumerable().OrderByDescending(k => k.Time_Actual).Select(x => new
                         {
                             Date_Actual = x.Date_Actual.ToString(),
+                            Time_Actual =x.Time_Actual.ToString(),
                             Machine = x.Machine,
                             Pro_SO = x.Pro_SO,
                             PL_Type = MAT(x.Bar_Kan).ToString(),

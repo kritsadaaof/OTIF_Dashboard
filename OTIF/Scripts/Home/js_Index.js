@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
     // alert("Index");
     $("#Time_Actual").html("("+dateFormat()+")");//Hidden
-    $.post(baseUrl + "Home/DataIndexMach", {
+    $.post(baseUrl + "Home/DataIndexMachs", {
         DATE: dateFormat()
     }).done(function (data) {
         // alert(data);
