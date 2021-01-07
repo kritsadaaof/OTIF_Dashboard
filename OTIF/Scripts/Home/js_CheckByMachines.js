@@ -51,7 +51,15 @@
 
         }
         else {
-            CheckNull("กรุณากรอกข้อมูลให้ครบ");
+            e.preventDefault();
+            var nFrom = $(this).attr('data-from');
+            var nAlign = $(this).attr('data-align');
+            var nIcons = $(this).attr('data-icon');
+            var nType = "warning";
+            var nAnimIn = $(this).attr('data-animation-in');
+            var nAnimOut = $(this).attr('data-animation-out');
+            var mEss = "ไม่พบข้อมูล";
+            notify(nFrom, nAlign, nIcons, nType, nAnimIn, nAnimOut, mEss);
         }
     });
 });
