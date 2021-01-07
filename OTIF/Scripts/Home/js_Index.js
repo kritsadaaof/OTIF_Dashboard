@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
     // alert("Index");
-    $("#Time_Actual").html("("+dateFormat()+")");//Hidden
-    $.post(baseUrl + "Home/DataIndexMachs", {
+    $("#Time_Actual").html("(" + dateFormat() + ")");//Hidden
+    $.post(baseUrl + "Home/DataIndexMach", {
         DATE: dateFormat()
     }).done(function (data) {
         // alert(data);
@@ -94,4 +94,3 @@ function notify(from, align, icon, type, animIn, animOut, mEssage) { //Notify
             '</div>'
     });
 };
-
