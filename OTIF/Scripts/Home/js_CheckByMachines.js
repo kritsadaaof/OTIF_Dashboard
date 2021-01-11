@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
     $("#StartDate").focus();
 
-    $("#Search").click(function (e) {
+    $("#Search").click(function (e) { 
         $('#data-table-basic').dataTable().fnClearTable();
         if ($("#SelectMac").val() != "" && $("#StartDate").val() != "" && $("#EndDate").val() != "") {
 
@@ -23,11 +23,11 @@
                             // pr[i]["Date_Actual"],
 
                             pr[i]["PL_Type"],
-                            pr[i]["Bar_Kan"] == "-" ? "-" : pr[i]["SF_Remain_Qty"] == null ? "ยังไม่รายงานล้อรับ" : pr[i]["Bar_Kan"],
+                            pr[i]["Bar_Kan"] == "-" ? "-" : pr[i]["SF_Remain_Qty"] == null ? "<i style='font-size:16px; color: red '>ล้อป้อน</i>" : pr[i]["Bar_Kan"],
                             pr[i]["SF_Remain_Qty"] == null ? "-" : pr[i]["QTY"],
                             pr[i]["SF_Remain_Qty"] == null ? "-" : pr[i]["RT_QTY"],
-                            pr[i]["User"],
-                            pr[i]["Stop_Process"]
+                            pr[i]["User"]//,
+                          //  pr[i]["Stop_Process"]
                             
                             //   pr[i]["Use"],
                             //   '<img src="../Content/img/Item/' + pr[i]["Item_Img"] + '" title="' + pr[i]["Item_Img"] + '" border="0" alt="" class="IMGS"/>'

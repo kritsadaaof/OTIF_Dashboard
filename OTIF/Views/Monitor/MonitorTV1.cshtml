@@ -73,20 +73,31 @@
         ============================================ -->
     <script src="~/Content/js/vendor/modernizr-2.8.3.min.js"></script>
     <script src="~/Scripts/moment.js" temp_src="moment.js"></script>
-
+    <link rel="stylesheet" href="~/Content/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/assets/css/style.css">
 
     @Styles.Render("~/Content/css")         <!--เรียกใช้งาน style.css-->
     @Scripts.Render("~/bundles/jquery")     <!--เรียกใช้งาน "~/Scripts/jquery-{version}.js" เพื่อให้ JS ของแต่ละ Page ทำงาน-->
     @Scripts.Render("~/MonitorTV1/js")
 </head>
 <body>
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="~/Content/img/logo/logo22.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
     @{int i = 0;}
     @foreach (var Mach in ViewBag.MS_Machine)
     {
         <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 mg-t-15 " style="font-style:oblique;color:white">
             <div id="BG_@i" class="statistic-right-area notika-shadow sm-res-mg-t-0 mg-bt-ant-inner Mach Font_Z C" title="@Mach.MC_Machine" style="background-color:#516735">
                 <div class="past-statistic-an Font_10">
-                    <div class="Font_Z"style="font-size: 10px">
+                    <div class="Font_Z" style="font-size: 10px">
                         <h5 class="" style="font-style:oblique">Customer: <br /> <i style="color:yellow;font-size: 10px" id="CusM_@i">-</i></h5>
                         <h5 class="" style="font-style:oblique">Product: <br /><i style="color:yellow;font-size:10px" id="ItemM_@i">-</i></h5>
                     </div>
@@ -117,16 +128,16 @@
                         </h5>
                     </div>&nbsp;&nbsp;&nbsp;&nbsp;
                     <div class="past-statistic-ctn Font_10">
-                        <h4 class=""style="font-size:12px; font-style:oblique">
+                        <h4 class="" style="font-size:12px; font-style:oblique">
                             <i>หมายเลขล้อรับ:</i><br />
                             <span style="color:lime" id="TagM_@i">-</span>
                         </h4><br />
-                        <h4 class=""style="font-size:12px; font-style:oblique">จำนวนผลิตตามล้อ: <span style="color:lime" id="PlanM_@i">0</span></h4>
-                        <h4 class=""style="font-size:11px; font-style:oblique">
+                        <h4 class="" style="font-size:12px; font-style:oblique">จำนวนผลิตตามล้อ: <span style="color:lime" id="PlanM_@i">0</span></h4>
+                        <h4 class="" style="font-size:11px; font-style:oblique">
                             ผลผลิตที่ต้องได้ตามแผน: <br />
                             <span style="font-size: 12px; color: yellow" id="Target_QTY_Plan_By_Mach_@i">0</span><i style="" id=""> M</i>
                         </h4>
-                        <h4 class=""style="font-size:12px; font-style:oblique">
+                        <h4 class="" style="font-size:12px; font-style:oblique">
                             ผลผลิตสะสม Reel: <br />
                             <span style="font-size: 12px; color: lime" id="ActualM_@i">0</span><i style="" id=""> M</i>
                         </h4>
@@ -143,7 +154,7 @@
                         <h4 class="Font_10 text-left" style="font-style:oblique;color:yellow;font-size: 12px">
                             เวลาเปลี่ยนงาน <br />
                             <i style="font-size: 12px;color:yellow" id="CheckTime_@i">00:00</i><i style="" id=""> hr</i>
-                        </h4> 
+                        </h4>
                         <h4 class="Font_10 text-left" style="font-style:oblique;font-size: 12px">
                             ควบคุมเครื่องโดย: <br /><i style="font-size: 12px; color: lime" id="User_@i">-</i><br /><br />
                             สถานะเครื่อง: <br /><i style="font-size: 18px" id="Mach_Status_@i">-</i>
@@ -159,107 +170,107 @@
             </div>
         </div>
         i++;
-    }
-    <div class="footer-copyright-area1">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="footer-copy-right">
-                        <p>Copyright &copy; Designed & Developed by <a href="https://www.pdcable.com/en/home-2/">Dev. Phelps Dodge</a> 2020</p>
+                    }
+                    <div class="footer-copyright-area1">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="footer-copy-right">
+                                        <p>Copyright &copy; Designed & Developed by <a href="https://www.pdcable.com/en/home-2/">Dev. Phelps Dodge</a> 2020</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Breadcomb area End-->
-    <!-- Inbox area Start-->
-    <!-- jquery
-     ============================================ -->
-    <script src="~/Content/js/vendor/jquery-1.12.4.min.js"></script>
-    <!-- bootstrap JS
-        ============================================ -->
-    <script src="~/Content/js/bootstrap.min.js"></script>
-    <!-- wow JS
-        ============================================ -->
-    <script src="~/Content/js/wow.min.js"></script>
-    <!-- price-slider JS
-        ============================================ -->
-    <script src="~/Content/js/jquery-price-slider.js"></script>
-    <!-- owl.carousel JS
-        ============================================ -->
-    <script src="~/Content/js/owl.carousel.min.js"></script>
-    <!-- scrollUp JS
-        ============================================ -->
-    <script src="~/Content/js/jquery.scrollUp.min.js"></script>
-    <!-- meanmenu JS
-        ============================================ -->
-    <script src="~/Content/js/meanmenu/jquery.meanmenu.js"></script>
-    <!-- counterup JS
-        ============================================ -->
-    <script src="~/Content/js/counterup/jquery.counterup.min.js"></script>
-    <script src="~/Content/js/counterup/waypoints.min.js"></script>
-    <script src="~/Content/js/counterup/counterup-active.js"></script>
+                    <!-- Breadcomb area End-->
+                    <!-- Inbox area Start-->
+                    <!-- jquery
+                     ============================================ -->
+                    <script src="~/Content/js/vendor/jquery-1.12.4.min.js"></script>
+                    <!-- bootstrap JS
+                        ============================================ -->
+                    <script src="~/Content/js/bootstrap.min.js"></script>
+                    <!-- wow JS
+                        ============================================ -->
+                    <script src="~/Content/js/wow.min.js"></script>
+                    <!-- price-slider JS
+                        ============================================ -->
+                    <script src="~/Content/js/jquery-price-slider.js"></script>
+                    <!-- owl.carousel JS
+                        ============================================ -->
+                    <script src="~/Content/js/owl.carousel.min.js"></script>
+                    <!-- scrollUp JS
+                        ============================================ -->
+                    <script src="~/Content/js/jquery.scrollUp.min.js"></script>
+                    <!-- meanmenu JS
+                        ============================================ -->
+                    <script src="~/Content/js/meanmenu/jquery.meanmenu.js"></script>
+                    <!-- counterup JS
+                        ============================================ -->
+                    <script src="~/Content/js/counterup/jquery.counterup.min.js"></script>
+                    <script src="~/Content/js/counterup/waypoints.min.js"></script>
+                    <script src="~/Content/js/counterup/counterup-active.js"></script>
 
-    <!-- mCustomScrollbar JS
-        ============================================ -->
-    <script src="~/Content/js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-    <!-- sparkline JS
-        ============================================ -->
-    <script src="~/Content/js/sparkline/jquery.sparkline.min.js"></script>
-    <script src="~/Content/js/sparkline/sparkline-active.js"></script>
-    <!-- flot JS
-        ============================================ -->
-    <script src="~/Content/js/flot/jquery.flot.js"></script>
-    <script src="~/Content/js/flot/jquery.flot.resize.js"></script>
-    <script src="~/Content/js/flot/flot-active.js"></script>
-    <!-- knob JS
-        ============================================ -->
-    <script src="~/Content/js/knob/jquery.knob.js"></script>
-    <script src="~/Content/js/knob/jquery.appear.js"></script>
-    <script src="~/Content/js/knob/knob-active.js"></script>
+                    <!-- mCustomScrollbar JS
+                        ============================================ -->
+                    <script src="~/Content/js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+                    <!-- sparkline JS
+                        ============================================ -->
+                    <script src="~/Content/js/sparkline/jquery.sparkline.min.js"></script>
+                    <script src="~/Content/js/sparkline/sparkline-active.js"></script>
+                    <!-- flot JS
+                        ============================================ -->
+                    <script src="~/Content/js/flot/jquery.flot.js"></script>
+                    <script src="~/Content/js/flot/jquery.flot.resize.js"></script>
+                    <script src="~/Content/js/flot/flot-active.js"></script>
+                    <!-- knob JS
+                        ============================================ -->
+                    <script src="~/Content/js/knob/jquery.knob.js"></script>
+                    <script src="~/Content/js/knob/jquery.appear.js"></script>
+                    <script src="~/Content/js/knob/knob-active.js"></script>
 
-    <!--  wave JS
-        ============================================
-    <script src="~/Content/js/wave/waves.min.js"></script>
-    <script src="~/Content/js/wave/wave-active.js"></script> -->
-    <!-- icheck JS
-        ============================================ -->
-    <script src="~/Content/js/icheck/icheck.min.js"></script>
-    <script src="~/Content/js/icheck/icheck-active.js"></script>
-    <!--  Chat JS
-        ============================================ -->
-    <script src="~/Content/js/chat/jquery.chat.js"></script>
-    <!--  todo JS
-        ============================================ -->
-    <script src="~/Content/js/todo/jquery.todo.js"></script>
-    <!-- plugins JS
-        ============================================ -->
-    <script src="~/Content/js/plugins.js"></script>
-    <!-- main JS
-        ============================================ -->
-    <script src="~/Content/js/main.js"></script>
+                    <!--  wave JS
+                        ============================================
+                    <script src="~/Content/js/wave/waves.min.js"></script>
+                    <script src="~/Content/js/wave/wave-active.js"></script> -->
+                    <!-- icheck JS
+                        ============================================ -->
+                    <script src="~/Content/js/icheck/icheck.min.js"></script>
+                    <script src="~/Content/js/icheck/icheck-active.js"></script>
+                    <!--  Chat JS
+                        ============================================ -->
+                    <script src="~/Content/js/chat/jquery.chat.js"></script>
+                    <!--  todo JS
+                        ============================================ -->
+                    <script src="~/Content/js/todo/jquery.todo.js"></script>
+                    <!-- plugins JS
+                        ============================================ -->
+                    <script src="~/Content/js/plugins.js"></script>
+                    <!-- main JS
+                        ============================================ -->
+                    <script src="~/Content/js/main.js"></script>
 
-    <!-- Data Table JS
-        ============================================ -->
-    <script src="~/Content/js/data-table/jquery.dataTables.min.js"></script>
-    <script src="~/Content/js/data-table/data-table-act.js"></script>
+                    <!-- Data Table JS
+                        ============================================ -->
+                    <script src="~/Content/js/data-table/jquery.dataTables.min.js"></script>
+                    <script src="~/Content/js/data-table/data-table-act.js"></script>
 
-    <!--  notification JS
-        ============================================ -->
-    <script src="~/Content/js/notification/bootstrap-growl.min.js"></script>
+                    <!--  notification JS
+                        ============================================ -->
+                    <script src="~/Content/js/notification/bootstrap-growl.min.js"></script>
 
-    <!-- datapicker JS
-        ============================================ -->
-    <script src="~/Content/js/datapicker/bootstrap-datepicker.js"></script>
-    <!-- img_Lightbox JS
-    ============================================
-    <script src="~/Content/js/Img-lightbox/prototype.js"></script>
-    <script src="~/Content/js/Img-lightbox/scriptaculous.js?load=effects"></script>
-    <script src="~/Content/js/Img-lightbox/lightbox.js"></script>  -->
+                    <!-- datapicker JS
+                        ============================================ -->
+                    <script src="~/Content/js/datapicker/bootstrap-datepicker.js"></script>
+                    <!-- img_Lightbox JS
+                    ============================================
+                    <script src="~/Content/js/Img-lightbox/prototype.js"></script>
+                    <script src="~/Content/js/Img-lightbox/scriptaculous.js?load=effects"></script>
+                    <script src="~/Content/js/Img-lightbox/lightbox.js"></script>  -->
 
-    <script type="text/javascript">
+                    <script type="text/javascript">
         var baseUrl = "@Url.Content("~")";
-    </script>
-</body>
+                    </script>
+                </body>
 </html>

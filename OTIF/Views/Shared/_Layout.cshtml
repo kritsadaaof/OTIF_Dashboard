@@ -68,12 +68,16 @@
     <link rel="stylesheet" href="~/Content/css/responsive.css">
     <!-- modernizr JS
         ============================================ -->
+
+
+    <link rel="stylesheet" href="~/Content/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/assets/css/style.css">
     <script src="~/Content/js/vendor/modernizr-2.8.3.min.js"></script>
     @Styles.Render("~/Content/css")         <!--เรียกใช้งาน style.css-->
-    @Scripts.Render("~/bundles/jquery")     <!--เรียกใช้งาน "~/Scripts/jquery-{version}.js" เพื่อให้ JS ของแต่ละ Page ทำงาน--> 
-   
+    @Scripts.Render("~/bundles/jquery")     <!--เรียกใช้งาน "~/Scripts/jquery-{version}.js" เพื่อให้ JS ของแต่ละ Page ทำงาน-->
+
 </head>
-<body>
+<body> 
     <div class="header-top-area">
         <div class=" container">
 
@@ -82,13 +86,13 @@
 
             </div>
             <img class="" id="Bran" src="~/Content/Img/Artboard3.jpg" style="width:100%" hidden />
-            
+
 
 
         </div>
 
     </div>
-    <div class=" container"> 
+    <div class=" container">
         <div class="Menu" id="Menu">
             &emsp;  <a href="~/Monitor/MonitorTV1" style="font-size:18px"><label><i class="fa fa-home"></i> [DashBoard]</label> </a>
             &emsp;  <a href="~/Home/Index" style="font-size:18px"><label><i class="fa fa-home"></i> [รายงานการผลิตทั้งหมด]</label> </a>

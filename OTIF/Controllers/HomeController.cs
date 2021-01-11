@@ -114,7 +114,7 @@ namespace OTIF.Controllers
             var endDate = ENDDATE;
             var selectMac = SELECTMAC;
             var data = (from TR_P in DbFile.OTIF_TR_Process
-                        where TR_P.Date_Actual >= startDate && TR_P.Date_Actual <= endDate && TR_P.Machine == selectMac// && Ms_Pl.PL_Machine.Equals(MACHINE)
+                        where (TR_P.Date_Actual >= startDate && TR_P.Date_Actual <= endDate && TR_P.Machine == selectMac)&& TR_P.SF_Remain_Qty!=null// && Ms_Pl.PL_Machine.Equals(MACHINE)
                         select new
                         {
                             TR_P.Machine,
@@ -126,9 +126,10 @@ namespace OTIF.Controllers
                             TR_P.RT_QTY,
                             TR_P.QTY,
                             TR_P.User,
-                            TR_P.Stop_Process
+                            TR_P.Stop_Process,
+                            TR_P.TR_DateTime
 
-                        }).AsEnumerable().OrderByDescending(k => k.Time_Actual).Select(x => new
+                        }).AsEnumerable().OrderBy(k => k.TR_DateTime).Select(x => new
                         {
                             Date_Actual = x.Date_Actual.ToString(),
                             Time_Actual =x.Time_Actual.ToString(),
@@ -139,7 +140,7 @@ namespace OTIF.Controllers
                             SF_Remain_Qty = x.SF_Remain_Qty,
                             RT_QTY = x.RT_QTY,
                             QTY = x.QTY,
-                            User = x.User,
+                            User =  CheckUser(x.User),
                             // CalTotalQTYs = CalTotalQTY(x.Machine),
                             Stop_Process = x.Stop_Process == "T" ? "<i style='font-size:16px; color: red'>เครื่องมีปัญหา</i>" : x.SF_Remain_Qty.Equals(0) ? "<i style='font-size:16px; color: #ff6a00'>เครื่องจอด</i>" : "<i style='font-size:16px; color: green'>เครื่องเดิน</i>"
 
