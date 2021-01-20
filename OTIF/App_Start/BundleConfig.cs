@@ -92,6 +92,9 @@ namespace OTIF
             bundles.Add(new ScriptBundle("~/PackingReceive/js").Include(
                          "~/Scripts/Packing/js_PackingReceive.js"));
 
+            bundles.Add(new ScriptBundle("~/ReportByDepart/js").Include(
+                         "~/Scripts/Home/js_ReportByDepart.js"));
+
         }
     }
 }

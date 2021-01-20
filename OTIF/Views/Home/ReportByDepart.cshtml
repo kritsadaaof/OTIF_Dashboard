@@ -1,0 +1,186 @@
+﻿@Scripts.Render("~/ReportByDepart/js")
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="~/Content/datatables.min.css" rel="stylesheet" />
+<script src="~/Scripts/datatables.min.js"></script>
+
+<body>
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="~/Content/img/logo/logo22.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="normal-table-list mg-t-10">
+                <div class="basic-tb-hd">
+
+                    <h2 class="text-center">
+                        <code>รายการผลผลิตประจำวัน แผนก <input type="text" size="15" id="Depart" style="border-top:none;border-left:none;border-right:none;" /></code>
+                    </h2>
+
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 notification-demo ">
+                        <div class="input-group nk-int-st">
+                            <i>วันที่ <input id="InputDate" type="text" size="40" placeholder="" style="border-top:none;border-left:none;border-right:none;" /></i>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="input-group nk-int-st">
+                            <i>เครื่องจักร : <input id="InputMachines" type="text" size="30" placeholder="" style="border-top:none;border-left:none;border-right:none;" /></i>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md4 col-sm-4 col-xs-12">
+                        <div class="input-group nk-int-st">
+                            <i>ลงชื่อ : <input id="InputStaff" type="text" size="20" placeholder="" style="border-top:none;border-left:none;border-right:none;" />พนักงานผู้บันทึก</i>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 notification-demo">
+                        <div class="input-group nk-int-st">
+                            <i>ชื่อพนักงานประจำกะ <input id="InputEmp" type="text" size="25" placeholder="" style="border-top:none;border-left:none;border-right:none;" /></i>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="input-group nk-int-st">
+                            <i>ขั้นตอนการผลิต : <input id="InputMethod" type="text" size="25" placeholder="" style="border-top:none;border-left:none;border-right:none;" /></i>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="input-group nk-int-st">
+                            <i>ลงชื่อ : <input id="InputSupStaff" type="text" size="20" placeholder="" style="border-top:none;border-left:none;border-right:none;" />หัวหน้างาน</i>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 notification-demo">
+                        <div class="input-group nk-int-st">
+                            <i>กะ : <input type="checkbox" id="Ans1"> 08:00-16:00 <input type="checkbox" id="Ans2"> 16:00-24:00 <input type="checkbox" id="Ans3"> 24:00-08:00</i>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <style>
+                            table#t01 {
+                                width: 100%;
+                            }
+
+                                table#t01 tr:nth-child(even) {
+                                    background-color: #eee;
+                                }
+
+                                table#t01 tr:nth-child(odd) {
+                                    background-color: #fff;
+                                }
+
+                            table#t01, th, td {
+                                border: 1px solid black;
+                                border-collapse: collapse;
+                                text-align: center;
+                                background-color: #eee;
+                            }
+                        </style>
+
+
+                        <div style="height:600px;overflow-x:scroll;overflow-y:scroll">
+                            <table id="t01">
+                                <tr>
+                                    <th rowspan="3" class="text-nowrap">ช่วงเวลา<br>การทำงาน</th>
+                                    <th class="text-nowrap">Process<br>Speed</th>
+                                    <th class="text-nowrap">Actual<br>Speed</th>
+                                    <th colspan="2" class="text-nowrap">เป้าหมาย</th>
+                                    <th colspan="2" class="text-nowrap">สายที่ผลิตได้</th>
+                                    <th rowspan="3" class="text-nowrap">ขั้นตอน/ชื่อสาย/ชิ้น</th>
+                                    <th colspan="6" class="text-nowrap">ข้อมูลสายที่ผลิตได้</th>
+                                    <th colspan="3" class="text-nowrap">ข้อมูลสายป้อน</th>
+                                    <th colspan="2" class="text-nowrap">สายไม่ผ่านคุณภาพ</th>
+                                    <th colspan="2" class="text-nowrap">ของเสียที่เกิดขึ้น</th>
+                                    <th colspan="5" class="text-nowrap">ข้อมูลเครื่องจอด</th>
+                                    <th rowspan="2" class="text-nowrap">หัวหน้างาน</th>
+                                </tr>
+
+                                <tr>
+                                    <th colspan="2" rowspan="2" class="text-nowrap">
+                                        <input type="checkbox" id="Ansspeed1"> m/s
+                                        <input type="checkbox" id="Ansspeed2"> m/m <br>
+                                        <input type="checkbox" id="Ansspeed3"> tpm
+                                        <input type="checkbox" id="Ansspeed4"> rpm
+                                    </th>
+                                    <th class="text-nowrap" style="border-bottom:none;">เป้าหมาย</th>
+                                    <th class="text-nowrap" style="border-bottom:none;">เป้าหมาย<br>สะสม</th>
+                                    <th class="text-nowrap" style="border-bottom:none;">สายที่<br>ผลิตได้</th>
+                                    <th class="text-nowrap" style="border-bottom:none;">ผลิตได้<br>สะสม</th>
+                                    <th class="text-nowrap" rowspan="3">PP Order</th>
+                                    <th class="text-nowrap" rowspan="3">SO No.<br>PO No.</th>
+                                    <th class="text-nowrap" rowspan="3">หมายเลข tag<br>(Tag No) label</th>
+                                    <th class="text-nowrap" rowspan="3">ความยาว<br>ต่อล้อ</th>
+                                    <th class="text-nowrap" rowspan="3">สีฉนวน/<br>เปลือก</th>
+                                    <th class="text-nowrap" rowspan="3">Kanban<br>area</th>
+                                    <th>PP Order</th>
+                                    <th>ที่มา:___ Rod coil No./เบอร์ล้อสายป้อน (Tag No)</th>
+                                    <th>
+                                        นน.สายป้อน/นน.Rod/ความยาว
+                                        <input type="checkbox" id="len1"> kg
+                                        <input type="checkbox" id="len2"> m
+                                    </th>
+                                    <th>หมายเลข Stop Tag</th>
+                                    <th>
+                                        ความยาว / นน. Stop
+                                        <input type="checkbox" id="w1"> kg
+                                        <input type="checkbox" id="w2"> m
+                                    </th>
+                                    <th>ต้นสาย /สาย Short line</th>
+                                    <th>ปลายสาย /สาย Short line</th>
+                                    <th>เวลาจอด</th>
+                                    <th>เวลาเดิน</th>
+                                    <th>รหัส (Code)</th>
+                                    <th>เวลา (นาที)</th>
+                                    <th>รายละเอียดเครื่องจอด</th>
+                                </tr>
+                                
+                                <tr>
+                                    <th colspan="2" class="text-nowrap" style="border-top:none;">
+                                        <input type="checkbox" id="Point1"> m.
+                                        <input type="checkbox" id="Point2"> kg.
+                                        <input type="checkbox" id="Point3"> coil.
+                                    </th>
+                                    <th colspan="2" class="text-nowrap" style="border-top:none;">
+                                        <input type="checkbox" id="Point4"> m.
+                                        <input type="checkbox" id="Point5"> kg.
+                                        <input type="checkbox" id="Point6"> coil.
+                                    </th>
+                                </tr>
+                            </table>
+                        </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+    </div>
+</body>

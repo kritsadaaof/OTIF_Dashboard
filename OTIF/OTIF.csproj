@@ -639,13 +639,6 @@
     <Content Include="Content\fonts\notika-icon.ttf" />
     <Content Include="Content\fonts\notika-icon.woff" />
     <Content Include="App_Browsers\qt.browser" />
-    <EntityDeploy Include="Models\Model.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Model.edmx.diagram">
-      <DependentUpon>Model.edmx</DependentUpon>
-    </Content>
     <Content Include="Content\assets\fonts\fa-brands-400.eot" />
     <Content Include="Content\assets\fonts\fa-brands-400.ttf" />
     <Content Include="Content\assets\fonts\fa-brands-400.woff" />
@@ -690,10 +683,18 @@
     <Content Include="Content\assets\scss1\_testimonial.scss" />
     <Content Include="Content\assets\scss1\_variables.scss" />
     <Content Include="Content\assets\scss1\_video-area.scss" />
+    <EntityDeploy Include="Models\Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model.edmx.diagram">
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\FTPProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\CreateBar\js_CreateBar.js" />
     <Content Include="Scripts\DataFG\js_PackingFG.js" />
+    <Content Include="Scripts\Home\js_ReportByDepart.js" />
     <Content Include="Scripts\Home\js_CheckByMachines.js" />
     <Content Include="Scripts\Home\js_Overview.js" />
     <Content Include="Scripts\Home\js_Index.js" />
@@ -768,6 +769,7 @@
     <Content Include="Views\Monitor\MonitorTV4.cshtml" />
     <Content Include="Views\Monitor\MonitorTV3.cshtml" />
     <Content Include="Views\Home\CheckByMachines.cshtml" />
+    <Content Include="Views\Home\ReportByDepart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

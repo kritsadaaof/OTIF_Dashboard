@@ -208,6 +208,10 @@ namespace OTIF.Controllers
         {
             return View();
         }
+        public ActionResult ReportByDepart()
+        {
+            return View();
+        }
         [HttpPost]
         public ActionResult LoadData()
         {
