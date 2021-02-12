@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SQSLXModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sqProduction">
+          <Key>
+            <PropertyRef Name="FacilityCode" />
+            <PropertyRef Name="ItemNumber" />
+            <PropertyRef Name="SequenceNumber" />
+          </Key>
+          <Property Name="Operation" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="WorkCenter" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="ConsumeHour" Type="float" Nullable="false" />
+          <Property Name="DL" Type="float" Nullable="false" />
+          <Property Name="VOH" Type="float" Nullable="false" />
+          <Property Name="BasisCode" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="Setup" Type="float" Nullable="false" />
+          <Property Name="Run" Type="float" Nullable="false" />
+          <Property Name="Speed" Type="float" Nullable="false" />
+          <Property Name="ProductionRate" Type="float" Nullable="false" />
+          <Property Name="BOMReq" Type="float" Nullable="false" />
+          <Property Name="OperationCode" Type="int" Nullable="false" />
+          <Property Name="WorkCenterCode" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="FixVOH" Type="float" Nullable="false" />
+          <Property Name="Depreciation" Type="float" Nullable="false" />
+          <Property Name="FacilityCode" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="ItemNumber" Type="varchar" MaxLength="35" Nullable="false" />
+          <Property Name="LastMaintainUser" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastMaintainDate" Type="datetime" Nullable="false" />
+          <Property Name="SequenceNumber" Type="int" Nullable="false" />
+          <Property Name="BubbleNumber" Type="int" Nullable="false" />
+          <Property Name="DummyFlag" Type="bit" Nullable="false" />
+          <Property Name="OwnerOfOperation" Type="varchar" MaxLength="35" Nullable="false" />
+          <Property Name="BatchSizeOfOwner" Type="float" Nullable="false" />
+          <Property Name="LotSizeOfOwner" Type="float" Nullable="false" />
+          <Property Name="SetupHour" Type="float" Nullable="false" />
+          <Property Name="RunHour" Type="float" Nullable="false" />
+          <Property Name="MachineHour" Type="float" Nullable="false" />
+          <Property Name="OutsideCost" Type="float" Nullable="false" />
+          <Property Name="TypeOfParent" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="ClassOfParent" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="UOMOfParent" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="BatchSizeOfParent" Type="float" Nullable="false" />
+          <Property Name="LotSizeOfParent" Type="float" Nullable="false" />
+          <Property Name="LoadingCode" Type="int" Nullable="false" />
+          <Property Name="WIPQuantityRequired" Type="float" Nullable="false" />
+          <Property Name="StdMacSpeed" Type="numeric" Precision="12" Scale="3" />
+        </EntityType>
+        <EntityContainer Name="SQSLXModelStoreContainer">
+          <EntitySet Name="sqProduction" EntityType="Self.sqProduction" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SQSLXModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sqProduction">
+          <Key>
+            <PropertyRef Name="FacilityCode" />
+            <PropertyRef Name="ItemNumber" />
+            <PropertyRef Name="SequenceNumber" />
+          </Key>
+          <Property Name="Operation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="WorkCenter" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ConsumeHour" Type="Double" Nullable="false" />
+          <Property Name="DL" Type="Double" Nullable="false" />
+          <Property Name="VOH" Type="Double" Nullable="false" />
+          <Property Name="BasisCode" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Setup" Type="Double" Nullable="false" />
+          <Property Name="Run" Type="Double" Nullable="false" />
+          <Property Name="Speed" Type="Double" Nullable="false" />
+          <Property Name="ProductionRate" Type="Double" Nullable="false" />
+          <Property Name="BOMReq" Type="Double" Nullable="false" />
+          <Property Name="OperationCode" Type="Int32" Nullable="false" />
+          <Property Name="WorkCenterCode" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FixVOH" Type="Double" Nullable="false" />
+          <Property Name="Depreciation" Type="Double" Nullable="false" />
+          <Property Name="FacilityCode" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ItemNumber" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastMaintainUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastMaintainDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SequenceNumber" Type="Int32" Nullable="false" />
+          <Property Name="BubbleNumber" Type="Int32" Nullable="false" />
+          <Property Name="DummyFlag" Type="Boolean" Nullable="false" />
+          <Property Name="OwnerOfOperation" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BatchSizeOfOwner" Type="Double" Nullable="false" />
+          <Property Name="LotSizeOfOwner" Type="Double" Nullable="false" />
+          <Property Name="SetupHour" Type="Double" Nullable="false" />
+          <Property Name="RunHour" Type="Double" Nullable="false" />
+          <Property Name="MachineHour" Type="Double" Nullable="false" />
+          <Property Name="OutsideCost" Type="Double" Nullable="false" />
+          <Property Name="TypeOfParent" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ClassOfParent" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="UOMOfParent" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="BatchSizeOfParent" Type="Double" Nullable="false" />
+          <Property Name="LotSizeOfParent" Type="Double" Nullable="false" />
+          <Property Name="LoadingCode" Type="Int32" Nullable="false" />
+          <Property Name="WIPQuantityRequired" Type="Double" Nullable="false" />
+          <Property Name="StdMacSpeed" Type="Decimal" Precision="12" Scale="3" />
+        </EntityType>
+        <EntityContainer Name="SQSLXEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sqProduction" EntityType="Self.sqProduction" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SQSLXModelStoreContainer" CdmEntityContainer="SQSLXEntities">
+          <EntitySetMapping Name="sqProduction">
+            <EntityTypeMapping TypeName="SQSLXModel.sqProduction">
+              <MappingFragment StoreEntitySet="sqProduction">
+                <ScalarProperty Name="Operation" ColumnName="Operation" />
+                <ScalarProperty Name="WorkCenter" ColumnName="WorkCenter" />
+                <ScalarProperty Name="ConsumeHour" ColumnName="ConsumeHour" />
+                <ScalarProperty Name="DL" ColumnName="DL" />
+                <ScalarProperty Name="VOH" ColumnName="VOH" />
+                <ScalarProperty Name="BasisCode" ColumnName="BasisCode" />
+                <ScalarProperty Name="Setup" ColumnName="Setup" />
+                <ScalarProperty Name="Run" ColumnName="Run" />
+                <ScalarProperty Name="Speed" ColumnName="Speed" />
+                <ScalarProperty Name="ProductionRate" ColumnName="ProductionRate" />
+                <ScalarProperty Name="BOMReq" ColumnName="BOMReq" />
+                <ScalarProperty Name="OperationCode" ColumnName="OperationCode" />
+                <ScalarProperty Name="WorkCenterCode" ColumnName="WorkCenterCode" />
+                <ScalarProperty Name="FixVOH" ColumnName="FixVOH" />
+                <ScalarProperty Name="Depreciation" ColumnName="Depreciation" />
+                <ScalarProperty Name="FacilityCode" ColumnName="FacilityCode" />
+                <ScalarProperty Name="ItemNumber" ColumnName="ItemNumber" />
+                <ScalarProperty Name="LastMaintainUser" ColumnName="LastMaintainUser" />
+                <ScalarProperty Name="LastMaintainDate" ColumnName="LastMaintainDate" />
+                <ScalarProperty Name="SequenceNumber" ColumnName="SequenceNumber" />
+                <ScalarProperty Name="BubbleNumber" ColumnName="BubbleNumber" />
+                <ScalarProperty Name="DummyFlag" ColumnName="DummyFlag" />
+                <ScalarProperty Name="OwnerOfOperation" ColumnName="OwnerOfOperation" />
+                <ScalarProperty Name="BatchSizeOfOwner" ColumnName="BatchSizeOfOwner" />
+                <ScalarProperty Name="LotSizeOfOwner" ColumnName="LotSizeOfOwner" />
+                <ScalarProperty Name="SetupHour" ColumnName="SetupHour" />
+                <ScalarProperty Name="RunHour" ColumnName="RunHour" />
+                <ScalarProperty Name="MachineHour" ColumnName="MachineHour" />
+                <ScalarProperty Name="OutsideCost" ColumnName="OutsideCost" />
+                <ScalarProperty Name="TypeOfParent" ColumnName="TypeOfParent" />
+                <ScalarProperty Name="ClassOfParent" ColumnName="ClassOfParent" />
+                <ScalarProperty Name="UOMOfParent" ColumnName="UOMOfParent" />
+                <ScalarProperty Name="BatchSizeOfParent" ColumnName="BatchSizeOfParent" />
+                <ScalarProperty Name="LotSizeOfParent" ColumnName="LotSizeOfParent" />
+                <ScalarProperty Name="LoadingCode" ColumnName="LoadingCode" />
+                <ScalarProperty Name="WIPQuantityRequired" ColumnName="WIPQuantityRequired" />
+                <ScalarProperty Name="StdMacSpeed" ColumnName="StdMacSpeed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

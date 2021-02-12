@@ -36,7 +36,11 @@ namespace OTIF.Models
         public virtual DbSet<Master_Production> Master_Production { get; set; }
         public virtual DbSet<Master_Reason_Code> Master_Reason_Code { get; set; }
         public virtual DbSet<Master_Reel_Bom> Master_Reel_Bom { get; set; }
+        public virtual DbSet<Master_Routing_Plan> Master_Routing_Plan { get; set; }
+        public virtual DbSet<Master_Routing_SQS> Master_Routing_SQS { get; set; }
+        public virtual DbSet<Master_Speed_Machine> Master_Speed_Machine { get; set; }
         public virtual DbSet<OTIF_TR_Cal> OTIF_TR_Cal { get; set; }
+        public virtual DbSet<OTIF_TR_DailyPlan> OTIF_TR_DailyPlan { get; set; }
         public virtual DbSet<OTIF_TR_Machine_Monitor> OTIF_TR_Machine_Monitor { get; set; }
         public virtual DbSet<OTIF_TR_MoveLocation> OTIF_TR_MoveLocation { get; set; }
         public virtual DbSet<OTIF_TR_Packing> OTIF_TR_Packing { get; set; }
@@ -46,5 +50,9 @@ namespace OTIF.Models
         public virtual DbSet<OTIF_TR_ShopFloor> OTIF_TR_ShopFloor { get; set; }
         public virtual DbSet<OTIF_TR_Planner> OTIF_TR_Planner { get; set; }
         public virtual DbSet<TEST> TEST { get; set; }
+        public virtual DbSet<Database_OTIF> Database_OTIF { get; set; }
+        public virtual DbSet<MASTER_SO> MASTER_SO { get; set; }
+        public virtual DbSet<Reel> Reel { get; set; }
+        public virtual DbSet<OTIF_PD_Process_Actual> OTIF_PD_Process_Actual { get; set; }
     }
 }

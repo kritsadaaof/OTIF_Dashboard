@@ -109,3 +109,11 @@ i.text-danger {
     width: 100%;
     text-align:center; 
 }
+td.details-control {
+       background: url('../Content/img/P.png') no-repeat center center; 
+    cursor: pointer;
+}
+
+tr.details td.details-control {
+    background: url('../Content/img/D.png') no-repeat center center; 
+} 

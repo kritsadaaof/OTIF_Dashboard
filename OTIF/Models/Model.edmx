@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="OTIF_PDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="OTIF_PDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Master_Backlog">
           <Key>
             <PropertyRef Name="ID" />
@@ -178,6 +178,37 @@
           <Property Name="Reel_Weight" Type="float" />
           <Property Name="Lag_Reel" Type="float" />
         </EntityType>
+        <EntityType Name="Master_Routing_Plan">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Process" Type="nvarchar" MaxLength="100" />
+          <Property Name="WorkCenter" Type="nvarchar" MaxLength="100" />
+          <Property Name="MasterProcess" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Master_Routing_SQS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Process" Type="nvarchar" MaxLength="100" />
+          <Property Name="WorkCenter" Type="nvarchar" MaxLength="100" />
+          <Property Name="MasterProcess" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Master_Speed_Machine">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Machine" Type="nvarchar" MaxLength="50" />
+          <Property Name="Process" Type="nvarchar" MaxLength="50" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="Speed" Type="float" />
+          <Property Name="User" Type="nvarchar" MaxLength="50" />
+          <Property Name="Date_Time" Type="datetime2" Precision="6" />
+          <Property Name="Time_Change" Type="nvarchar" MaxLength="10" />
+        </EntityType>
         <EntityType Name="OTIF_TR_Cal">
           <Key>
             <PropertyRef Name="ID" />
@@ -195,6 +226,24 @@
           <Property Name="Cal_Update" Type="date" />
           <Property Name="Cal_Update_time" Type="time" Precision="7" />
           <Property Name="Cal_Speed" Type="float" />
+        </EntityType>
+        <EntityType Name="OTIF_TR_DailyPlan">
+          <Key>
+            <PropertyRef Name="IDs" />
+          </Key>
+          <Property Name="Con" Type="nvarchar" MaxLength="100" />
+          <Property Name="Resource_name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Parent_Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="O.Qty" Type="float" />
+          <Property Name="Item_name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Cutting length" Type="text" />
+          <Property Name="Prd.Qty" Type="float" />
+          <Property Name="Operation_code" Type="nvarchar" MaxLength="100" />
+          <Property Name="Start_time" Type="datetime2" Precision="6" />
+          <Property Name="End_time" Type="datetime2" Precision="6" />
+          <Property Name="Setup_time" Type="int" />
+          <Property Name="Date_Create" Type="datetime2" Precision="7" />
+          <Property Name="IDs" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="OTIF_TR_Machine_Monitor">
           <Key>
@@ -397,6 +446,7 @@ warning 6002: The table/view 'OTIF_PD.dbo.OTIF_TR_Planner' does not have a prima
           <Property Name="SF_Stop_Process" Type="nvarchar" MaxLength="10" />
           <Property Name="SF_Stop_Code" Type="nvarchar" MaxLength="50" />
           <Property Name="SF_Time_Fst" Type="time" Precision="6" />
+          <Property Name="SF_Date_Time" Type="datetime2" Precision="7" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'OTIF_PD.dbo.TEST' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -407,6 +457,112 @@ warning 6002: The table/view 'OTIF_PD.dbo.TEST' does not have a primary key defi
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="B_SO" Type="varchar" MaxLength="50" />
           <Property Name="B_PO" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'OTIF_PD.dbo.Database_OTIF' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Database_OTIF">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Bar_Kan" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Bar_Kan" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Machine" Type="nvarchar" MaxLength="50" />
+          <Property Name="User" Type="nvarchar" MaxLength="50" />
+          <Property Name="QTY" Type="int" />
+          <Property Name="Date_Metal" Type="date" />
+          <Property Name="Time_Metal" Type="time" Precision="6" />
+          <Property Name="Date_Compound" Type="date" />
+          <Property Name="Time_Compound" Type="time" Precision="6" />
+          <Property Name="Date_Oh_RM" Type="date" />
+          <Property Name="Time_Oh_RM" Type="time" Precision="6" />
+          <Property Name="Date_CutL" Type="date" />
+          <Property Name="Time_CutL" Type="time" Precision="6" />
+          <Property Name="Date_Mg" Type="date" />
+          <Property Name="Time_Mg" Type="time" Precision="6" />
+          <Property Name="Status" Type="nvarchar" MaxLength="10" />
+          <Property Name="Date_Actual" Type="date" />
+          <Property Name="Time_Actual" Type="time" Precision="6" />
+          <Property Name="Date_Plan" Type="date" />
+          <Property Name="Time_Plan" Type="time" Precision="6" />
+          <Property Name="SF_Remain_Qty" Type="int" />
+          <Property Name="RT_QTY" Type="int" />
+          <Property Name="Move_Status" Type="nvarchar" MaxLength="10" />
+          <Property Name="Location" Type="nvarchar" MaxLength="20" />
+          <Property Name="Process_Speed" Type="float" />
+          <Property Name="Date_Return" Type="date" />
+          <Property Name="Time_Return" Type="time" Precision="6" />
+          <Property Name="Pro_SO" Type="nvarchar" MaxLength="50" />
+          <Property Name="Stop_Process" Type="nvarchar" MaxLength="10" />
+          <Property Name="TR_DateTime" Type="datetime" />
+          <Property Name="SF_Kanban" Type="nvarchar" MaxLength="50" />
+          <Property Name="SF_Machine" Type="nvarchar" MaxLength="50" />
+          <Property Name="SF_User" Type="nvarchar" MaxLength="50" />
+          <Property Name="SF_QTY" Type="int" />
+          <Property Name="SF_Date" Type="date" />
+          <Property Name="SF_Time" Type="time" Precision="6" />
+          <Property Name="SF_Actual_Speed" Type="float" />
+          <Property Name="SF_Stop_Process" Type="nvarchar" MaxLength="10" />
+          <Property Name="SF_Stop_Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="SF_Time_Fst" Type="time" Precision="6" />
+          <Property Name="SF_Date_Time" Type="datetime2" Precision="7" />
+          <Property Name="TimeLab" Type="varchar" MaxLength="11" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'OTIF_PD.dbo.MASTER_SO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="MASTER_SO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="SO" Type="nvarchar" MaxLength="50" />
+          <Property Name="Customer" Type="nvarchar" MaxLength="100" />
+          <Property Name="Material" Type="nvarchar" MaxLength="50" />
+          <Property Name="Material_Des" Type="nvarchar" MaxLength="100" />
+          <Property Name="Date_Create" Type="datetime" />
+          <Property Name="Date_PFD" Type="datetime" />
+          <Property Name="Date_Delivery" Type="datetime" />
+          <Property Name="Order_QTY" Type="float" />
+          <Property Name="FG_QTY" Type="float" />
+          <Property Name="Unit" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'OTIF_PD.dbo.OTIF_PD_Process_Actual' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="OTIF_PD_Process_Actual">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="SO" Type="nvarchar" MaxLength="50" />
+          <Property Name="QTY" Type="int" />
+          <Property Name="RT_QTY" Type="int" />
+          <Property Name="PL_Tag" Type="nvarchar" MaxLength="50" />
+          <Property Name="Machine" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateActual" Type="datetime" />
+          <Property Name="Material" Type="nvarchar" MaxLength="50" />
+          <Property Name="Process" Type="nvarchar" MaxLength="50" />
+          <Property Name="MasterProcess" Type="nvarchar" MaxLength="20" />
+          <Property Name="PL_Status" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'OTIF_PD.dbo.Reel' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Reel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cal_SO" Type="nvarchar" MaxLength="50" />
+          <Property Name="Cal_Machine" Type="nvarchar" MaxLength="50" />
+          <Property Name="Cal_Tag" Type="nvarchar" MaxLength="50" />
+          <Property Name="Cal_Status" Type="nvarchar" MaxLength="10" />
+          <Property Name="Cal_QTY" Type="float" />
+          <Property Name="Cal_QTY_Balance" Type="float" />
+          <Property Name="Cal_LVL" Type="int" />
+          <Property Name="Cal_Create" Type="date" />
+          <Property Name="Cal_Create_time" Type="time" Precision="7" />
+          <Property Name="Cal_Update" Type="date" />
+          <Property Name="Cal_Update_time" Type="time" Precision="7" />
+          <Property Name="Cal_Speed" Type="float" />
         </EntityType>
         <EntityContainer Name="OTIF_PDModelStoreContainer">
           <EntitySet Name="Master_Backlog" EntityType="Self.Master_Backlog" Schema="dbo" store:Type="Tables" />
@@ -420,7 +576,11 @@ warning 6002: The table/view 'OTIF_PD.dbo.TEST' does not have a primary key defi
           <EntitySet Name="Master_Production" EntityType="Self.Master_Production" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Master_Reason_Code" EntityType="Self.Master_Reason_Code" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Master_Reel_Bom" EntityType="Self.Master_Reel_Bom" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Master_Routing_Plan" EntityType="Self.Master_Routing_Plan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Master_Routing_SQS" EntityType="Self.Master_Routing_SQS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Master_Speed_Machine" EntityType="Self.Master_Speed_Machine" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OTIF_TR_Cal" EntityType="Self.OTIF_TR_Cal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OTIF_TR_DailyPlan" EntityType="Self.OTIF_TR_DailyPlan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OTIF_TR_Machine_Monitor" EntityType="Self.OTIF_TR_Machine_Monitor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OTIF_TR_MoveLocation" EntityType="Self.OTIF_TR_MoveLocation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OTIF_TR_Packing" EntityType="Self.OTIF_TR_Packing" Schema="dbo" store:Type="Tables" />
@@ -468,9 +628,101 @@ warning 6002: The table/view 'OTIF_PD.dbo.TEST' does not have a primary key defi
     [TEST].[B_PO] AS [B_PO]
     FROM [dbo].[TEST] AS [TEST]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="Database_OTIF" EntityType="Self.Database_OTIF" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Database_OTIF].[ID] AS [ID], 
+    [Database_OTIF].[Bar_Kan] AS [Bar_Kan], 
+    [Database_OTIF].[Machine] AS [Machine], 
+    [Database_OTIF].[User] AS [User], 
+    [Database_OTIF].[QTY] AS [QTY], 
+    [Database_OTIF].[Date_Metal] AS [Date_Metal], 
+    [Database_OTIF].[Time_Metal] AS [Time_Metal], 
+    [Database_OTIF].[Date_Compound] AS [Date_Compound], 
+    [Database_OTIF].[Time_Compound] AS [Time_Compound], 
+    [Database_OTIF].[Date_Oh_RM] AS [Date_Oh_RM], 
+    [Database_OTIF].[Time_Oh_RM] AS [Time_Oh_RM], 
+    [Database_OTIF].[Date_CutL] AS [Date_CutL], 
+    [Database_OTIF].[Time_CutL] AS [Time_CutL], 
+    [Database_OTIF].[Date_Mg] AS [Date_Mg], 
+    [Database_OTIF].[Time_Mg] AS [Time_Mg], 
+    [Database_OTIF].[Status] AS [Status], 
+    [Database_OTIF].[Date_Actual] AS [Date_Actual], 
+    [Database_OTIF].[Time_Actual] AS [Time_Actual], 
+    [Database_OTIF].[Date_Plan] AS [Date_Plan], 
+    [Database_OTIF].[Time_Plan] AS [Time_Plan], 
+    [Database_OTIF].[SF_Remain_Qty] AS [SF_Remain_Qty], 
+    [Database_OTIF].[RT_QTY] AS [RT_QTY], 
+    [Database_OTIF].[Move_Status] AS [Move_Status], 
+    [Database_OTIF].[Location] AS [Location], 
+    [Database_OTIF].[Process_Speed] AS [Process_Speed], 
+    [Database_OTIF].[Date_Return] AS [Date_Return], 
+    [Database_OTIF].[Time_Return] AS [Time_Return], 
+    [Database_OTIF].[Pro_SO] AS [Pro_SO], 
+    [Database_OTIF].[Stop_Process] AS [Stop_Process], 
+    [Database_OTIF].[TR_DateTime] AS [TR_DateTime], 
+    [Database_OTIF].[SF_Kanban] AS [SF_Kanban], 
+    [Database_OTIF].[SF_Machine] AS [SF_Machine], 
+    [Database_OTIF].[SF_User] AS [SF_User], 
+    [Database_OTIF].[SF_QTY] AS [SF_QTY], 
+    [Database_OTIF].[SF_Date] AS [SF_Date], 
+    [Database_OTIF].[SF_Time] AS [SF_Time], 
+    [Database_OTIF].[SF_Actual_Speed] AS [SF_Actual_Speed], 
+    [Database_OTIF].[SF_Stop_Process] AS [SF_Stop_Process], 
+    [Database_OTIF].[SF_Stop_Code] AS [SF_Stop_Code], 
+    [Database_OTIF].[SF_Time_Fst] AS [SF_Time_Fst], 
+    [Database_OTIF].[SF_Date_Time] AS [SF_Date_Time], 
+    [Database_OTIF].[TimeLab] AS [TimeLab]
+    FROM [dbo].[Database_OTIF] AS [Database_OTIF]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="MASTER_SO" EntityType="Self.MASTER_SO" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [MASTER_SO].[ID] AS [ID], 
+    [MASTER_SO].[SO] AS [SO], 
+    [MASTER_SO].[Customer] AS [Customer], 
+    [MASTER_SO].[Material] AS [Material], 
+    [MASTER_SO].[Material_Des] AS [Material_Des], 
+    [MASTER_SO].[Date_Create] AS [Date_Create], 
+    [MASTER_SO].[Date_PFD] AS [Date_PFD], 
+    [MASTER_SO].[Date_Delivery] AS [Date_Delivery], 
+    [MASTER_SO].[Order_QTY] AS [Order_QTY], 
+    [MASTER_SO].[FG_QTY] AS [FG_QTY], 
+    [MASTER_SO].[Unit] AS [Unit]
+    FROM [dbo].[MASTER_SO] AS [MASTER_SO]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OTIF_PD_Process_Actual" EntityType="Self.OTIF_PD_Process_Actual" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [OTIF_PD_Process_Actual].[ID] AS [ID], 
+    [OTIF_PD_Process_Actual].[SO] AS [SO], 
+    [OTIF_PD_Process_Actual].[QTY] AS [QTY], 
+    [OTIF_PD_Process_Actual].[RT_QTY] AS [RT_QTY], 
+    [OTIF_PD_Process_Actual].[PL_Tag] AS [PL_Tag], 
+    [OTIF_PD_Process_Actual].[Machine] AS [Machine], 
+    [OTIF_PD_Process_Actual].[DateActual] AS [DateActual], 
+    [OTIF_PD_Process_Actual].[Material] AS [Material], 
+    [OTIF_PD_Process_Actual].[Process] AS [Process], 
+    [OTIF_PD_Process_Actual].[MasterProcess] AS [MasterProcess], 
+    [OTIF_PD_Process_Actual].[PL_Status] AS [PL_Status]
+    FROM [dbo].[OTIF_PD_Process_Actual] AS [OTIF_PD_Process_Actual]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Reel" EntityType="Self.Reel" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Reel].[ID] AS [ID], 
+    [Reel].[Cal_SO] AS [Cal_SO], 
+    [Reel].[Cal_Machine] AS [Cal_Machine], 
+    [Reel].[Cal_Tag] AS [Cal_Tag], 
+    [Reel].[Cal_Status] AS [Cal_Status], 
+    [Reel].[Cal_QTY] AS [Cal_QTY], 
+    [Reel].[Cal_QTY_Balance] AS [Cal_QTY_Balance], 
+    [Reel].[Cal_LVL] AS [Cal_LVL], 
+    [Reel].[Cal_Create] AS [Cal_Create], 
+    [Reel].[Cal_Create_time] AS [Cal_Create_time], 
+    [Reel].[Cal_Update] AS [Cal_Update], 
+    [Reel].[Cal_Update_time] AS [Cal_Update_time], 
+    [Reel].[Cal_Speed] AS [Cal_Speed]
+    FROM [dbo].[Reel] AS [Reel]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="OTIF_PDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -647,6 +899,37 @@ warning 6002: The table/view 'OTIF_PD.dbo.TEST' does not have a primary key defi
           <Property Name="Reel_Weight" Type="Double" />
           <Property Name="Lag_Reel" Type="Double" />
         </EntityType>
+        <EntityType Name="Master_Routing_Plan">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Process" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="WorkCenter" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MasterProcess" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Master_Routing_SQS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Process" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="WorkCenter" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MasterProcess" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Master_Speed_Machine">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Machine" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Process" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Speed" Type="Double" />
+          <Property Name="User" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Time" Type="DateTime" Precision="6" />
+          <Property Name="Time_Change" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="OTIF_TR_Cal">
           <Key>
             <PropertyRef Name="ID" />
@@ -664,6 +947,24 @@ warning 6002: The table/view 'OTIF_PD.dbo.TEST' does not have a primary key defi
           <Property Name="Cal_Update" Type="DateTime" Precision="0" />
           <Property Name="Cal_Update_time" Type="Time" Precision="7" />
           <Property Name="Cal_Speed" Type="Double" />
+        </EntityType>
+        <EntityType Name="OTIF_TR_DailyPlan">
+          <Key>
+            <PropertyRef Name="IDs" />
+          </Key>
+          <Property Name="Con" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Resource_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Parent_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="O_Qty" Type="Double" />
+          <Property Name="Item_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Cutting_length" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Prd_Qty" Type="Double" />
+          <Property Name="Operation_code" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Start_time" Type="DateTime" Precision="6" />
+          <Property Name="End_time" Type="DateTime" Precision="6" />
+          <Property Name="Setup_time" Type="Int32" />
+          <Property Name="Date_Create" Type="DateTime" Precision="7" />
+          <Property Name="IDs" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="OTIF_TR_Machine_Monitor">
           <Key>
@@ -830,6 +1131,7 @@ warning 6002: The table/view 'OTIF_PD.dbo.TEST' does not have a primary key defi
           <Property Name="SF_Stop_Process" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="SF_Stop_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SF_Time_Fst" Type="Time" Precision="6" />
+          <Property Name="SF_Date_Time" Type="DateTime" Precision="7" />
         </EntityType>
         <EntityType Name="OTIF_TR_Planner">
           <Key>
@@ -885,7 +1187,11 @@ warning 6002: The table/view 'OTIF_PD.dbo.TEST' does not have a primary key defi
           <EntitySet Name="Master_Production" EntityType="Self.Master_Production" />
           <EntitySet Name="Master_Reason_Code" EntityType="Self.Master_Reason_Code" />
           <EntitySet Name="Master_Reel_Bom" EntityType="Self.Master_Reel_Bom" />
+          <EntitySet Name="Master_Routing_Plan" EntityType="Self.Master_Routing_Plan" />
+          <EntitySet Name="Master_Routing_SQS" EntityType="Self.Master_Routing_SQS" />
+          <EntitySet Name="Master_Speed_Machine" EntityType="Self.Master_Speed_Machine" />
           <EntitySet Name="OTIF_TR_Cal" EntityType="Self.OTIF_TR_Cal" />
+          <EntitySet Name="OTIF_TR_DailyPlan" EntityType="Self.OTIF_TR_DailyPlan" />
           <EntitySet Name="OTIF_TR_Machine_Monitor" EntityType="Self.OTIF_TR_Machine_Monitor" />
           <EntitySet Name="OTIF_TR_MoveLocation" EntityType="Self.OTIF_TR_MoveLocation" />
           <EntitySet Name="OTIF_TR_Packing" EntityType="Self.OTIF_TR_Packing" />
@@ -895,7 +1201,109 @@ warning 6002: The table/view 'OTIF_PD.dbo.TEST' does not have a primary key defi
           <EntitySet Name="OTIF_TR_ShopFloor" EntityType="Self.OTIF_TR_ShopFloor" />
           <EntitySet Name="OTIF_TR_Planner" EntityType="Self.OTIF_TR_Planner" />
           <EntitySet Name="TEST" EntityType="Self.TEST" />
+          <EntitySet Name="Database_OTIF" EntityType="OTIF_PDModel.Database_OTIF" />
+          <EntitySet Name="MASTER_SO" EntityType="OTIF_PDModel.MASTER_SO" />
+          <EntitySet Name="Reel" EntityType="OTIF_PDModel.Reel" />
+          <EntitySet Name="OTIF_PD_Process_Actual" EntityType="OTIF_PDModel.OTIF_PD_Process_Actual" />
         </EntityContainer>
+        <EntityType Name="Database_OTIF">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Bar_Kan" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Bar_Kan" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Machine" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="User" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="QTY" Type="Int32" />
+          <Property Name="Date_Metal" Type="DateTime" Precision="0" />
+          <Property Name="Time_Metal" Type="Time" Precision="6" />
+          <Property Name="Date_Compound" Type="DateTime" Precision="0" />
+          <Property Name="Time_Compound" Type="Time" Precision="6" />
+          <Property Name="Date_Oh_RM" Type="DateTime" Precision="0" />
+          <Property Name="Time_Oh_RM" Type="Time" Precision="6" />
+          <Property Name="Date_CutL" Type="DateTime" Precision="0" />
+          <Property Name="Time_CutL" Type="Time" Precision="6" />
+          <Property Name="Date_Mg" Type="DateTime" Precision="0" />
+          <Property Name="Time_Mg" Type="Time" Precision="6" />
+          <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Actual" Type="DateTime" Precision="0" />
+          <Property Name="Time_Actual" Type="Time" Precision="6" />
+          <Property Name="Date_Plan" Type="DateTime" Precision="0" />
+          <Property Name="Time_Plan" Type="Time" Precision="6" />
+          <Property Name="SF_Remain_Qty" Type="Int32" />
+          <Property Name="RT_QTY" Type="Int32" />
+          <Property Name="Move_Status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Process_Speed" Type="Double" />
+          <Property Name="Date_Return" Type="DateTime" Precision="0" />
+          <Property Name="Time_Return" Type="Time" Precision="6" />
+          <Property Name="Pro_SO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Stop_Process" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TR_DateTime" Type="DateTime" Precision="3" />
+          <Property Name="SF_Kanban" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SF_Machine" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SF_User" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SF_QTY" Type="Int32" />
+          <Property Name="SF_Date" Type="DateTime" Precision="0" />
+          <Property Name="SF_Time" Type="Time" Precision="6" />
+          <Property Name="SF_Actual_Speed" Type="Double" />
+          <Property Name="SF_Stop_Process" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="SF_Stop_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SF_Time_Fst" Type="Time" Precision="6" />
+          <Property Name="SF_Date_Time" Type="DateTime" Precision="7" />
+          <Property Name="TimeLab" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="MASTER_SO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="SO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Customer" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Material" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Material_Des" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Create" Type="DateTime" Precision="3" />
+          <Property Name="Date_PFD" Type="DateTime" Precision="3" />
+          <Property Name="Date_Delivery" Type="DateTime" Precision="3" />
+          <Property Name="Order_QTY" Type="Double" />
+          <Property Name="FG_QTY" Type="Double" />
+          <Property Name="Unit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Reel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cal_SO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Cal_Machine" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Cal_Tag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Cal_Status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Cal_QTY" Type="Double" />
+          <Property Name="Cal_QTY_Balance" Type="Double" />
+          <Property Name="Cal_LVL" Type="Int32" />
+          <Property Name="Cal_Create" Type="DateTime" Precision="0" />
+          <Property Name="Cal_Create_time" Type="Time" Precision="7" />
+          <Property Name="Cal_Update" Type="DateTime" Precision="0" />
+          <Property Name="Cal_Update_time" Type="Time" Precision="7" />
+          <Property Name="Cal_Speed" Type="Double" />
+        </EntityType>
+        <EntityType Name="OTIF_PD_Process_Actual">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="SO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="QTY" Type="Int32" />
+          <Property Name="RT_QTY" Type="Int32" />
+          <Property Name="PL_Tag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Machine" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateActual" Type="DateTime" Precision="3" />
+          <Property Name="Material" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Process" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MasterProcess" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PL_Status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1086,6 +1494,40 @@ warning 6002: The table/view 'OTIF_PD.dbo.TEST' does not have a primary key defi
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Master_Routing_Plan">
+            <EntityTypeMapping TypeName="OTIF_PDModel.Master_Routing_Plan">
+              <MappingFragment StoreEntitySet="Master_Routing_Plan">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Process" ColumnName="Process" />
+                <ScalarProperty Name="WorkCenter" ColumnName="WorkCenter" />
+                <ScalarProperty Name="MasterProcess" ColumnName="MasterProcess" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Master_Routing_SQS">
+            <EntityTypeMapping TypeName="OTIF_PDModel.Master_Routing_SQS">
+              <MappingFragment StoreEntitySet="Master_Routing_SQS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Process" ColumnName="Process" />
+                <ScalarProperty Name="WorkCenter" ColumnName="WorkCenter" />
+                <ScalarProperty Name="MasterProcess" ColumnName="MasterProcess" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Master_Speed_Machine">
+            <EntityTypeMapping TypeName="OTIF_PDModel.Master_Speed_Machine">
+              <MappingFragment StoreEntitySet="Master_Speed_Machine">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Machine" ColumnName="Machine" />
+                <ScalarProperty Name="Process" ColumnName="Process" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Speed" ColumnName="Speed" />
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="Date_Time" ColumnName="Date_Time" />
+                <ScalarProperty Name="Time_Change" ColumnName="Time_Change" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="OTIF_TR_Cal">
             <EntityTypeMapping TypeName="OTIF_PDModel.OTIF_TR_Cal">
               <MappingFragment StoreEntitySet="OTIF_TR_Cal">
@@ -1102,6 +1544,25 @@ warning 6002: The table/view 'OTIF_PD.dbo.TEST' does not have a primary key defi
                 <ScalarProperty Name="Cal_Update" ColumnName="Cal_Update" />
                 <ScalarProperty Name="Cal_Update_time" ColumnName="Cal_Update_time" />
                 <ScalarProperty Name="Cal_Speed" ColumnName="Cal_Speed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OTIF_TR_DailyPlan">
+            <EntityTypeMapping TypeName="OTIF_PDModel.OTIF_TR_DailyPlan">
+              <MappingFragment StoreEntitySet="OTIF_TR_DailyPlan">
+                <ScalarProperty Name="Con" ColumnName="Con" />
+                <ScalarProperty Name="Resource_name" ColumnName="Resource_name" />
+                <ScalarProperty Name="Parent_Name" ColumnName="Parent_Name" />
+                <ScalarProperty Name="O_Qty" ColumnName="O.Qty" />
+                <ScalarProperty Name="Item_name" ColumnName="Item_name" />
+                <ScalarProperty Name="Cutting_length" ColumnName="Cutting length" />
+                <ScalarProperty Name="Prd_Qty" ColumnName="Prd.Qty" />
+                <ScalarProperty Name="Operation_code" ColumnName="Operation_code" />
+                <ScalarProperty Name="Start_time" ColumnName="Start_time" />
+                <ScalarProperty Name="End_time" ColumnName="End_time" />
+                <ScalarProperty Name="Setup_time" ColumnName="Setup_time" />
+                <ScalarProperty Name="Date_Create" ColumnName="Date_Create" />
+                <ScalarProperty Name="IDs" ColumnName="IDs" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1273,6 +1734,7 @@ warning 6002: The table/view 'OTIF_PD.dbo.TEST' does not have a primary key defi
                 <ScalarProperty Name="SF_Stop_Process" ColumnName="SF_Stop_Process" />
                 <ScalarProperty Name="SF_Stop_Code" ColumnName="SF_Stop_Code" />
                 <ScalarProperty Name="SF_Time_Fst" ColumnName="SF_Time_Fst" />
+                <ScalarProperty Name="SF_Date_Time" ColumnName="SF_Date_Time" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1317,6 +1779,107 @@ warning 6002: The table/view 'OTIF_PD.dbo.TEST' does not have a primary key defi
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="B_SO" ColumnName="B_SO" />
                 <ScalarProperty Name="B_PO" ColumnName="B_PO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Database_OTIF">
+            <EntityTypeMapping TypeName="OTIF_PDModel.Database_OTIF">
+              <MappingFragment StoreEntitySet="Database_OTIF">
+                <ScalarProperty Name="TimeLab" ColumnName="TimeLab" />
+                <ScalarProperty Name="SF_Date_Time" ColumnName="SF_Date_Time" />
+                <ScalarProperty Name="SF_Time_Fst" ColumnName="SF_Time_Fst" />
+                <ScalarProperty Name="SF_Stop_Code" ColumnName="SF_Stop_Code" />
+                <ScalarProperty Name="SF_Stop_Process" ColumnName="SF_Stop_Process" />
+                <ScalarProperty Name="SF_Actual_Speed" ColumnName="SF_Actual_Speed" />
+                <ScalarProperty Name="SF_Time" ColumnName="SF_Time" />
+                <ScalarProperty Name="SF_Date" ColumnName="SF_Date" />
+                <ScalarProperty Name="SF_QTY" ColumnName="SF_QTY" />
+                <ScalarProperty Name="SF_User" ColumnName="SF_User" />
+                <ScalarProperty Name="SF_Machine" ColumnName="SF_Machine" />
+                <ScalarProperty Name="SF_Kanban" ColumnName="SF_Kanban" />
+                <ScalarProperty Name="TR_DateTime" ColumnName="TR_DateTime" />
+                <ScalarProperty Name="Stop_Process" ColumnName="Stop_Process" />
+                <ScalarProperty Name="Pro_SO" ColumnName="Pro_SO" />
+                <ScalarProperty Name="Time_Return" ColumnName="Time_Return" />
+                <ScalarProperty Name="Date_Return" ColumnName="Date_Return" />
+                <ScalarProperty Name="Process_Speed" ColumnName="Process_Speed" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Move_Status" ColumnName="Move_Status" />
+                <ScalarProperty Name="RT_QTY" ColumnName="RT_QTY" />
+                <ScalarProperty Name="SF_Remain_Qty" ColumnName="SF_Remain_Qty" />
+                <ScalarProperty Name="Time_Plan" ColumnName="Time_Plan" />
+                <ScalarProperty Name="Date_Plan" ColumnName="Date_Plan" />
+                <ScalarProperty Name="Time_Actual" ColumnName="Time_Actual" />
+                <ScalarProperty Name="Date_Actual" ColumnName="Date_Actual" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Time_Mg" ColumnName="Time_Mg" />
+                <ScalarProperty Name="Date_Mg" ColumnName="Date_Mg" />
+                <ScalarProperty Name="Time_CutL" ColumnName="Time_CutL" />
+                <ScalarProperty Name="Date_CutL" ColumnName="Date_CutL" />
+                <ScalarProperty Name="Time_Oh_RM" ColumnName="Time_Oh_RM" />
+                <ScalarProperty Name="Date_Oh_RM" ColumnName="Date_Oh_RM" />
+                <ScalarProperty Name="Time_Compound" ColumnName="Time_Compound" />
+                <ScalarProperty Name="Date_Compound" ColumnName="Date_Compound" />
+                <ScalarProperty Name="Time_Metal" ColumnName="Time_Metal" />
+                <ScalarProperty Name="Date_Metal" ColumnName="Date_Metal" />
+                <ScalarProperty Name="QTY" ColumnName="QTY" />
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="Machine" ColumnName="Machine" />
+                <ScalarProperty Name="Bar_Kan" ColumnName="Bar_Kan" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MASTER_SO">
+            <EntityTypeMapping TypeName="OTIF_PDModel.MASTER_SO">
+              <MappingFragment StoreEntitySet="MASTER_SO">
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="FG_QTY" ColumnName="FG_QTY" />
+                <ScalarProperty Name="Order_QTY" ColumnName="Order_QTY" />
+                <ScalarProperty Name="Date_Delivery" ColumnName="Date_Delivery" />
+                <ScalarProperty Name="Date_PFD" ColumnName="Date_PFD" />
+                <ScalarProperty Name="Date_Create" ColumnName="Date_Create" />
+                <ScalarProperty Name="Material_Des" ColumnName="Material_Des" />
+                <ScalarProperty Name="Material" ColumnName="Material" />
+                <ScalarProperty Name="Customer" ColumnName="Customer" />
+                <ScalarProperty Name="SO" ColumnName="SO" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reel">
+            <EntityTypeMapping TypeName="OTIF_PDModel.Reel">
+              <MappingFragment StoreEntitySet="Reel">
+                <ScalarProperty Name="Cal_Speed" ColumnName="Cal_Speed" />
+                <ScalarProperty Name="Cal_Update_time" ColumnName="Cal_Update_time" />
+                <ScalarProperty Name="Cal_Update" ColumnName="Cal_Update" />
+                <ScalarProperty Name="Cal_Create_time" ColumnName="Cal_Create_time" />
+                <ScalarProperty Name="Cal_Create" ColumnName="Cal_Create" />
+                <ScalarProperty Name="Cal_LVL" ColumnName="Cal_LVL" />
+                <ScalarProperty Name="Cal_QTY_Balance" ColumnName="Cal_QTY_Balance" />
+                <ScalarProperty Name="Cal_QTY" ColumnName="Cal_QTY" />
+                <ScalarProperty Name="Cal_Status" ColumnName="Cal_Status" />
+                <ScalarProperty Name="Cal_Tag" ColumnName="Cal_Tag" />
+                <ScalarProperty Name="Cal_Machine" ColumnName="Cal_Machine" />
+                <ScalarProperty Name="Cal_SO" ColumnName="Cal_SO" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OTIF_PD_Process_Actual">
+            <EntityTypeMapping TypeName="OTIF_PDModel.OTIF_PD_Process_Actual">
+              <MappingFragment StoreEntitySet="OTIF_PD_Process_Actual">
+                <ScalarProperty Name="PL_Status" ColumnName="PL_Status" />
+                <ScalarProperty Name="MasterProcess" ColumnName="MasterProcess" />
+                <ScalarProperty Name="Process" ColumnName="Process" />
+                <ScalarProperty Name="Material" ColumnName="Material" />
+                <ScalarProperty Name="DateActual" ColumnName="DateActual" />
+                <ScalarProperty Name="Machine" ColumnName="Machine" />
+                <ScalarProperty Name="PL_Tag" ColumnName="PL_Tag" />
+                <ScalarProperty Name="RT_QTY" ColumnName="RT_QTY" />
+                <ScalarProperty Name="QTY" ColumnName="QTY" />
+                <ScalarProperty Name="SO" ColumnName="SO" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

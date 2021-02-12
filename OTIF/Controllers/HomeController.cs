@@ -10,7 +10,7 @@ using OTIF.Models;
 namespace OTIF.Controllers
 {
     public class HomeController : Controller
-    { 
+    {
         private Entities DbFile = new Entities();
         public ActionResult Index()
         {
@@ -27,6 +27,7 @@ namespace OTIF.Controllers
             // try
             //  {
             var dt = DateTime.UtcNow.Date;
+
             var data = (from MS_M in DbFile.Master_Machine
                         join TR_P1 in DbFile.OTIF_TR_Process on MS_M.MC_Machine equals TR_P1.Machine into TR_Ps
                         from TR_P in TR_Ps.DefaultIfEmpty()
@@ -58,7 +59,7 @@ namespace OTIF.Controllers
                             User = x.Date_Actual == dt ? CheckUser(x.User) : "-",
                             Date_Actual = x.Date_Actual,
                             // CalTotalQTYs = CalTotalQTY(x.Machine),
-                            Stop_Process = x.Date_Actual == dt ? x.Stop_Process == "T" ? "<i style='font-size:16px; color: red'>เครื่องมีปัญหา</i>" : x.SF_Remain_Qty.Equals(0) ? "<i style='font-size:16px; color: #ff6a00'>เครื่องจอด</i>" : "<i style='font-size:16px; color: green'>เครื่องเดิน</i>" : "-"
+                            Stop_Process = x.Date_Actual == dt ? x.Stop_Process == "N" ? "No Plan" : x.Stop_Process == "T" ? "<i style='font-size:16px; color: red'>เครื่องมีปัญหา</i>" : x.SF_Remain_Qty.Equals(0) ? "<i style='font-size:16px; color: #ff6a00'>เครื่องจอด</i>" : "<i style='font-size:16px; color: green'>เครื่องเดิน</i>" : x.Stop_Process == "N" ? "<i style='font-size:16px; color: #333399'>No Plan</i>" : "-"
 
 
                         }).ToList();
@@ -108,48 +109,57 @@ namespace OTIF.Controllers
 
         public string SelectMachines(String SELECTMAC, DateTime STARTDATE, DateTime ENDDATE)
         {
-             //try
-              {
-            var startDate = STARTDATE;
-            var endDate = ENDDATE;
-            var selectMac = SELECTMAC;
-            var data = (from TR_P in DbFile.OTIF_TR_Process
-                        where (TR_P.Date_Actual >= startDate && TR_P.Date_Actual <= endDate && TR_P.Machine == selectMac)&& TR_P.SF_Remain_Qty!=null// && Ms_Pl.PL_Machine.Equals(MACHINE)
-                        select new
-                        {
-                            TR_P.Machine,
-                            TR_P.Pro_SO,
-                            TR_P.Bar_Kan,
-                            TR_P.Date_Actual,
-                            TR_P.Time_Actual,
-                            TR_P.SF_Remain_Qty,
-                            TR_P.RT_QTY,
-                            TR_P.QTY,
-                            TR_P.User,
-                            TR_P.Stop_Process,
-                            TR_P.TR_DateTime
+            //try
+            {
+                if (STARTDATE.Year < DateTime.Now.Year)
+                {
+                    STARTDATE = STARTDATE.AddYears(+543);
+                }
 
-                        }).AsEnumerable().OrderBy(k => k.TR_DateTime).Select(x => new
-                        {
-                            Date_Actual = x.Date_Actual.ToString(),
-                            Time_Actual =x.Time_Actual.ToString(),
-                            Machine = x.Machine,
-                            Pro_SO = x.Pro_SO,
-                            PL_Type = MAT(x.Bar_Kan).ToString(),
-                            Bar_Kan = x.Bar_Kan,
-                            SF_Remain_Qty = x.SF_Remain_Qty,
-                            RT_QTY = x.RT_QTY,
-                            QTY = x.QTY,
-                            User =  CheckUser(x.User),
-                            // CalTotalQTYs = CalTotalQTY(x.Machine),
-                            Stop_Process = x.Stop_Process == "T" ? "<i style='font-size:16px; color: red'>เครื่องมีปัญหา</i>" : x.SF_Remain_Qty.Equals(0) ? "<i style='font-size:16px; color: #ff6a00'>เครื่องจอด</i>" : "<i style='font-size:16px; color: green'>เครื่องเดิน</i>"
+                if (ENDDATE.Year < DateTime.Now.Year)
+                {
+                    ENDDATE = ENDDATE.AddYears(+543);
+                }
+                var startDate = STARTDATE;
+                var endDate = ENDDATE;
+                var selectMac = SELECTMAC;
+                var data = (from TR_P in DbFile.OTIF_TR_Process
+                            where (TR_P.Date_Actual >= startDate && TR_P.Date_Actual <= endDate && TR_P.Machine == selectMac) && TR_P.SF_Remain_Qty != null// && Ms_Pl.PL_Machine.Equals(MACHINE)
+                            select new
+                            {
+                                TR_P.Machine,
+                                TR_P.Pro_SO,
+                                TR_P.Bar_Kan,
+                                TR_P.Date_Actual,
+                                TR_P.Time_Actual,
+                                TR_P.SF_Remain_Qty,
+                                TR_P.RT_QTY,
+                                TR_P.QTY,
+                                TR_P.User,
+                                TR_P.Stop_Process,
+                                TR_P.TR_DateTime
+
+                            }).AsEnumerable().OrderBy(k => k.TR_DateTime).Select(x => new
+                            {
+                                Date_Actual = x.Date_Actual.ToString(),
+                                Time_Actual = x.Time_Actual.ToString(),
+                                Machine = x.Machine,
+                                Pro_SO = x.Pro_SO,
+                                PL_Type = MAT(x.Bar_Kan).ToString(),
+                                Bar_Kan = x.Bar_Kan,
+                                SF_Remain_Qty = x.SF_Remain_Qty,
+                                RT_QTY = x.RT_QTY,
+                                QTY = x.QTY,
+                                User = CheckUser(x.User),
+                                // CalTotalQTYs = CalTotalQTY(x.Machine),
+                                Stop_Process = x.Stop_Process == "T" ? "<i style='font-size:16px; color: red'>เครื่องมีปัญหา</i>" : x.SF_Remain_Qty.Equals(0) ? "<i style='font-size:16px; color: #ff6a00'>เครื่องจอด</i>" : "<i style='font-size:16px; color: green'>เครื่องเดิน</i>"
 
 
-                        }).ToList();
+                            }).ToList();
                 string jsonlog = new JavaScriptSerializer().Serialize(data);
-            return jsonlog;
+                return jsonlog;
             }
-          //    catch { return "N"; }
+            //    catch { return "N"; }
         }//CheckLocation  //CheckUser
         public string CheckUser(string USER)
         {
@@ -161,7 +171,7 @@ namespace OTIF.Controllers
                             {
                                 Ms_M.Mem_Name
                             }).FirstOrDefault();
-              //  string jsonlog = new JavaScriptSerializer().Serialize(data);
+                //  string jsonlog = new JavaScriptSerializer().Serialize(data);
                 return data.Mem_Name;
             }
             catch { return null; }

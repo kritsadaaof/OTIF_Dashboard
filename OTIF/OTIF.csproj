@@ -49,10 +49,10 @@
       <HintPath>..\packages\BouncyCastle.1.8.3.1\lib\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Google.Protobuf, Version=3.6.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.6.1\lib\net45\Google.Protobuf.dll</HintPath>
@@ -70,8 +70,8 @@
     <Reference Include="MySql.Data, Version=8.0.20.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.8.0.20\lib\net452\MySql.Data.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data.EntityFramework, Version=8.0.20.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <HintPath>..\packages\MySql.Data.EntityFramework.8.0.20\lib\net452\MySql.Data.EntityFramework.dll</HintPath>
+    <Reference Include="MySql.Data.EntityFramework, Version=8.0.11.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.EntityFramework.8.0.11\lib\net452\MySql.Data.EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Renci.SshNet, Version=2016.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
       <HintPath>..\packages\SSH.NET.2016.1.0\lib\net40\Renci.SshNet.dll</HintPath>
@@ -196,8 +196,12 @@
     <Compile Include="Controllers\QCTesterController.cs" />
     <Compile Include="Controllers\RequestController.cs" />
     <Compile Include="Controllers\ShopFloorController.cs" />
+    <Compile Include="Controllers\SO_PL_ACController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database_OTIF.cs">
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Master_Backlog.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -232,6 +236,18 @@
     <Compile Include="Models\Master_Reel_Bom.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Master_Routing_Plan.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Master_Routing_SQS.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MASTER_SO.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Master_Speed_Machine.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -247,7 +263,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\OTIF_PD_Process_Actual.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\OTIF_TR_Cal.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OTIF_TR_DailyPlan.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OTIF_TR_Machine_Monitor.cs">
@@ -274,8 +296,50 @@
     <Compile Include="Models\OTIF_TR_ShopFloor.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Reel.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sqProduction.cs">
+      <DependentUpon>SQS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SQS.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SQS.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SQS.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SQS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SQS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SQS.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\TEST.cs">
       <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WMS_PD.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WMS_PD.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WMS_PD.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WMS_PD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WMS_PD.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WMS_PD.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WMS_PD_Master_SO.cs">
+      <DependentUpon>WMS_PD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WMS_PD_Product.cs">
+      <DependentUpon>WMS_PD.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -497,17 +561,26 @@
     <Content Include="Content\images\sort_both.png" />
     <Content Include="Content\images\sort_desc.png" />
     <Content Include="Content\images\sort_desc_disabled.png" />
+    <Content Include="Content\img\+.png" />
+    <Content Include="Content\img\1.png" />
+    <Content Include="Content\img\2.png" />
     <Content Include="Content\img\blog\1.jpg" />
     <Content Include="Content\img\chosen-sprite.png" />
+    <Content Include="Content\img\CLOSE.png" />
     <Content Include="Content\img\country\1.png" />
     <Content Include="Content\img\country\2.png" />
     <Content Include="Content\img\country\3.png" />
     <Content Include="Content\img\cropper\1.jpg" />
+    <Content Include="Content\img\D.png" />
     <Content Include="Content\img\dialog\like.png" />
     <Content Include="Content\img\favicon.ico" />
     <Content Include="Content\img\green1.png" />
+    <Content Include="Content\img\icons8-folder-48.png" />
+    <Content Include="Content\img\icons8-opened-folder-48.png" />
     <Content Include="Content\img\logo\favicon.png" />
     <Content Include="Content\img\logo\logo.png" />
+    <Content Include="Content\img\OPEN.jpg" />
+    <Content Include="Content\img\P.png" />
     <Content Include="Content\img\post\1.jpg" />
     <Content Include="Content\img\post\2.jpg" />
     <Content Include="Content\img\post\4.jpg" />
@@ -520,6 +593,7 @@
     <Content Include="Content\img\widgets\2.png" />
     <Content Include="Content\img\widgets\4.png" />
     <Content Include="Content\img\widgets\6.png" />
+    <Content Include="Content\img\_.png" />
     <Content Include="Content\js\animation\animation-active.js" />
     <Content Include="Content\js\autosize.min.js" />
     <Content Include="Content\js\bootstrap-select\bootstrap-select.js" />
@@ -620,6 +694,26 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\SQS.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SQS.edmx</DependentUpon>
+      <LastGenOutput>SQS.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\SQS.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SQS.edmx</DependentUpon>
+      <LastGenOutput>SQS.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\WMS_PD.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WMS_PD.edmx</DependentUpon>
+      <LastGenOutput>WMS_PD.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\WMS_PD.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WMS_PD.edmx</DependentUpon>
+      <LastGenOutput>WMS_PD.cs</LastGenOutput>
+    </Content>
     <Content Include="Rotativa\help-wkhtmltoimage.txt" />
     <Content Include="Rotativa\help-wkhtmltopdf.txt" />
     <Content Include="Rotativa\wkhtmltoimage.exe" />
@@ -690,6 +784,20 @@
     <Content Include="Models\Model.edmx.diagram">
       <DependentUpon>Model.edmx</DependentUpon>
     </Content>
+    <EntityDeploy Include="Models\SQS.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SQS.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\SQS.edmx.diagram">
+      <DependentUpon>SQS.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\WMS_PD.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>WMS_PD.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\WMS_PD.edmx.diagram">
+      <DependentUpon>WMS_PD.edmx</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\FTPProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\CreateBar\js_CreateBar.js" />
@@ -729,6 +837,7 @@
     <Content Include="Scripts\Return\js_Return.js" />
     <Content Include="Scripts\ShopFloor\js_RPShopFloorFst.js" />
     <Content Include="Scripts\ShopFloor\js_RPShopFloor.js" />
+    <Content Include="Scripts\SO_PL_AC\js_SO_PL_AC.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -769,7 +878,7 @@
     <Content Include="Views\Monitor\MonitorTV4.cshtml" />
     <Content Include="Views\Monitor\MonitorTV3.cshtml" />
     <Content Include="Views\Home\CheckByMachines.cshtml" />
-    <Content Include="Views\Home\ReportByDepart.cshtml" />
+    <Content Include="Views\SO_PL_AC\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

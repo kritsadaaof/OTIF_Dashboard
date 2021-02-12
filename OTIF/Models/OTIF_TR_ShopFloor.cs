@@ -25,5 +25,6 @@ namespace OTIF.Models
         public string SF_Stop_Process { get; set; }
         public string SF_Stop_Code { get; set; }
         public Nullable<System.TimeSpan> SF_Time_Fst { get; set; }
+        public Nullable<System.DateTime> SF_Date_Time { get; set; }
     }
 }
